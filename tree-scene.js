@@ -13,6 +13,24 @@ const ZMAX = 5;
 // Старт роста боковой ветви: ts·SUB_T, чтобы ветви у самого кончика успевали вырасти до g=1.
 // Раньше старт был ts, и ветви с ts>0.66 не вырастали вовсе: ~31% листьев не рисовались и не нажимались (голый верх ветвей).
 const SUB_T = 0.66;
+const EGG_Z = 2.25;                              // пасхалки видны, только когда дерево приблизили вплотную
+/* Пасхалки на ветках: короткие шутки, не утверждения о работе продукта. Видны при z ≥ EGG_Z, плавно проявляются. */
+const EGGS = {
+  jeff: ['Jeff слушает. Иногда даже отвечает.', 'Тише: собеседник думает.', 'Голос у него есть, терпения — запас.'],
+  ux: ['Если неудобно — это баг.', 'Кнопка, которая объясняет, почему не нажимается.'],
+  apps: ['Приложение живёт отдельно. Дружим по HTTP.', 'Свой дом, свои ключи.'],
+  models: ['Локальная модель: бесплатно и никому не жалуется.', 'Видеопамять — тоже ресурс.'],
+  cloud: ['Бесплатный лимит тоже кончается.', 'Сначала цена, потом запрос.'],
+  computer: ['Мышь без разрешения не двигаем.', 'Окно браузера — это не повод для смелости.'],
+  media: ['Здесь рождаются ролики. Пока — в черновиках.', 'Движение — тоже информация.', 'Без согласия актёров — ни кадра.'],
+  memory: ['Помнит то, что просили. И ничего лишнего.', 'Память без проверки — просто шум.'],
+  agents: ['Один делает, другой проверяет.', 'Оркестр без дирижёра фальшивит.'],
+  skills: ['Навык — это инструкция, а не магия.', 'Прочитал — не значит умеет.'],
+  plugins: ['Коннектор без ключа — вилка без розетки.', 'Подключить мало, надо ещё проверить.'],
+  ops: ['Зелёные тесты ≠ польза. Мы это помним.', 'Сначала воспроизвести, потом чинить.', 'Красное тоже честный цвет.'],
+  oss: ['Чужой код: смотрим, не тащим.', 'Лицензию читаем до установки.'],
+};
+const EGGS_ANY = ['Вы подошли очень близко.', 'Тут тоже кто-то работает.'];
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
 const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 const easeBack = (t) => { const c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
@@ -162,7 +180,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
   const stars = Array.from({ length: 220 }, () => ({ x: rs() * W, y: rs() * GROUND * 0.9, r: rs() * 1.3 + 0.25, p: rs() * TAU, s: 0.6 + rs() * 1.6 }));
   const flies = Array.from({ length: 40 }, (_, i) => ({ x: TX + (rs() - 0.5) * 1400, y: 180 + rs() * 560, p: rs() * TAU, s: 0.3 + rs() * 0.7, k: i }));
   let state = { selected: null, filter: null, hover: null };
-  let z = 1, ox = 0, oy = 0;                    // камера: экран = мир·z + (ox, oy), единицы мира; z ∈ [1, ZMAX]
+  let z = 1, ox = 0, oy = 0, anim = null, eggsDrawn = 0, eggsFrame = 0;                    // камера: экран = мир·z + (ox, oy), единицы мира; z ∈ [1, ZMAX]
   let scale = 1, dpr = 1, raf = 0, shoot = null, last = performance.now(), start = last;
   const posed = new Map();                       // id -> [x, y] после ветра (для попаданий)
   const labelBoxes = [];
@@ -205,6 +223,12 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
 
   function draw(t) {
     const dt = Math.min(64, t - last); last = t;
+    if (anim) {                                       // анимированный полёт камеры к листу
+      const k = clamp((t - anim.t0) / anim.ms);
+      const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      z = anim.z0 + (anim.z1 - anim.z0) * e; ox = anim.ox0 + (anim.ox1 - anim.ox0) * e; oy = anim.oy0 + (anim.oy1 - anim.oy0) * e;
+      if (k >= 1) { const done = anim.done; anim = null; canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y'; if (done) done(); }
+    }
     ctx.setTransform(dpr * scale * z, 0, 0, dpr * scale * z, dpr * scale * ox, dpr * scale * oy);
     ctx.drawImage(bg, 0, 0);
     const elapsed = t - start;
@@ -220,7 +244,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
       ctx.fillRect(TX - w / 2 + Math.sin(elapsed * 0.0007 + i) * 20, y, w, 1.5);
     }
     trunk(elapsed);
-    posed.clear(); labelBoxes.length = 0;
+    posed.clear(); labelBoxes.length = 0; eggsFrame = 0;
     const wind = reduced ? 0 : Math.sin(elapsed * 0.00031) * 0.6 + Math.sin(elapsed * 0.00073) * 0.4;
     for (const m of model) {
       const g = growth(elapsed, m.delay);
@@ -269,6 +293,27 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
         ctx.globalAlpha = 1;
         posed.set(l.node.id, leafCanvasPos(m, l.x, l.y, a));
       }
+      if (z >= EGG_Z && g >= 1) {                       // пасхалки на ветке: только вблизи
+        const al = clamp((z - EGG_Z) / 0.9);
+        const list = EGGS[m.zone.id] || EGGS_ANY;
+        ctx.save();
+        ctx.font = "italic 600 11px Georgia, 'Times New Roman', serif";
+        list.forEach((txt, ei) => {
+          const tt = [0.42, 0.66, 0.84][ei % 3];
+          const [px, py] = bez(m.p, tt), [qx, qy] = bez(m.p, Math.min(1, tt + 0.03));
+          let ang = Math.atan2(qy - py, qx - px);
+          if (ang > Math.PI / 2 || ang < -Math.PI / 2) ang += Math.PI;
+          const nx = Math.cos(ang - Math.PI / 2) * 13, ny = Math.sin(ang - Math.PI / 2) * 13;
+          const sx = (px + nx) * z + ox, sy = (py + ny) * z + oy;
+          if (sx < -200 || sx > W + 200 || sy < -40 || sy > H + 40) return;     // вне кадра не рисуем
+          ctx.save(); ctx.translate(px + nx, py + ny); ctx.rotate(ang);
+          ctx.globalAlpha = al * 0.95;
+          ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(6,10,30,.8)'; ctx.strokeText(txt, 0, 0);
+          ctx.fillStyle = '#ffe3a3'; ctx.fillText(txt, 0, 0);
+          ctx.restore(); eggsFrame++;
+        });
+        ctx.restore();
+      }
       ctx.restore();
       const [ex, ey] = leafCanvasPos(m, m.end[0], m.end[1], a);
       posed.set(m.zone.id, [ex, ey]);
@@ -314,9 +359,10 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     if (hv) { ctx.globalAlpha = 0.9; ctx.drawImage(white, hv[0] - 20, hv[1] - 20, 40, 40); ctx.globalAlpha = 1; }
   }
 
+  function endFrame() { eggsDrawn = eggsFrame; }
   function loop(now) {
     if (!wrap.isConnected) { cancelAnimationFrame(raf); ro.disconnect(); return; }
-    if (!document.hidden) draw(now);
+    if (!document.hidden) { draw(now); endFrame(); }
     raf = requestAnimationFrame(loop);
   }
 
@@ -338,6 +384,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
   const world = (e) => { const [vx, vy] = view(e); return [(vx - ox) / z, (vy - oy) / z]; };
   const clampCam = () => { ox = clamp(ox, W * (1 - z), 0); oy = clamp(oy, H * (1 - z), 0); };
   function setCam(nz, vx, vy) {                  // приблизить к точке (vx, vy): она остаётся под пальцем
+    if (anim) { const done = anim.done; anim = null; if (done) done(); }
     const k = clamp(nz, 1, ZMAX), wx = (vx - ox) / z, wy = (vy - oy) / z;
     z = k; ox = vx - wx * z; oy = vy - wy * z; clampCam();
     canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y';
@@ -362,6 +409,19 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     if (reduced) draw(performance.now());
   });
   canvas.addEventListener('pointerleave', () => { state.hover = null; showTip(null); if (reduced) draw(performance.now()); });
+  /** Анимированный полёт камеры к узлу (motion design): ease-in-out, ~0.7 c; при prefers-reduced-motion — мгновенно. Промис — по окончании. */
+  function flyTo(id, k = 2.7, ms = 700) {
+    const p = posed.get(id);
+    if (!p) return Promise.resolve(false);
+    const z1 = Math.max(z, clamp(k, 1, ZMAX));
+    let ox1 = W / 2 - p[0] * z1, oy1 = H / 2 - p[1] * z1;
+    ox1 = clamp(ox1, W * (1 - z1), 0); oy1 = clamp(oy1, H * (1 - z1), 0);
+    if (reduced || ms <= 0) { z = z1; ox = ox1; oy = oy1; canvas.style.touchAction = 'none'; draw(performance.now()); endFrame(); return Promise.resolve(true); }
+    if (anim && anim.done) anim.done();
+    return new Promise((resolve) => {
+      anim = { t0: performance.now(), ms, z0: z, ox0: ox, oy0: oy, z1, ox1, oy1, done: () => resolve(true) };
+    });
+  }
   const ptrs = new Map();                        // активные указатели: id -> {x, y} в px экрана
   let gesture = null, moved = false;
   canvas.addEventListener('pointerdown', (e) => {
@@ -396,9 +456,10 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
   canvas.addEventListener('pointercancel', lift);
   canvas.addEventListener('click', (e) => {
     if (moved) { moved = false; return; }          // после перетаскивания/щипка — не выбор
+    if (anim) return;                              // идёт полёт камеры — второй клик не нужен
     const [x, y] = world(e);
     const h = hit(x, y, e.pointerType === 'touch' ? 26 : 14);
-    if (h && onPick) onPick(h.node);
+    if (h && onPick) flyTo(h.node.id).then(() => onPick(h.node));
   });
   canvas.addEventListener('dblclick', (e) => {      // двойной тап/клик по пустому месту: приблизить к точке, ещё раз — вернуть
     if (hit(...world(e), e.pointerType === 'touch' ? 26 : 14)) return;     // по листу первый тап уже открыл статью — не мешаем
@@ -430,6 +491,9 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     /** Экранные координаты точки узла (для автоматических проверок: настоящий клик мышью). */
     where(id) { const p = posed.get(id); if (!p) return null; const r = canvas.getBoundingClientRect(); return { x: r.left + (p[0] * z + ox) * scale, y: r.top + (p[1] * z + oy) * scale }; },
     /** Приблизить к центру (кнопки +/−) или вернуть вид целиком. */
+    flyTo,
+    get flying() { return !!anim; },
+    get eggs() { return eggsDrawn; },
     zoomBy(f) { setCam(z * f, W / 2, H / 2); },
     zoomReset() { z = 1; ox = 0; oy = 0; canvas.style.touchAction = 'pan-x pan-y'; if (reduced) draw(performance.now()); },
     zoomTo(id, k = 2.6) { const p = posed.get(id); if (!p) return false; z = clamp(k, 1, ZMAX); ox = W / 2 - p[0] * z; oy = H / 2 - p[1] * z; clampCam(); canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y'; if (reduced) draw(performance.now()); return true; },

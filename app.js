@@ -143,6 +143,15 @@ $('#stackLegend').replaceChildren(...ORDER.filter((s) => counts[s]).map((s) => h
 $('#ladder').replaceChildren(...meta.ladder.map((s) => h('li', { class: s.reached ? 'reached' : '' }, h('b', s.title), h('span', s.about), h('em', s.reached ? 'ДОСТИГНУТО' : 'НЕ ДОКАЗАНО'))));
 
 /* ---------------------------------------------------------------- лента */
+/** Из ленты — к листу: прокрутка к дереву, полёт камеры (motion design), затем статья. */
+async function goLeaf(id) {
+  $('#tree').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+  if (!reduced) await new Promise((r) => setTimeout(r, 480));
+  await scene.flyTo(id);
+  scene.select(id);
+  openArticle(id);
+}
+
 let kindFilter = 'all', shown = 40;
 const kinds = Object.entries(timeline.kinds).sort((a, b) => b[1] - a[1]);
 const chips = $('#tlChips');
@@ -159,7 +168,12 @@ function renderTimeline() {
   rows.slice(0, shown).forEach((r, i) => {
     if (r.day !== day) { day = r.day; out.push(h('li.day', fmtDay(day).toUpperCase())); }
     const [kl, kc] = KIND[r.kind] || KIND.other;
-    out.push(h('li.it.reveal', { style: { '--d': `${Math.min(i, 8) * 40}ms` } }, h('span.k', { style: { '--c': kc }, text: kl }), h('p', r.title), h('code', r.sha)));
+    const refs = (r.nodes || []).filter((id) => byId.has(id)).map((id) => {
+      const b = h('button.ref', { type: 'button', title: 'Показать этот лист на дереве', 'data-node': id }, byId.get(id).label);
+      b.addEventListener('click', () => goLeaf(id));
+      return b;
+    });
+    out.push(h('li.it.reveal', { style: { '--d': `${Math.min(i, 8) * 40}ms` } }, h('span.k', { style: { '--c': kc }, text: kl }), h('div.it-body', h('p', r.title), refs.length ? h('div.refs', ...refs) : null), h('code', r.sha)));
   });
   $('#tl').replaceChildren(...out);
   observeReveal($('#tl'));
@@ -372,4 +386,4 @@ addEventListener('keydown', (e) => {
 });
 
 /* для автоматических проверок: тот же путь, что клик по листу */
-window.__bossman = { open: (id) => openArticle(id), where: (id) => scene.where(id), zoom: () => scene.zoom, zoomTo: (id, k) => scene.zoomTo(id, k), leaves: scene.leaves, nodes: nodes.length };
+window.__bossman = { open: (id) => openArticle(id), where: (id) => scene.where(id), zoom: () => scene.zoom, eggs: () => scene.eggs, flying: () => scene.flying, zoomTo: (id, k) => scene.zoomTo(id, k), leaves: scene.leaves, nodes: nodes.length };

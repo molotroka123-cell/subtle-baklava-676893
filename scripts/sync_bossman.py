@@ -561,7 +561,44 @@ def build_articles(nodes: list[dict], repo: Path, deep: bool) -> dict[str, dict]
 
 
 # ---------------------------------------------------------------- лента развития
-def build_timeline(repo: Path, days: int, limit: int) -> dict:
+def source_index(nodes: list[dict]) -> dict[str, list[str]]:
+    """путь исходника -> id узлов, у которых он записан (для привязки изменений ленты к листьям)."""
+    idx: dict[str, list[str]] = defaultdict(list)
+    for n in nodes:
+        for src in n.get("sources") or []:
+            path = (src.get("path") or "").replace("\\", "/")
+            if path and n["id"] not in idx[path]:
+                idx[path].append(n["id"])
+    return idx
+
+
+def commit_files(repo: Path, shas: list[str]) -> dict[str, list[str]]:
+    """Изменённые файлы каждого коммита одним вызовом git (без слияний)."""
+    out = git(repo, "log", "--no-walk=unsorted", "--no-merges", "--name-only", "--format=\x1e%h", *shas, timeout=180) if shas else ""
+    files: dict[str, list[str]] = {}
+    for block in out.split("\x1e"):
+        lines = [x for x in block.splitlines() if x.strip()]
+        if lines:
+            files[lines[0].strip()] = [x.strip().replace("\\", "/") for x in lines[1:]]
+    return files
+
+
+def link_leaves(items: list[dict], files: dict[str, list[str]], idx: dict[str, list[str]], max_links: int = 3) -> None:
+    """Каждому изменению ленты — до max_links листьев, чьи исходники оно тронуло. Больше затронутых файлов листа — выше; при равенстве
+    раньше идёт лист с меньшим числом исходников (узкий лист точнее общего). Нет совпадения — nodes пуст: ссылка никогда не выдумывается."""
+    size: dict[str, int] = defaultdict(int)
+    for ids in idx.values():
+        for nid in ids:
+            size[nid] += 1
+    for it in items:
+        score: dict[str, int] = defaultdict(int)
+        for f in files.get(it["sha"], []):
+            for nid in idx.get(f, []):
+                score[nid] += 1
+        it["nodes"] = sorted(score, key=lambda i: (-score[i], size[i], i))[:max_links]
+
+
+def build_timeline(repo: Path, days: int, limit: int, nodes: list[dict] | None = None) -> dict:
     out = git(repo, "log", "--all", "--no-merges", f"--since={days}.days", f"-n{limit * 3}",
               "--format=%h\x1f%ad\x1f%s", "--date=short", timeout=120)
     rows, seen = [], set()
@@ -582,6 +619,8 @@ def build_timeline(repo: Path, days: int, limit: int) -> dict:
         rows.append({"sha": sha, "day": day, "kind": kind, "title": one_line(redact(m.group(2) if m else subj), 200)})
         if len(rows) >= limit:
             break
+    if nodes:
+        link_leaves(rows, commit_files(repo, [r["sha"] for r in rows]), source_index(nodes))
     per_day = Counter(r["day"] for r in rows)
     return {"items": rows, "per_day": dict(sorted(per_day.items())), "kinds": dict(Counter(r["kind"] for r in rows))}
 
@@ -712,7 +751,7 @@ def build(repo: Path, args) -> tuple[dict[str, str], dict]:
     enrichment = {"state": "off"}
     if args.enrich:
         enrichment = enrich(articles, args.enrich_model, HERE / "data" / "enrich-cache.json", args.enrich_budget)
-    timeline = build_timeline(repo, args.days, args.timeline_limit)
+    timeline = build_timeline(repo, args.days, args.timeline_limit, nodes)
     live = fetch_live(repo, args.live_url, args.data_dir) if args.live else {"state": "off"}
     head = git(repo, "rev-parse", "HEAD").strip()
     branch = git(repo, "rev-parse", "--abbrev-ref", "HEAD").strip()

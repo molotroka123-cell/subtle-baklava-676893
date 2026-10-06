@@ -340,3 +340,24 @@ class PcLauncherContractTest(unittest.TestCase):
         self.assertIn("sync_from_pc.cmd", s)
         self.assertIn(" auto", s)
         self.assertIn("schtasks /Delete", s)                             # способ снять задачу объяснён
+
+
+class TimelineLinkTest(unittest.TestCase):
+    NODES = [{"id": "a", "sources": [{"path": "x/one.py"}]}, {"id": "b", "sources": [{"path": "x/one.py"}, {"path": "x/two.py"}]},
+             {"id": "c", "sources": [{"path": "y/three.py"}]}, {"id": "d", "sources": []}]
+
+    def test_links_follow_the_files_a_commit_touched_narrowest_leaf_first(self):
+        items = [{"sha": "s1"}, {"sha": "s2"}, {"sha": "s3"}, {"sha": "s4"}]
+        files = {"s1": ["x/one.py"], "s2": ["x/one.py", "x/two.py"], "s3": ["docs/readme.md"], "s4": ["y/three.py", "x/one.py"]}
+        sb.link_leaves(items, files, sb.source_index(self.NODES))
+        self.assertEqual(items[0]["nodes"], ["a", "b"])            # a has one source, b two: the narrower leaf is first
+        self.assertEqual(items[1]["nodes"], ["b", "a"])            # b matches two files, a one
+        self.assertEqual(items[2]["nodes"], [])                    # no leaf owns the file: nothing is invented
+        self.assertEqual(set(items[3]["nodes"]), {"a", "b", "c"})
+
+    def test_a_commit_without_a_known_file_list_gets_no_links_and_the_limit_holds(self):
+        many = [{"id": f"n{i}", "sources": [{"path": "p.py"}]} for i in range(8)]
+        items = [{"sha": "z"}, {"sha": "unknown"}]
+        sb.link_leaves(items, {"z": ["p.py"]}, sb.source_index(many), max_links=3)
+        self.assertEqual(len(items[0]["nodes"]), 3)
+        self.assertEqual(items[1]["nodes"], [])
