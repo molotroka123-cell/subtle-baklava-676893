@@ -1,6 +1,6 @@
 # Bossman — развитие: полный текст для ИИ
 
-Снимок: 2026-10-06T13:16:11Z · коммит 8d4a4be0bf35 · режим git-snapshot.
+Снимок: 2026-10-06T13:20:56Z · коммит 40f8f9078f1e · режим git-snapshot.
 Правило: уровень доказательства ≠ PASS. Ниже — все статьи карты (зона → элементы).
 
 ## Bossman
@@ -10,7 +10,7 @@
 Корень карты: всё, что относится к Bossman. Единая готовность владельцу не доказана — карта показывает возможности и уровень доказательства, а не сертификат релиза.
 
 ### Что внутри
-В этой зоне 827 элементов: 505 — код написан; 180 — запись / ссылка; 100 — лежит в отдельной ветке; 14 — смешанная зона; 11 — есть сохранённый прогон; 10 — блокер; 6 — идея; 1 — подготовлено.
+В этой зоне 832 элемента: 510 — код написан; 180 — запись / ссылка; 100 — лежит в отдельной ветке; 14 — смешанная зона; 11 — есть сохранённый прогон; 10 — блокер; 6 — идея; 1 — подготовлено.
 Ниже — вложенные направления. Цвет листа на дереве показывает уровень доказательства, а не оценку качества.
 
 ### Элементы зоны
@@ -54,7 +54,7 @@ Artifacts: `«локальный путь скрыт»`, `gate-report-rc21-candi
 ### Что дальше
 Выбрать одну сборку; повторить общий owner-run на её точном SHA.
 
-Факты: Уровень доказательства: Блокер; Вложенных элементов: 827; Тип: документ; Размер: 81 строка; Имя файла: CURRENT_CLOSEOUT_AUDIT_20261002.md; Изменений в истории: 1; Последнее изменение: 2026-10-02 · f0894590; Родитель: корень
+Факты: Уровень доказательства: Блокер; Вложенных элементов: 832; Тип: документ; Размер: 81 строка; Имя файла: CURRENT_CLOSEOUT_AUDIT_20261002.md; Изменений в истории: 1; Последнее изменение: 2026-10-02 · f0894590; Родитель: корень
 
 ## Агенты и оркестрация
 *Уровень доказательства: Смешанная зона* · id: `agents`
@@ -153,10 +153,10 @@ One prompt → several agents, each in its own isolated git clone; per-agent and
 Проверить маршрутизацию и живой сценарий на итоговом SHA.
 
 ### Уровни доказательства
-Дошёл до: код есть. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
 Статус интеграции на карте: code.
 - 1. Код — файл есть
-- 2. Тесты — не запускались
+- 2. Тесты — прошли: 9, упало 0, пропущено 0
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
@@ -899,10 +899,10 @@ One prompt → several agents, each in its own isolated git clone; per-agent and
 Проверить маршрутизацию и живой сценарий на итоговом SHA.
 
 ### Уровни доказательства
-Дошёл до: код есть. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
 Статус интеграции на карте: code.
 - 1. Код — файл есть
-- 2. Тесты — не запускались
+- 2. Тесты — прошли: 9, упало 0, пропущено 0
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
@@ -1056,7 +1056,7 @@ Fairness (lab rule 7): every student row has the SAME tools, step cap and token 
 Приложения и бизнес-сценарии на базе Bossman: сервисы, админки и мастерские со своими проверками. Реальные учётки, публикация и доход здесь отдельно не подтверждаются.
 
 ### Что внутри
-В этой зоне 24 элемента: 19 — код написан; 3 — блокер; 1 — смешанная зона; 1 — идея.
+В этой зоне 26 элементов: 21 — код написан; 3 — блокер; 1 — смешанная зона; 1 — идея.
 Ниже — вложенные направления. Цвет листа на дереве показывает уровень доказательства, а не оценку качества.
 
 ### Элементы зоны
@@ -1071,6 +1071,8 @@ Fairness (lab rule 7): every student row has the SAME tools, step cap and token 
 - solana-volume-suite — код написан — Файлы приложения присутствуют; готовность владельцу проверяется отдельно.
 - travel-architect — код написан — Файлы приложения присутствуют; готовность владельцу проверяется отдельно.
 - Скрытый элемент — смешанная зона — Подробности скрыты владельцем витрины.
+- Эмулятор заработка на удалённой вакансии (симуляция) — код написан — Earning EMULATOR: reads a public remote-job listing (text), drafts the deliverable, and writes a SIMULATED invoice to an append-only ledger. What it does NOT do, by construction (each is pinned by a…
+- Эмулятор заработка: командная строка (один GET публичной страницы) — код написан — CLI for the earning emulator («файл»). SIMULATION only: no application, no message, no login, no money. python «файл» --listing-file listing.txt --source https://example/job --ledger ledger.jsonl…
 
 ### Как читать уровень доказательства
 Сводная зона: внутри элементы с разным уровнем доказательства — смотрите вложенные.
@@ -1087,7 +1089,7 @@ Fairness (lab rule 7): every student row has the SAME tools, step cap and token 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Смешанная зона; Вложенных элементов: 24; Родитель: Bossman
+Факты: Уровень доказательства: Смешанная зона; Вложенных элементов: 26; Родитель: Bossman
 
 ## SwapMe admin · FreshVibes admin
 *Уровень доказательства: Код написан* · id: `cap-42`
@@ -1661,10 +1663,10 @@ Implemented: - manifest - standalone HTTP service - health - capabilities - metr
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Уровни доказательства
-Дошёл до: код есть. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
 Статус интеграции на карте: code.
 - 1. Код — файл есть
-- 2. Тесты — не запускались
+- 2. Тесты — прошли: 9, упало 0, пропущено 0
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
@@ -1749,10 +1751,10 @@ Implemented: - manifest - standalone HTTP service - health - capabilities - metr
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Уровни доказательства
-Дошёл до: код есть. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
 Статус интеграции на карте: code.
 - 1. Код — файл есть
-- 2. Тесты — не запускались
+- 2. Тесты — прошли: 9, упало 0, пропущено 0
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
@@ -1856,6 +1858,91 @@ Implemented: - manifest - standalone HTTP service - health - capabilities - metr
 - 4. ПК владельца — не проверено на ПК владельца
 
 Факты: Уровень доказательства: Код написан; Родитель: Скрытый элемент
+
+## Эмулятор заработка на удалённой вакансии (симуляция)
+*Уровень доказательства: Код написан* · id: `reg-earning_emulator`
+
+Путь: Bossman → Приложения и бизнес
+
+### Что это
+Earning EMULATOR: reads a public remote-job listing (text), drafts the deliverable, and writes a SIMULATED invoice to an append-only ledger. What it does NOT do, by construction (each is pinned by a test): it never applies, never messages anyone, never logs in Код есть; польза и живая работа не доказаны.
+
+### Как это устроено (из описания в коде)
+Earning EMULATOR: reads a public remote-job listing (text), drafts the deliverable, and writes a SIMULATED invoice to an append-only ledger.
+What it does NOT do, by construction (each is pinned by a test): it never applies, never messages anyone, never logs in, never pays or receives money, never touches an account. `real_money` is always 0 and every record says SIMULATED. This module performs no network I/O at all — fetching a page is the caller's separate, read-only step — and listings with scam signals (upfront fees, gift cards, ID documents, wallet seeds, ...) are refused.
+The deliverable comes from an injectable worker. The only workers named here are free or local ($0 rule); a paid or unknown worker is refused. The built-in `template` worker uses no model and says so in the deliverable.
+
+### Основные функции
+- parse_listing()
+- eligibility()
+- template_worker()
+- simulated_invoice()
+- run()
+- класс Listing
+
+### Чем это проверяется
+Модуль импортируют 1 тестовый файл. Это наличие тестов, а не результат их прогона: прогон на конкретном коммите смотрите в CI.
+
+### История изменений
+- 2026-10-06 · 40f8f907 — earning emulator (simulation: no application, no message, no login, no money) with tests and a synthetic demo record; leaf usefulness queue (hypothesis); audit 510 leaves (486 covered, 23 untested)
+
+### Как читать уровень доказательства
+Реализация есть в коде, но запуск «в живую» отдельно не подтверждён. Это не значит, что не работает — это значит, что доказательства пока нет.
+Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
+
+### Что дальше
+Проверить через UX/CMD на ПК владельца и измерить пользу до/после на одинаковых задачах.
+
+### Уровни доказательства
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Статус интеграции на карте: code.
+- 1. Код — файл есть
+- 2. Тесты — прошли: 18, упало 0, пропущено 0
+- 3. CI — не подтверждено (нет записи CI на SHA)
+- 4. ПК владельца — не проверено на ПК владельца
+
+Факты: Уровень доказательства: Код написан; Тип: модуль на Python; Размер: 115 строк; Имя файла: earning_emulator.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-10-06 · 40f8f907; Родитель: Приложения и бизнес
+
+## Эмулятор заработка: командная строка (один GET публичной страницы)
+*Уровень доказательства: Код написан* · id: `reg-earning_emulator_cli`
+
+Путь: Bossman → Приложения и бизнес
+
+### Что это
+CLI for the earning emulator («файл»). SIMULATION only: no application, no message, no login, no money. python «файл» --listing-file listing.txt --source https://example/job --ledger ledger.jsonl python tools/earning_emulato Код есть; польза и живая работа не доказаны.
+
+### Как это устроено (из описания в коде)
+CLI for the earning emulator («файл»). SIMULATION only: no application, no message, no login, no money.
+python «файл» --listing-file listing.txt --source https://example/job --ledger ledger.jsonl python «файл» --fetch https://example/job --ledger ledger.jsonl # read-only GET of ONE public page (run on the owner's PC)
+The page fetch is this tool's only network step: a plain GET, no cookies, no login, size-capped. The emulator module itself does no I/O.
+
+### Основные функции
+- html_to_text()
+- fetch()
+- main()
+
+### Чем это проверяется
+Тестовых файлов, которые импортируют этот модуль напрямую, не найдено. Это наличие тестов, а не результат их прогона: прогон на конкретном коммите смотрите в CI.
+
+### История изменений
+- 2026-10-06 · 40f8f907 — earning emulator (simulation: no application, no message, no login, no money) with tests and a synthetic demo record; leaf usefulness queue (hypothesis); audit 510 leaves (486 covered, 23 untested)
+
+### Как читать уровень доказательства
+Реализация есть в коде, но запуск «в живую» отдельно не подтверждён. Это не значит, что не работает — это значит, что доказательства пока нет.
+Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
+
+### Что дальше
+Проверить через UX/CMD на ПК владельца и измерить пользу до/после на одинаковых задачах.
+
+### Уровни доказательства
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Статус интеграции на карте: code.
+- 1. Код — файл есть
+- 2. Тесты — прошли: 4, упало 0, пропущено 0
+- 3. CI — не подтверждено (нет записи CI на SHA)
+- 4. ПК владельца — не проверено на ПК владельца
+
+Факты: Уровень доказательства: Код написан; Тип: модуль на Python; Размер: 64 строки; Имя файла: earning_emulator.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-10-06 · 40f8f907; Родитель: Приложения и бизнес
 
 ## API · облака · free
 *Уровень доказательства: Смешанная зона* · id: `cloud`
@@ -14407,7 +14494,7 @@ Bossman then operates the computer without step-by-step owner confirmation, reco
 Система и проверки: тесты, автоматические проверки CI, сборки, аудит безопасности и состояние выпуска.
 
 ### Что внутри
-В этой зоне 265 элементов: 231 — код написан; 26 — лежит в отдельной ветке; 5 — есть сохранённый прогон; 2 — блокер; 1 — запись / ссылка.
+В этой зоне 268 элементов: 234 — код написан; 26 — лежит в отдельной ветке; 5 — есть сохранённый прогон; 2 — блокер; 1 — запись / ссылка.
 Ниже — вложенные направления. Цвет листа на дереве показывает уровень доказательства, а не оценку качества.
 
 ### Элементы зоны
@@ -14480,7 +14567,7 @@ Bossman then operates the computer without step-by-step owner confirmation, reco
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Смешанная зона; Вложенных элементов: 265; Родитель: Bossman
+Факты: Уровень доказательства: Смешанная зона; Вложенных элементов: 268; Родитель: Bossman
 
 ## Freeze / owner-ready
 *Уровень доказательства: Блокер* · id: `cap-43`
@@ -25988,6 +26075,154 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 4. ПК владельца — не проверено на ПК владельца
 
 Факты: Уровень доказательства: Есть сохранённый прогон; Исход проверки: success; Снято: 2026-10-04T14:35:13Z; Коммит: 2c14c75a; Родитель: Система и проверки
+
+## Очередь проверки листьев по полезности (гипотеза)
+*Уровень доказательства: Код написан* · id: `reg-leaf_usefulness_queue`
+
+Путь: Bossman → Система и проверки
+
+### Что это
+Priority queue for verifying the blue («code written») leaves — a HYPOTHESIS, not a measurement. Inputs are facts readable from the checkout: the tree, the evidence registry, the static import graph, file size and heavy imports. Score = priority of the owner's Код есть; польза и живая работа не доказаны.
+
+### Как это устроено (из описания в коде)
+Priority queue for verifying the blue («code written») leaves — a HYPOTHESIS, not a measurement.
+Inputs are facts readable from the checkout: the tree, the evidence registry, the static import graph, file size and heavy imports. Score = priority of the owner's stated work (zone weight) + how many other modules import the leaf (needed by others) - cost (size, heavy dependencies that eat RAM/VRAM) ; a leaf without any test is flagged «сначала тест» whatever its score. Benefit is NEVER claimed here: it is confirmed only by a before/after comparison on identical tasks.
+python «файл» --registry «файл» --out-json q.json --out-md q.md
+
+### Основные функции
+- dotted()
+- imports_of() — (dotted names imported, top-level third-party-looking roots).
+- import_graph() — file (repo-relative) -> imported dotted names ; file -> heavy roots it imports.
+- dependants()
+- score()
+- build()
+- to_markdown()
+- main()
+
+### Чем это проверяется
+Тестовых файлов, которые импортируют этот модуль напрямую, не найдено. Это наличие тестов, а не результат их прогона: прогон на конкретном коммите смотрите в CI.
+
+### История изменений
+- 2026-10-06 · 40f8f907 — earning emulator (simulation: no application, no message, no login, no money) with tests and a synthetic demo record; leaf usefulness queue (hypothesis); audit 510 leaves (486 covered, 23 untested)
+
+### Как читать уровень доказательства
+Реализация есть в коде, но запуск «в живую» отдельно не подтверждён. Это не значит, что не работает — это значит, что доказательства пока нет.
+Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
+
+### Что дальше
+Проверить через UX/CMD на ПК владельца и измерить пользу до/после на одинаковых задачах.
+
+### Уровни доказательства
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Статус интеграции на карте: code.
+- 1. Код — файл есть
+- 2. Тесты — прошли: 5, упало 0, пропущено 0
+- 3. CI — не подтверждено (нет записи CI на SHA)
+- 4. ПК владельца — не проверено на ПК владельца
+
+Факты: Уровень доказательства: Код написан; Тип: модуль на Python; Размер: 149 строк; Имя файла: leaf_usefulness_queue.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-10-06 · 40f8f907; Родитель: Система и проверки
+
+## Синхронизация дерева с реестром: уровни доказательств
+*Уровень доказательства: Код написан* · id: `reg-tree_registry_sync`
+
+Путь: Bossman → Система и проверки
+
+### Что это
+Sync the capability tree with the repository: add leaves for implemented code from a manifest, and write the per-leaf evidence registry. python «файл» add --manifest «файл» python tools/tree_registry_sync Код есть; польза и живая работа не доказаны.
+
+### Как это устроено (из описания в коде)
+Sync the capability tree with the repository: add leaves for implemented code from a manifest, and write the per-leaf evidence registry.
+python «файл» add --manifest «файл» python «файл» registry --audit «файл» --out «файл» [--ci-evidence ci.json] [--owner-evidence owner.json]
+Rules (never relaxed): * a leaf is added only if its source file exists; its detail comes from the module docstring, not from a hand-written claim; * every leaf row carries a stable id, source file, the commit that last touched it, the integration status of the tree, and FOUR separate evidence levels — code present, tests passed in a recorded run, CI green on a SHA, verified on the owner's PC. A level without evidence is NOT_RUN; nothing here ever marks a leaf green by itself, and `proven_through` is the highest level reached in order (a passing test does not imply CI); * no network, no models, no secrets.
+
+### Основные функции
+- git()
+- last_sha()
+- docstring_line()
+- load_seed()
+- write_seed()
+- cmd_add()
+- level_states()
+- proven_through() — Highest level reached IN ORDER; a later level never counts without the earlier ones.
+- cmd_registry()
+- main()
+
+### Чем это проверяется
+Тестовых файлов, которые импортируют этот модуль напрямую, не найдено. Это наличие тестов, а не результат их прогона: прогон на конкретном коммите смотрите в CI.
+
+### История изменений
+- 2026-10-06 · 8d4a4be0 — tree: registry sync tool (stable id, source, sha, status, four separate evidence levels) + 30 media/voice leaves from a verified manifest; remove five unreferenced market modules
+
+### Как читать уровень доказательства
+Реализация есть в коде, но запуск «в живую» отдельно не подтверждён. Это не значит, что не работает — это значит, что доказательства пока нет.
+Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
+
+### Что дальше
+Проверить через UX/CMD на ПК владельца и измерить пользу до/после на одинаковых задачах.
+
+### Уровни доказательства
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Статус интеграции на карте: code.
+- 1. Код — файл есть
+- 2. Тесты — прошли: 7, упало 0, пропущено 0
+- 3. CI — не подтверждено (нет записи CI на SHA)
+- 4. ПК владельца — не проверено на ПК владельца
+
+Факты: Уровень доказательства: Код написан; Тип: модуль на Python; Размер: 172 строки; Имя файла: tree_registry_sync.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-10-06 · 8d4a4be0; Родитель: Система и проверки
+
+## Аудит синих листьев по записанным прогонам тестов
+*Уровень доказательства: Код написан* · id: `reg-blue_leaf_audit_tool`
+
+Путь: Bossman → Система и проверки
+
+### Что это
+Per-leaf audit of the «code written» (blue) leaves of the capability tree. For every leaf with status ``code`` it answers, from the checkout and from JUnit files produced by an actual test run: which source files the leaf names, which test files import them, a Код есть; польза и живая работа не доказаны.
+
+### Как это устроено (из описания в коде)
+Per-leaf audit of the «code written» (blue) leaves of the capability tree.
+For every leaf with status ``code`` it answers, from the checkout and from JUnit files produced by an actual test run: which source files the leaf names, which test files import them, and whether those tests PASSED on the run. It decides nothing about usefulness and never changes a status: "tests that import the module passed" is evidence of presence and of regression coverage, not of benefit or of live operation.
+python «файл» --junit core.xml cc.xml root.xml ... --out «файл»
+No network, no models, no secrets.
+
+### Основные функции
+- dotted()
+- test_imports() — Every dotted name a test file imports, plus ``package.name`` for ``from package import name``.
+- test_path_mentions()
+- build_index()
+- reexported_by_package() — Dotted name of the parent package when its ``__init__.py`` re-exports the module (``from .stem import ...``): tests that import the package then exercise the module…
+- tests_for()
+- tests_by_name() — Weakest attribution, used only when nothing imports the module: features are loaded by the registry and exercised over HTTP, so their tests are named after them…
+- read_junit() — repo-relative test file -> {passed, failed, skipped}, from JUnit files named after the run (see RUN_DIRS).
+- outcome_by_file()
+- classify()
+- main()
+
+### Чем это проверяется
+Тестовых файлов, которые импортируют этот модуль напрямую, не найдено. Это наличие тестов, а не результат их прогона: прогон на конкретном коммите смотрите в CI.
+
+### История изменений
+- 2026-10-06 · 8d4a4be0 — tree: registry sync tool (stable id, source, sha, status, four separate evidence levels) + 30 media/voice leaves from a verified manifest; remove five unreferenced market modules
+- 2026-10-06 · d3c7b87b — fix(nl_orchestra): unknown hyphenated model name BEFORE its role word is now flagged; tests for nl_orchestra helpers and context telemetry; audit: name-based attribution for registry-loaded features (452 covered, 18 untested)
+- 2026-10-06 · 7e8fa33c — tool+docs(audit): attribute tests through package re-exports — 'untested' falls from 60 to 33 (439 covered)
+- 2026-10-06 · ee636456 — tool(audit): attribute JUnit per run directory, re-run overlay, path-loaded scripts; tests for the audit tool
+- 2026-10-06 · 47beb80a — test+tool: blue-leaf audit tool, Jeff secret filter tests, FREE_ONLY contract tests, «скрыто» coach known-hand tests
+
+### Как читать уровень доказательства
+Реализация есть в коде, но запуск «в живую» отдельно не подтверждён. Это не значит, что не работает — это значит, что доказательства пока нет.
+Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
+
+### Что дальше
+Проверить через UX/CMD на ПК владельца и измерить пользу до/после на одинаковых задачах.
+
+### Уровни доказательства
+Дошёл до: тесты прошли в записанном прогоне. Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.
+Статус интеграции на карте: code.
+- 1. Код — файл есть
+- 2. Тесты — прошли: 9, упало 0, пропущено 0
+- 3. CI — не подтверждено (нет записи CI на SHA)
+- 4. ПК владельца — не проверено на ПК владельца
+
+Факты: Уровень доказательства: Код написан; Тип: модуль на Python; Размер: 237 строк; Имя файла: blue_leaf_audit.py; Тестов-импортёров: 0; Изменений в истории: 5; Последнее изменение: 2026-10-06 · 8d4a4be0; Родитель: Система и проверки
 
 ## Open source · каталог
 *Уровень доказательства: Смешанная зона* · id: `oss`
