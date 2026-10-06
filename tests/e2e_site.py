@@ -52,6 +52,12 @@ async def main(chromium: str | None) -> int:
 
         await page.evaluate("document.querySelector('#tree').scrollIntoView()")
         await page.wait_for_timeout(5200)                                  # дерево выросло
+        await page.wait_for_timeout(2500)
+        draw = await page.evaluate("""async () => { const t = await (await fetch('data/tree.json')).json();
+          const leaves = t.nodes.filter(n => n.parent !== '' && n.parent !== 'bossman');
+          const miss = leaves.filter(n => !window.__bossman.where(n.id)).map(n => n.id);
+          return { leaves: leaves.length, miss }; }""")
+        check(not draw["miss"], f"каждый лист нарисован и нажимаем: {draw['leaves'] - len(draw['miss'])} из {draw['leaves']}")
         box = await page.locator("#scene canvas, .ts-canvas").first.bounding_box()
         # настоящий клик мышью по листу дерева (координаты листа берём у сцены)
         pt = await page.evaluate("window.__bossman.where('cap-0')")
@@ -84,6 +90,53 @@ async def main(chromium: str | None) -> int:
         body_text = await page.inner_text("#readerBody")
         check("C:\\" not in body_text and "/home/" not in body_text, "в статье нет локальных путей")
 
+
+        # --- приближение дерева ---
+        await page.keyboard.press("Escape")
+        await page.wait_for_timeout(600)
+        await page.evaluate("document.querySelector('#tree').scrollIntoView()")
+        await page.wait_for_timeout(400)
+        check(await page.evaluate("window.__bossman.zoom()") == 1, "дерево открыто целиком (zoom=1)")
+        await page.click("#zoomIn")
+        await page.click("#zoomIn")
+        z1 = await page.evaluate("window.__bossman.zoom()")
+        check(z1 > 2, f"кнопка + приближает ({z1:.2f})")
+        await page.evaluate("window.__bossman.zoomTo('cap-0', 3)")
+        pt = await page.evaluate("window.__bossman.where('cap-0')")
+        cb = await page.locator(".ts-canvas").first.bounding_box()
+        check(cb["x"] < pt["x"] < cb["x"] + cb["width"] and cb["y"] < pt["y"] < cb["y"] + cb["height"], "после приближения лист виден на холсте")
+        await page.mouse.click(pt["x"], pt["y"])
+        await page.wait_for_selector("#reader:not([hidden])")
+        check((await page.inner_text("#readerTitle")).strip() == "Диалог и ответы", "клик по листу в приближенном дереве открывает ту же статью")
+        await page.keyboard.press("Escape")
+        await page.wait_for_timeout(500)
+        await page.click("#zoomReset")
+        check(await page.evaluate("window.__bossman.zoom()") == 1, "⤢ возвращает дерево целиком")
+        cx, cy = cb["x"] + cb["width"] / 2, cb["y"] + cb["height"] / 2
+        sx, sy = cb["x"] + 30, cb["y"] + 30                                      # пустое небо
+        await page.mouse.dblclick(sx, sy)
+        zd = await page.evaluate("window.__bossman.zoom()")
+        await page.mouse.dblclick(sx, sy)
+        check(zd > 2 and await page.evaluate("window.__bossman.zoom()") == 1, f"двойной клик по пустому месту приближает ({zd:.2f}) и возвращает")
+        await page.mouse.move(cx, cy)
+        await page.keyboard.down("Control")
+        await page.mouse.wheel(0, -500)
+        await page.keyboard.up("Control")
+        check(await page.evaluate("window.__bossman.zoom()") > 1.5, "Ctrl+колесо приближает")
+        await page.click("#zoomReset")
+        await page.evaluate("""() => { const c = document.querySelector('.ts-canvas'), r = c.getBoundingClientRect();
+          const mk = (t, id, x, y) => c.dispatchEvent(new PointerEvent(t, { pointerId: id, pointerType: 'touch', clientX: x, clientY: y, bubbles: true, isPrimary: id === 1 }));
+          const x = r.left + r.width / 2, y = r.top + r.height / 2;
+          mk('pointerdown', 1, x - 40, y); mk('pointerdown', 2, x + 40, y);
+          mk('pointermove', 1, x - 120, y); mk('pointermove', 2, x + 120, y);
+          mk('pointerup', 1, x - 120, y); mk('pointerup', 2, x + 120, y); }""")
+        zp = await page.evaluate("window.__bossman.zoom()")
+        check(2.5 < zp <= 3.2, f"щипок двумя пальцами приближает пропорционально ({zp:.2f}, ждали ≈3)")
+        await page.click("#zoomReset")
+        await page.mouse.click(cb["x"] + 8, cb["y"] + 8)
+        await page.wait_for_timeout(300)
+        check(not await page.is_visible("#reader"), "контроль: клик по пустому небу ничего не открывает")
+
         page2 = await ctx.new_page()
         await page2.route("**/fonts.googleapis.com/**", lambda r: r.abort())
         await page2.goto(base + "#/n/jeff")
@@ -98,6 +151,19 @@ async def main(chromium: str | None) -> int:
         await mp.wait_for_timeout(1500)
         width = await mp.evaluate("document.documentElement.scrollWidth")
         check(width <= 392, f"телефон: нет горизонтальной прокрутки страницы ({width}px)")
+
+
+        await mp.evaluate("document.querySelector('#tree').scrollIntoView()")
+        await mp.wait_for_timeout(5500)
+        await mp.tap("#zoomIn")
+        await mp.tap("#zoomIn")
+        check(await mp.evaluate("window.__bossman.zoom()") > 2, "телефон: кнопка + приближает пальцем")
+        await mp.evaluate("window.__bossman.zoomTo('cap-0', 3)")
+        await mp.evaluate("(() => { const s = document.querySelector('#treeScroll'); s.scrollLeft = (s.scrollWidth - s.clientWidth) / 2; })()")
+        mpt = await mp.evaluate("window.__bossman.where('cap-0')")
+        await mp.touchscreen.tap(mpt["x"], mpt["y"])
+        await mp.wait_for_selector("#reader:not([hidden])")
+        check((await mp.inner_text("#readerTitle")).strip() == "Диалог и ответы", "телефон: тап по листу в приближенном дереве открывает статью")
 
         check(not errors, f"нет ошибок в консоли {errors[:3]}")
         await browser.close()

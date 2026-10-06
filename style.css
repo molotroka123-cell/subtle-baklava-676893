@@ -282,3 +282,10 @@ a.card:hover{transform:translateY(-4px)}
   .stack i,.spark i{transform:none}
   .aurora i{animation:none}
 }
+
+/* приближение дерева: кнопки в карточке (не уезжают при горизонтальной прокрутке), крупные зоны касания */
+.zoom{position:absolute;z-index:3;top:12px;right:12px;display:flex;flex-direction:column;gap:8px}
+.zoom button{width:44px;height:44px;border-radius:14px;border:1px solid var(--line2);background:rgba(10,16,40,.72);color:var(--text,#eef4ff);font:600 22px/1 inherit;backdrop-filter:blur(6px);cursor:pointer}
+.zoom button:hover{background:rgba(40,60,130,.8)}
+.zoom button:focus-visible{outline:2px solid rgba(160,200,255,.9);outline-offset:2px}
+@media(max-width:640px){.tree-hint::after{content:" · двойной тап по пустому месту или + — приблизить; листайте вбок"}}

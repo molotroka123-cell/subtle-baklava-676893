@@ -9,6 +9,10 @@
  */
 const W = 1600, H = 900, TX = 800, TY = 600, BASE_Y = 812, GROUND = 786;
 const TAU = Math.PI * 2;
+const ZMAX = 5;
+// Старт роста боковой ветви: ts·SUB_T, чтобы ветви у самого кончика успевали вырасти до g=1.
+// Раньше старт был ts, и ветви с ts>0.66 не вырастали вовсе: ~31% листьев не рисовались и не нажимались (голый верх ветвей).
+const SUB_T = 0.66;
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
 const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 const easeBack = (t) => { const c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
@@ -85,9 +89,19 @@ function buildModel(nodes) {
       const q = [[bx, by], [bx + dx * L * 0.34, by + dy * L * 0.34 - 6], [bx + dx * L * 0.7 + px * wob, by + dy * L * 0.7 + py * wob - L * 0.1], [bx + dx * L, by + dy * L - L * 0.2]];
       subs.push({ q, ts, leaves: [] });
     }
+    // крона на кончике ветви: без неё верх ветви голый (круг владельца на скриншоте, ветка «Motion и медиа»)
+    let crown = null;
+    if (flat.length >= 8) {
+      const [bx, by] = bez(p, 0.955);
+      const [tx, ty] = tangent(p, 0.955);
+      const L = 60 + Math.sqrt(flat.length) * 5;
+      const dx = tx * Math.cos(0.18) - ty * Math.sin(0.18), dy = tx * Math.sin(0.18) + ty * Math.cos(0.18);
+      crown = { q: [[bx, by], [bx + dx * L * 0.34, by + dy * L * 0.34], [bx + dx * L * 0.7 + 6, by + dy * L * 0.7], [bx + dx * L, by + dy * L]], ts: 0.96, leaves: [] };
+      subs.push(crown);
+    }
     const leaves = flat.map((node, i) => {
       const lr = rng(node.id);
-      const sb = subs[Math.floor(lr() * subs.length) % subs.length];
+      const sb = crown && lr() < 0.22 ? crown : subs[Math.floor(lr() * (subs.length - (crown ? 1 : 0))) % (subs.length - (crown ? 1 : 0))];
       const u = 0.32 + 0.68 * Math.pow(lr(), 0.75);
       const [bx, by] = bez(sb.q, u);
       const [tx, ty] = tangent(sb.q, u);
@@ -148,6 +162,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
   const stars = Array.from({ length: 220 }, () => ({ x: rs() * W, y: rs() * GROUND * 0.9, r: rs() * 1.3 + 0.25, p: rs() * TAU, s: 0.6 + rs() * 1.6 }));
   const flies = Array.from({ length: 40 }, (_, i) => ({ x: TX + (rs() - 0.5) * 1400, y: 180 + rs() * 560, p: rs() * TAU, s: 0.3 + rs() * 0.7, k: i }));
   let state = { selected: null, filter: null, hover: null };
+  let z = 1, ox = 0, oy = 0;                    // камера: экран = мир·z + (ox, oy), единицы мира; z ∈ [1, ZMAX]
   let scale = 1, dpr = 1, raf = 0, shoot = null, last = performance.now(), start = last;
   const posed = new Map();                       // id -> [x, y] после ветра (для попаданий)
   const labelBoxes = [];
@@ -190,7 +205,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
 
   function draw(t) {
     const dt = Math.min(64, t - last); last = t;
-    ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0);
+    ctx.setTransform(dpr * scale * z, 0, 0, dpr * scale * z, dpr * scale * ox, dpr * scale * oy);
     ctx.drawImage(bg, 0, 0);
     const elapsed = t - start;
     for (const s of stars) {
@@ -230,14 +245,14 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
       const jeff = m.zone.id === 'jeff' ? 1.3 : 1;
       stroke(mainPts, 13 * jeff, 3.2, [[2.1, 0.14, '158,195,255'], [1, 0.92, '232,242,255'], [0.32, 0.6, '255,255,255']]);
       for (const sb of m.subs) {
-        const gs = clamp((g - sb.ts) / 0.34);
+        const gs = clamp((g - sb.ts * SUB_T) / 0.34);
         if (gs <= 0) continue;
         const sp = [];
         for (let k = 0; k <= 12 * gs; k++) sp.push(bez(sb.q, k / 12));
         stroke(sp, 3.8, 0.9, [[2.4, 0.1, '158,195,255'], [1, 0.78, '214,230,255']]);
       }
       for (const l of m.leaves) {
-        const gs = clamp((g - l.sb.ts) / 0.34);
+        const gs = clamp((g - l.sb.ts * SUB_T) / 0.34);
         if (gs < l.u * 0.92) continue;
         const bloom = reduced ? 1 : Math.max(0, easeBack(clamp((gs - l.u * 0.92) / 0.2 + (g >= 1 ? 1 : 0))));
         const dim = state.filter && l.node.status !== state.filter ? 0.16 : 1;
@@ -305,8 +320,9 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     raf = requestAnimationFrame(loop);
   }
 
-  function hit(px, py) {
-    let best = null, bd = 17 / Math.max(0.55, Math.min(1, scale * 1.3));
+  /** Попадание: ближайший лист в пределах tol экранных пикселей (палец — шире мыши); затем подписи ветвей. */
+  function hit(px, py, tol = 14) {
+    let best = null, bd = tol / (scale * z);
     for (const m of model) for (const l of m.leaves) {
       const p = posed.get(l.node.id);
       if (!p) continue;
@@ -318,10 +334,19 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     return null;
   }
 
-  const world = (e) => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / scale, (e.clientY - r.top) / scale]; };
+  const view = (e) => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / scale, (e.clientY - r.top) / scale]; };   // единицы мира до камеры
+  const world = (e) => { const [vx, vy] = view(e); return [(vx - ox) / z, (vy - oy) / z]; };
+  const clampCam = () => { ox = clamp(ox, W * (1 - z), 0); oy = clamp(oy, H * (1 - z), 0); };
+  function setCam(nz, vx, vy) {                  // приблизить к точке (vx, vy): она остаётся под пальцем
+    const k = clamp(nz, 1, ZMAX), wx = (vx - ox) / z, wy = (vy - oy) / z;
+    z = k; ox = vx - wx * z; oy = vy - wy * z; clampCam();
+    canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y';
+    showTip(null);
+    if (reduced) draw(performance.now());
+  }
   function showTip(h) {
     if (!h) { tip.classList.remove('on'); return; }
-    const sx = h.x * scale, sy = h.y * scale;
+    const sx = (h.x * z + ox) * scale, sy = (h.y * z + oy) * scale;
     tip.textContent = `${h.node.label}${labels._status ? ' · ' + (labels._status[h.node.status] || '') : ''}`;
     tip.style.transform = `translate(${Math.round(Math.min(sx + 14, wrap.clientWidth - 200))}px, ${Math.round(Math.max(6, sy - 40))}px)`;
     tip.classList.add('on');
@@ -337,11 +362,55 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     if (reduced) draw(performance.now());
   });
   canvas.addEventListener('pointerleave', () => { state.hover = null; showTip(null); if (reduced) draw(performance.now()); });
+  const ptrs = new Map();                        // активные указатели: id -> {x, y} в px экрана
+  let gesture = null, moved = false;
+  canvas.addEventListener('pointerdown', (e) => {
+    ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    moved = false;
+    if (ptrs.size === 2) {
+      const [a, b] = [...ptrs.values()];
+      gesture = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, z0: z };
+    } else if (z > 1.02) gesture = { drag: true };
+    if (z > 1.02) { try { canvas.setPointerCapture(e.pointerId); } catch { /* синтетический указатель */ } }
+  });
+  canvas.addEventListener('pointermove', (e) => {
+    const prev = ptrs.get(e.pointerId);
+    if (!prev) return;
+    const cur = { x: e.clientX, y: e.clientY };
+    if (ptrs.size === 2 && gesture && gesture.d) {
+      ptrs.set(e.pointerId, cur);
+      const [a, b] = [...ptrs.values()];
+      const r = canvas.getBoundingClientRect();
+      const mx = ((a.x + b.x) / 2 - r.left) / scale, my = ((a.y + b.y) / 2 - r.top) / scale;
+      setCam(gesture.z0 * (Math.hypot(a.x - b.x, a.y - b.y) / gesture.d), mx, my);
+      moved = true;
+    } else if (gesture && gesture.drag && ptrs.size === 1) {
+      const dx = cur.x - prev.x, dy = cur.y - prev.y;
+      if (moved || Math.hypot(dx, dy) > 0) { ox += dx / scale; oy += dy / scale; clampCam(); if (reduced) draw(performance.now()); }
+      moved = moved || Math.hypot(cur.x - prev.x, cur.y - prev.y) > 0;
+      ptrs.set(e.pointerId, cur);
+    } else ptrs.set(e.pointerId, cur);
+  });
+  const lift = (e) => { ptrs.delete(e.pointerId); if (ptrs.size < 2 && gesture && gesture.d) gesture = z > 1.02 ? { drag: true } : null; if (!ptrs.size) gesture = null; };
+  canvas.addEventListener('pointerup', lift);
+  canvas.addEventListener('pointercancel', lift);
   canvas.addEventListener('click', (e) => {
+    if (moved) { moved = false; return; }          // после перетаскивания/щипка — не выбор
     const [x, y] = world(e);
-    const h = hit(x, y);
+    const h = hit(x, y, e.pointerType === 'touch' ? 26 : 14);
     if (h && onPick) onPick(h.node);
   });
+  canvas.addEventListener('dblclick', (e) => {      // двойной тап/клик по пустому месту: приблизить к точке, ещё раз — вернуть
+    if (hit(...world(e), e.pointerType === 'touch' ? 26 : 14)) return;     // по листу первый тап уже открыл статью — не мешаем
+    const [vx, vy] = view(e);
+    setCam(z > 1.3 ? 1 : 2.6, vx, vy);
+  });
+  canvas.addEventListener('wheel', (e) => {         // Ctrl/⌘ + колесо или щипок на тачпаде: приближение; обычное колесо листает страницу
+    if (!(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault();
+    const [vx, vy] = view(e);
+    setCam(z * Math.exp(-e.deltaY * 0.0022), vx, vy);
+  }, { passive: false });
   canvas.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     e.preventDefault();
@@ -359,7 +428,12 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     select(id) { state.selected = id; if (reduced) draw(performance.now()); },
     filter(status) { state.filter = status || null; if (reduced) draw(performance.now()); },
     /** Экранные координаты точки узла (для автоматических проверок: настоящий клик мышью). */
-    where(id) { const p = posed.get(id); if (!p) return null; const r = canvas.getBoundingClientRect(); return { x: r.left + p[0] * scale, y: r.top + p[1] * scale }; },
+    where(id) { const p = posed.get(id); if (!p) return null; const r = canvas.getBoundingClientRect(); return { x: r.left + (p[0] * z + ox) * scale, y: r.top + (p[1] * z + oy) * scale }; },
+    /** Приблизить к центру (кнопки +/−) или вернуть вид целиком. */
+    zoomBy(f) { setCam(z * f, W / 2, H / 2); },
+    zoomReset() { z = 1; ox = 0; oy = 0; canvas.style.touchAction = 'pan-x pan-y'; if (reduced) draw(performance.now()); },
+    zoomTo(id, k = 2.6) { const p = posed.get(id); if (!p) return false; z = clamp(k, 1, ZMAX); ox = W / 2 - p[0] * z; oy = H / 2 - p[1] * z; clampCam(); canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y'; if (reduced) draw(performance.now()); return true; },
+    get zoom() { return z; },
     pick(id) { const l = byId.get(id); if (l && onPick) onPick(l.node); return !!l; },
     destroy() { ro.disconnect(); cancelAnimationFrame(raf); },
   };

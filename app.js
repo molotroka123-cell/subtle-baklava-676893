@@ -90,6 +90,9 @@ const scene = createScene({
   onPick: (n) => openArticle(n.id),
 });
 $('#scene').replaceWith(scene.el);
+$('#zoomIn').addEventListener('click', () => scene.zoomBy(1.6));
+$('#zoomOut').addEventListener('click', () => scene.zoomBy(1 / 1.6));
+$('#zoomReset').addEventListener('click', () => scene.zoomReset());
 $('#treeHint').textContent = `${scene.leaves} ${plural(scene.leaves, 'лист', 'листа', 'листьев')} · нажмите на лист или на название ветви`;
 
 const lg = $('#legend');
@@ -367,4 +370,4 @@ addEventListener('keydown', (e) => {
 });
 
 /* для автоматических проверок: тот же путь, что клик по листу */
-window.__bossman = { open: (id) => openArticle(id), where: (id) => scene.where(id), leaves: scene.leaves, nodes: nodes.length };
+window.__bossman = { open: (id) => openArticle(id), where: (id) => scene.where(id), zoom: () => scene.zoom, zoomTo: (id, k) => scene.zoomTo(id, k), leaves: scene.leaves, nodes: nodes.length };
