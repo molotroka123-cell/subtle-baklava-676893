@@ -1,21 +1,93 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#090f23">
-  <meta name="description" content="Как развивается Bossman: интерактивное дерево уже работающих возможностей и следующих идей.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070b1f">
+  <meta name="description" content="Живая карта развития Bossman: дерево возможностей, статья по каждому узлу, лента изменений и лестница самоулучшения — для человека и для ИИ.">
+  <meta property="og:title" content="Bossman — дерево развития">
+  <meta property="og:description" content="Что в Bossman уже есть, что меняется и чем это доказано. Честная карта: уровень доказательства, а не обещания.">
   <title>Bossman — дерево развития</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23655ee8'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Arial' font-weight='800' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <main class="shell">
-    <header><a class="brand" href="#top"><span class="logo">B</span><span><b>BOSSMAN</b><small>Живая карта развития</small></span></a><span class="public">ОТКРЫТАЯ ВИТРИНА</span></header>
-    <section class="hero" id="top"><p class="eyebrow">ИДЕИ СТАНОВЯТСЯ ВОЗМОЖНОСТЯМИ</p><h1>Дерево развития Bossman</h1><p>У Bossman много направлений роста. Нажмите на листочек: коротко расскажем, что уже круто получилось и что можно добавить дальше.</p><div class="key"><span><i></i> Уже работает</span><span><i></i> Идея развития</span><b id="count"></b></div></section>
-    <section class="layout"><div class="tree" id="tree" aria-label="Интерактивное дерево развития"><div class="stars"></div><svg viewBox="0 0 1000 640" preserveAspectRatio="none" aria-hidden="true"><path class="trunk" d="M500 590 C490 505 501 430 500 345 C496 250 500 180 500 76"/><path d="M500 430 C435 367 335 312 188 211M500 402 C440 321 398 239 365 124M500 360 C465 275 470 190 470 86M500 390 C550 298 606 210 650 93M500 423 C588 359 700 293 826 202M500 350 C573 293 733 231 902 129M500 451 C422 404 302 393 104 335M500 440 C590 401 733 391 932 333M500 318 C440 261 400 194 302 148M500 322 C559 250 660 171 782 119"/></svg>
-      <div class="root">✦<small>BOSSMAN</small></div><span class="branch" style="left:8%;top:51%">UX И CMD</span><span class="branch" style="left:14%;top:26%">МОДЕЛИ</span><span class="branch" style="left:36%;top:16%">ПАМЯТЬ И ОБУЧЕНИЕ</span><span class="branch" style="left:61%;top:21%">АГЕНТЫ</span><span class="branch" style="left:78%;top:31%">НАВЫКИ</span><span class="branch" style="left:78%;top:47%">ИНТЕГРАЦИИ</span><span class="branch" style="left:77%;top:68%">ПРОВЕРКИ</span><span class="branch" style="left:78%;top:79%">OPEN SOURCE</span><span class="branch" style="left:5%;top:70%">ПРИЛОЖЕНИЯ</span><span class="branch" style="left:35%;top:28%">БРАУЗЕР</span><div class="nodes" id="nodes"></div><span class="hint">Коснитесь любого листочка</span></div>
-      <aside id="detail" class="detail" aria-live="polite"><div class="empty"><span>✧</span><p class="eyebrow">ИСТОРИЯ РАЗВИТИЯ</p><h2>У каждой идеи есть корни</h2><p>Выберите листочек, чтобы посмотреть, что уже работает хорошо и какую следующую ступень можно представить для Bossman.</p></div></aside></section>
-    <footer>Витрина показывает направления продукта и идеи развития. Доступа к файлам, настройкам и данным установленного Bossman здесь нет.</footer>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="top" id="top">
+    <a class="brand" href="#top" aria-label="Bossman, к началу"><span class="logo">B</span><span class="brand-t"><b>BOSSMAN</b><small>Живая карта развития</small></span></a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#tree">Дерево</a><a href="#pulse">Пульс</a><a href="#timeline">Лента</a><a href="#zones">Зоны</a><a href="#ai">Для ИИ</a>
+    </nav>
+    <button class="search-btn" id="searchBtn" type="button" aria-label="Поиск по карте"><span>Поиск</span><kbd>/</kbd></button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <p class="eyebrow reveal">ОТКРЫТАЯ ВИТРИНА · ОБНОВЛЯЕТСЯ С КОМПЬЮТЕРА ВЛАДЕЛЬЦА</p>
+      <h1 id="h1">Дерево развития Bossman</h1>
+      <p class="lede reveal">Каждый лист — возможность, каждая ветвь — направление. Нажмите на любой лист: откроется статья о том, что это, как устроено и чем подтверждено. Цвет — уровень доказательства, а не оценка «всё работает».</p>
+      <div class="counters" id="counters"></div>
+      <div class="cta reveal"><a class="btn primary" href="#tree">Открыть дерево</a><a class="btn" href="#timeline">Что менялось</a><button class="btn" id="searchBtn2" type="button">Найти функцию</button></div>
+    </section>
+
+    <section class="tree-sec" id="tree" aria-label="Интерактивное дерево">
+      <div class="tree-card reveal">
+        <div class="tree-scroll" id="treeScroll"><div id="scene"></div></div>
+        <div class="legend" id="legend" role="group" aria-label="Фильтр по уровню доказательства"></div>
+        <p class="tree-hint" id="treeHint">Нажмите на лист или на название ветви</p>
+      </div>
+    </section>
+
+    <section class="sec" id="pulse">
+      <header class="sec-h reveal"><p class="eyebrow">ПУЛЬС</p><h2>Где Bossman сейчас</h2><p class="sub" id="pulseSub"></p></header>
+      <div class="grid pulse-grid">
+        <article class="card reveal" id="cardStatus"><h3>Уровни доказательства</h3><div class="stack" id="stack"></div><ul class="stack-legend" id="stackLegend"></ul></article>
+        <article class="card reveal" id="cardActivity"><h3>Работа за 30 дней</h3><div class="spark" id="spark" role="img" aria-label="Коммиты по дням"></div><p class="muted" id="sparkNote"></p></article>
+        <article class="card reveal" id="cardLive"><h3>Самоулучшение Bossman</h3><div id="live"></div></article>
+        <article class="card ladder-card reveal" id="cardLadder"><h3>Лестница North Star</h3><ol class="ladder" id="ladder"></ol><p class="muted">Спецификация, скриншот или новая кнопка — не доказательство достигнутого уровня.</p></article>
+      </div>
+    </section>
+
+    <section class="sec" id="timeline">
+      <header class="sec-h reveal"><p class="eyebrow">ЛЕНТА РАЗВИТИЯ</p><h2>Что менялось</h2><p class="sub" id="tlSub"></p></header>
+      <div class="chips reveal" id="tlChips" role="group" aria-label="Тип изменений"></div>
+      <ol class="tl" id="tl"></ol>
+      <button class="btn more" id="tlMore" type="button" hidden>Показать ещё</button>
+    </section>
+
+    <section class="sec" id="zones">
+      <header class="sec-h reveal"><p class="eyebrow">НАПРАВЛЕНИЯ</p><h2>Все зоны дерева</h2><p class="sub">Откройте зону — внутри статьи по каждому элементу.</p></header>
+      <div class="zones" id="zoneGrid"></div>
+    </section>
+
+    <section class="sec ai" id="ai">
+      <header class="sec-h reveal"><p class="eyebrow">ДЛЯ ИИ И АВТОМАТИЗАЦИИ</p><h2>Всё развитие одним файлом</h2><p class="sub">Тот же снимок в машинном виде: можно отдать любому ИИ-помощнику, чтобы он разобрался в Bossman без чтения кода.</p></header>
+      <div class="grid ai-grid">
+        <a class="card file reveal" href="./ai/bossman-development.md"><b>bossman-development.md</b><span>полный текст всех статей</span></a>
+        <a class="card file reveal" href="./data/tree.json"><b>tree.json</b><span>узлы, родители, статусы</span></a>
+        <a class="card file reveal" href="./data/meta.json"><b>meta.json</b><span>счётчики, лестница, источник</span></a>
+        <a class="card file reveal" href="./llms.txt"><b>llms.txt</b><span>карта для ИИ-агентов</span></a>
+      </div>
+      <div class="card prompt reveal"><p class="muted">Подсказка для ИИ</p><code id="promptText"></code><button class="btn" id="copyPrompt" type="button">Скопировать</button></div>
+    </section>
   </main>
+
+  <footer class="foot"><p id="footMeta"></p><p>Витрина показывает направления и уровень доказательства. Доступа к файлам, настройкам, ключам и данным установленного Bossman здесь нет; локальные пути и секреты вырезаются при каждой публикации. «Код написан» не означает «работает»: PASS нигде не выводится из кода.</p></footer>
+
+  <div class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle" hidden>
+    <div class="reader-bar"><button class="back" id="readerClose" type="button" aria-label="Закрыть статью">← К дереву</button><nav class="crumbs" id="crumbs" aria-label="Путь"></nav><div class="reader-actions"><button class="icon-btn" id="copyLink" type="button" title="Скопировать ссылку">Ссылка</button><button class="icon-btn" id="copyMd" type="button" title="Скопировать статью для ИИ">Для ИИ</button></div><i class="read-progress" id="readProgress"></i></div>
+    <div class="reader-scroll" id="readerScroll"><article class="reader-body" id="readerBody"></article></div>
+  </div>
+
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Поиск по карте" hidden>
+    <div class="palette-box"><input id="q" type="search" placeholder="Найти функцию, модуль, зону…" autocomplete="off" spellcheck="false"><ul id="qList" role="listbox"></ul><p class="muted" id="qHint">↑↓ — выбрать · Enter — открыть · Esc — закрыть</p></div>
+  </div>
+
+  <noscript><p class="noscript">Для интерактивной карты нужен JavaScript. Весь текст без него: <a href="./ai/bossman-development.md">bossman-development.md</a>.</p></noscript>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

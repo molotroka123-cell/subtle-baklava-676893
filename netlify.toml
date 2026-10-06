@@ -1,2 +1,29 @@
 [build]
   publish = "."
+
+# Данные витрины обновляет scripts/sync_bossman.py; кэш не должен прятать свежий снимок.
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/ai/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "text/markdown; charset=utf-8"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

@@ -1,0 +1,288 @@
+"""Тесты парсера витрины: редакция (пути/ключи), fail-closed, статьи, лента, бесплатное обогащение, целостность данных.
+
+Запуск: python -m unittest discover -s tests -v   (только стандартная библиотека; git нужен для фикстуры)
+"""
+from __future__ import annotations
+
+import io
+import json
+import os
+import subprocess
+import sys
+import tempfile
+import unittest
+from contextlib import redirect_stdout
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+import sync_bossman as sb  # noqa: E402
+
+
+def _git(repo: Path, *args: str) -> None:
+    subprocess.run(["git", "-C", str(repo), "-c", "user.name=t", "-c", "user.email=t@example.invalid", *args],
+                   check=True, capture_output=True)
+
+
+def make_repo(tmp: Path, doc: str = "Choose one question.\n\nSecond paragraph.") -> Path:
+    repo = tmp / "bossman"
+    (repo / "command-center/bcc/pit").mkdir(parents=True)
+    (repo / "command-center/tests").mkdir(parents=True)
+    (repo / "command-center/bcc/pit/discovery.py").write_text(
+        f'r"""{doc}"""\n\ndef choose_discovery_question(items):\n    """Return one item."""\n    return items[0]\n\nclass Mode:\n    pass\n', encoding="utf-8")
+    (repo / "command-center/tests/test_discovery.py").write_text(
+        "from bcc.pit.discovery import choose_discovery_question\n\ndef test_x():\n    assert choose_discovery_question([1]) == 1\n", encoding="utf-8")
+    nodes = [
+        {"id": "bossman", "label": "Bossman", "parent": "", "status": "blocked", "detail": "Корень.", "sources": []},
+        {"id": "jeff", "label": "Jeff", "parent": "bossman", "status": "mixed", "detail": "Раскрой ветку: статусы относятся к отдельным возможностям.", "sources": []},
+        {"id": "mod-1", "label": "command-center/bcc/pit/discovery.py", "parent": "jeff", "status": "code", "detail": "Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно.",
+         "sources": [{"path": "command-center/bcc/pit/discovery.py", "sha": "", "branch": "x"}], "next_action": "Проверить живой сценарий."},
+        {"id": "oss-1", "label": "foo/bar", "parent": "jeff", "status": "recorded", "detail": "Ссылка в выбранном checkout.", "external_url": "https://github.com/foo/bar", "sources": []},
+    ]
+    (repo / "command-center/bcc/capability_tree_seed.json").write_text(
+        json.dumps({"schema_version": "1.0", "as_of": "2026-10-05", "source_sha": "a" * 40, "nodes": nodes, "coverage": {}}), encoding="utf-8")
+    _git(repo, "init", "-q")
+    _git(repo, "add", "-A")
+    _git(repo, "commit", "-q", "-m", "feat(jeff): add discovery.py")
+    return repo
+
+
+class Args:
+    no_code_details = False
+    enrich = None
+    enrich_model = sb.FREE_MODELS[0]
+    enrich_budget = 10
+    days = 45
+    timeline_limit = 20
+    live = False
+    live_url = None
+    data_dir = None
+
+
+class RedactionTests(unittest.TestCase):
+    CASES = {
+        "windows": r"смотри C:\Users\owner\Bossman\data\vault.json сейчас",
+        "windows-fwd": "в C:/Users/owner/Bossman/x.txt",
+        "unc": r"\\server\share\private\file.txt",
+        "env": r"%LOCALAPPDATA%\Bossman\private\ids.txt",
+        "posix-home": "лежит в /home/alice/project/secret.txt",
+        "tilde": r"~/Bossman/data/x.db",
+        "repo-file": "см. command-center/bcc/pit/discovery.py для деталей",
+        "email": "пишите на owner@example.com",
+        "localhost": "http://127.0.0.1:8801/api/health",
+        "own-repo": "https://github.com/molotroka123-cell/AiMaxBossman/blob/main/x.md",
+        "sk": "ключ sk-abcdefghijklmnopqrstuvwxyz0123456789",
+        "ghp": "токен ghp_abcdefghijklmnopqrstuvwxyz0123456789",
+        "kv": "api_key = abcdef1234567890zzz",
+        "bearer": "Authorization: Bearer abcdefghijklmnopqrstuvwxyz012345",
+    }
+
+    def test_every_class_of_leak_is_removed_and_rescan_is_clean(self):
+        for name, text in self.CASES.items():
+            with self.subTest(name):
+                out = sb.redact(text)
+                self.assertEqual(sb.leak_scan(out), [], f"{name}: {out!r}")
+                self.assertNotEqual(out, text)
+
+    def test_negative_control_scanner_catches_raw_text(self):
+        for name, text in self.CASES.items():
+            with self.subTest(name):
+                self.assertTrue(sb.leak_scan(text), f"сканер пропустил {name}")
+
+    def test_third_party_links_survive(self):
+        out = sb.redact("см. https://github.com/Zylann/godot_voxel и https://example.org/a/b.md")
+        self.assertIn("https://github.com/Zylann/godot_voxel", out)
+        self.assertIn("https://example.org/a/b.md", out)
+
+    def test_json_scan_uses_decoded_strings(self):
+        raw = json.dumps({"x": "C:\\Users\\owner\\a.txt"})
+        self.assertTrue(sb.leak_scan(raw, as_json=True))
+        self.assertEqual(sb.leak_scan(json.dumps({"x": "обычный текст 2026-10-06"}), as_json=True), [])
+
+
+class BuildTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
+        self.tmp = Path(self._tmp.name)
+
+    def test_article_has_real_content_from_code_tests_and_history(self):
+        repo = make_repo(self.tmp)
+        files, meta = sb.build(repo, Args())
+        zone = json.loads(files["data/articles/jeff.json"])
+        art = zone["mod-1"]
+        self.assertEqual(art["title"], "discovery.py")                         # путь в подписи -> имя файла
+        heads = [s["h"] for s in art["sections"]]
+        for need in ("Что это", "Основные функции", "Чем это проверяется", "История изменений"):
+            self.assertIn(need, heads)
+        funcs = next(s for s in art["sections"] if s["h"] == "Основные функции")["list"]
+        self.assertIn("choose_discovery_question()", [f["t"] for f in funcs])
+        facts = dict(art["facts"])
+        self.assertEqual(facts["Тестов-импортёров"], "1")
+        self.assertEqual(art["summary"].split(".")[0], "Choose one question")      # из docstring
+        self.assertEqual(meta["counts"]["articles"], 4)
+        self.assertEqual(json.loads(files["data/timeline.json"])["items"][0]["kind"], "feat")
+
+    def test_zone_and_external_articles(self):
+        repo = make_repo(self.tmp)
+        files, _ = sb.build(repo, Args())
+        jeff = json.loads(files["data/articles/jeff.json"])
+        self.assertIn("Элементы зоны", [s["h"] for s in jeff["jeff"]["sections"]])
+        self.assertTrue(jeff["jeff"]["summary"].startswith("Jeff — собеседник"))
+        oss = jeff["oss-1"]
+        self.assertTrue(any(s.get("link") == "https://github.com/foo/bar" for s in oss["sections"]))
+
+    def test_paths_in_source_docstring_never_reach_output(self):
+        repo = make_repo(self.tmp, doc=r"Reads C:\Users\owner\Bossman\data\x.db and /home/alice/key.pem for owner@example.com.")
+        files, _ = sb.build(repo, Args())
+        blob = "\n".join(files.values())
+        for bad in (r"C:\\Users", "/home/alice", "owner@example.com", "x.db"):
+            self.assertNotIn(bad, blob)
+        for rel, body in files.items():
+            self.assertEqual(sb.leak_scan(body, as_json=rel.endswith(".json")), [], rel)
+
+    def test_fail_closed_when_redaction_is_broken(self):
+        """Негативный контроль второго слоя: если redact() сломан, вывод НЕ записывается (код 3)."""
+        repo = make_repo(self.tmp, doc=r"Reads C:\Users\owner\Bossman\data\x.db")
+        out = self.tmp / "site"
+        out.mkdir()
+        orig = sb.redact
+        sb.redact = lambda t: t
+        try:
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                code = sb.main(["--source", str(repo), "--out", str(out)])
+        finally:
+            sb.redact = orig
+        self.assertEqual(code, 3)
+        self.assertIn("LEAK_BLOCKED", buf.getvalue())
+        self.assertEqual(list(out.iterdir()), [], "при блокировке ничего не должно быть записано")
+
+    def test_symlink_and_denied_names_are_not_read(self):
+        repo = make_repo(self.tmp)
+        (repo / ".env").write_text("TOKEN=abc", encoding="utf-8")
+        self.assertEqual(sb.read_source(repo, ".env"), "")
+        self.assertEqual(sb.read_source(repo, "../outside.txt"), "")
+        outside = self.tmp / "outside.txt"
+        outside.write_text("secret", encoding="utf-8")
+        link = repo / "link.txt"
+        try:
+            link.symlink_to(outside)
+        except OSError:
+            self.skipTest("symlink недоступен")
+        self.assertEqual(sb.read_source(repo, "link.txt"), "")
+
+    def test_no_code_details_mode_reads_no_source(self):
+        repo = make_repo(self.tmp)
+        a = Args()
+        a.no_code_details = True
+        files, _ = sb.build(repo, a)
+        art = json.loads(files["data/articles/jeff.json"])["mod-1"]
+        self.assertNotIn("Основные функции", [s["h"] for s in art["sections"]])
+
+
+class HideTests(unittest.TestCase):
+    def tearDown(self):
+        sb.set_hide([])
+
+    def test_hidden_topics_never_reach_text_nodes_or_timeline(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo = make_repo(Path(d), doc="Poker solver glue code. Choose one question.")
+            (repo / "x.txt").write_text("x", encoding="utf-8")
+            _git(repo, "add", "-A")
+            _git(repo, "commit", "-q", "-m", "feat(poker): river dataset")
+            a = Args()
+            a.hide = ["poker"]
+            files, meta = sb.build(repo, a)
+            blob = "\n".join(files.values())
+            self.assertNotIn("oker", blob)                                  # ни Poker, ни poker
+            self.assertIn("«скрыто»", blob)
+            tl = json.loads(files["data/timeline.json"])["items"]
+            self.assertTrue(all("river dataset" not in r["title"] for r in tl))
+
+    def test_node_with_hidden_word_becomes_placeholder(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo = make_repo(Path(d))
+            seed = repo / "command-center/bcc/capability_tree_seed.json"
+            data = json.loads(seed.read_text(encoding="utf-8"))
+            data["nodes"].append({"id": "p1", "label": "Poker coach", "parent": "jeff", "status": "code", "detail": "poker bot", "sources": []})
+            seed.write_text(json.dumps(data), encoding="utf-8")
+            a = Args()
+            a.hide = ["poker"]
+            files, meta = sb.build(repo, a)
+            art = json.loads(files["data/articles/jeff.json"])["p1"]
+            self.assertEqual(art["title"], "Скрытый элемент")
+            self.assertEqual(meta["counts"]["hidden"], 1)
+            self.assertEqual(meta["counts"]["nodes"], 5)                    # счётчики честные
+
+
+class EnrichTests(unittest.TestCase):
+    def arts(self):
+        return {"a": {"title": "T", "summary": "S", "status": "code", "facts": [["k", "v"]], "children_total": 0, "words": 100,
+                      "sections": [{"h": "Что это", "p": ["Текст."]}]}}
+
+    def test_paid_model_is_refused(self):
+        self.assertEqual(sb.enrich(self.arts(), "anthropic/claude-3.5-sonnet", Path("x.json"), 5)["state"], "refused")
+
+    def test_no_key_is_skipped_not_faked(self):
+        saved = {k: os.environ.pop(k, None) for k in ("OPENROUTER_API_KEY", "BOSSMAN_OPENROUTER_API_KEY")}
+        try:
+            self.assertEqual(sb.enrich(self.arts(), sb.FREE_MODELS[0], Path("x.json"), 5)["state"], "skipped")
+        finally:
+            for k, v in saved.items():
+                if v is not None:
+                    os.environ[k] = v
+
+    def test_free_model_text_is_redacted_cached_and_not_repeated(self):
+        calls = []
+        def post(prompt):
+            calls.append(prompt)
+            return "Это модуль выбора вопроса, см. C:\\Users\\owner\\x.py."
+        with tempfile.TemporaryDirectory() as d:
+            cache = Path(d) / "cache.json"
+            arts = self.arts()
+            r1 = sb.enrich(arts, sb.FREE_MODELS[0], cache, 5, post=post)
+            self.assertEqual((r1["state"], r1["requests"]), ("ok", 1))
+            sec = arts["a"]["sections"][1]
+            self.assertEqual(sec["h"], "Простыми словами")
+            self.assertEqual(sb.leak_scan(sec["p"][0]), [])
+            self.assertIn("бесплатной моделью", sec["note"])
+            r2 = sb.enrich(self.arts(), sb.FREE_MODELS[0], cache, 5, post=post)
+            self.assertEqual(r2["requests"], 0)
+            self.assertEqual(len(calls), 1)
+
+
+class CommittedDataTests(unittest.TestCase):
+    """Данные, которые реально лежат в репозитории и уходят на сайт."""
+
+    @classmethod
+    def setUpClass(cls):
+        if not (ROOT / "data/tree.json").exists():
+            raise unittest.SkipTest("data/ ещё не сгенерирована")
+
+    def test_no_leaks_in_published_files(self):
+        for p in list((ROOT / "data").rglob("*.json")) + list((ROOT / "ai").rglob("*.md")) + [ROOT / "llms.txt"]:
+            with self.subTest(p.name):
+                self.assertEqual(sb.leak_scan(p.read_text(encoding="utf-8"), as_json=p.suffix == ".json"), [], str(p.relative_to(ROOT)))
+
+    def test_every_node_has_an_article_and_links_resolve(self):
+        tree = json.loads((ROOT / "data/tree.json").read_text(encoding="utf-8"))["nodes"]
+        index = json.loads((ROOT / "data/articles/index.json").read_text(encoding="utf-8"))
+        ids = {n["id"] for n in tree}
+        self.assertEqual(set(index), ids)
+        loaded: dict[str, dict] = {}
+        for zone in set(index.values()):
+            loaded.update(json.loads((ROOT / f"data/articles/{zone}.json").read_text(encoding="utf-8")))
+        self.assertEqual(set(loaded), ids)
+        for a in loaded.values():
+            for ref in a["children"] + a["siblings"] + a["crumbs"]:
+                self.assertIn(ref["id"], ids)
+            self.assertGreaterEqual(a["words"], 20, a["id"])
+
+    def test_no_node_label_is_a_hidden_path_marker(self):
+        tree = json.loads((ROOT / "data/tree.json").read_text(encoding="utf-8"))["nodes"]
+        self.assertFalse([n for n in tree if "«" in n["label"] or "/" in n["label"] and n["label"].endswith((".py", ".js", ".md"))])
+
+
+if __name__ == "__main__":
+    unittest.main()
