@@ -383,8 +383,9 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
   const view = (e) => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / scale, (e.clientY - r.top) / scale]; };   // единицы мира до камеры
   const world = (e) => { const [vx, vy] = view(e); return [(vx - ox) / z, (vy - oy) / z]; };
   const clampCam = () => { ox = clamp(ox, W * (1 - z), 0); oy = clamp(oy, H * (1 - z), 0); };
+  function cancelAnim() { if (anim) { const done = anim.done; anim = null; if (done) done(); } }     // прерванный полёт: камера остаётся где была
   function setCam(nz, vx, vy) {                  // приблизить к точке (vx, vy): она остаётся под пальцем
-    if (anim) { const done = anim.done; anim = null; if (done) done(); }
+    cancelAnim();
     const k = clamp(nz, 1, ZMAX), wx = (vx - ox) / z, wy = (vy - oy) / z;
     z = k; ox = vx - wx * z; oy = vy - wy * z; clampCam();
     canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y';
@@ -495,8 +496,8 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
     get flying() { return !!anim; },
     get eggs() { return eggsDrawn; },
     zoomBy(f) { setCam(z * f, W / 2, H / 2); },
-    zoomReset() { z = 1; ox = 0; oy = 0; canvas.style.touchAction = 'pan-x pan-y'; if (reduced) draw(performance.now()); },
-    zoomTo(id, k = 2.6) { const p = posed.get(id); if (!p) return false; z = clamp(k, 1, ZMAX); ox = W / 2 - p[0] * z; oy = H / 2 - p[1] * z; clampCam(); canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y'; if (reduced) draw(performance.now()); return true; },
+    zoomReset() { cancelAnim(); z = 1; ox = 0; oy = 0; canvas.style.touchAction = 'pan-x pan-y'; if (reduced) draw(performance.now()); },
+    zoomTo(id, k = 2.6) { cancelAnim(); const p = posed.get(id); if (!p) return false; z = clamp(k, 1, ZMAX); ox = W / 2 - p[0] * z; oy = H / 2 - p[1] * z; clampCam(); canvas.style.touchAction = z > 1.02 ? 'none' : 'pan-x pan-y'; if (reduced) draw(performance.now()); return true; },
     get zoom() { return z; },
     pick(id) { const l = byId.get(id); if (l && onPick) onPick(l.node); return !!l; },
     destroy() { ro.disconnect(); cancelAnimationFrame(raf); },

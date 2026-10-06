@@ -163,7 +163,7 @@ async def main(chromium: str | None) -> int:
         eg = await page.evaluate("window.__bossman.eggs()")
         check(eg > 0, f"вблизи на ветках видны пасхалки ({eg})")
         await page.click("#zoomReset")
-        await page.wait_for_timeout(300)
+        await page.wait_for_function("window.__bossman.eggs() === 0", timeout=3000)
         check(await page.evaluate("window.__bossman.eggs()") == 0, "после отдаления пасхалки исчезают")
         refs = page.locator("#tl button.ref")
         n_refs = await refs.count()

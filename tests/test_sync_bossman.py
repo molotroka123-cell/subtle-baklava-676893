@@ -361,3 +361,39 @@ class TimelineLinkTest(unittest.TestCase):
         sb.link_leaves(items, {"z": ["p.py"]}, sb.source_index(many), max_links=3)
         self.assertEqual(len(items[0]["nodes"]), 3)
         self.assertEqual(items[1]["nodes"], [])
+
+
+class RegistrySectionTest(unittest.TestCase):
+    def _run(self, row):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "reg.json"
+            f.write_text(json.dumps({"leaves": [row]}), encoding="utf-8")
+            arts = {"a": {"sections": []}, "b": {"sections": []}}
+            ok = sb.attach_registry(arts, str(f))
+        return ok, arts
+
+    def test_levels_are_shown_separately_and_a_passing_test_is_not_called_ci(self):
+        row = {"id": "a", "proven_through": "tests", "integration_status": "code",
+               "levels": {"code": {"state": "PRESENT"}, "tests": {"state": "PASSED_RECORDED_RUN", "passed": 4, "failed": 0, "skipped": 1},
+                          "ci": {"state": "NOT_RUN", "sha": None}, "owner_pc": {"state": "NOT_RUN"}}}
+        ok, arts = self._run(row)
+        sec = arts["a"]["sections"][0]
+        self.assertTrue(ok)
+        self.assertEqual(sec["h"], "Уровни доказательства")
+        self.assertIn("тесты прошли", sec["p"][0])
+        d = {i["t"]: i["d"] for i in sec["list"]}
+        self.assertIn("прошли: 4", d["2. Тесты"])
+        self.assertIn("не подтверждено", d["3. CI"])
+        self.assertIn("не проверено на ПК", d["4. ПК владельца"])
+        self.assertEqual(arts["b"]["sections"], [])
+        self.assertEqual(arts["a"]["proven_through"], "tests")
+
+    def test_failing_tests_and_unreadable_registry_are_not_hidden(self):
+        row = {"id": "a", "proven_through": "code", "integration_status": "code",
+               "levels": {"code": {"state": "PRESENT"}, "tests": {"state": "FAILED", "passed": 1, "failed": 2, "skipped": 0},
+                          "ci": {"state": "NOT_RUN"}, "owner_pc": {"state": "NOT_RUN"}}}
+        _, arts = self._run(row)
+        self.assertIn("ПАДАЮТ", {i["t"]: i["d"] for i in arts["a"]["sections"][0]["list"]}["2. Тесты"])
+        with redirect_stdout(io.StringIO()):
+            self.assertFalse(sb.attach_registry({"a": {"sections": []}}, "/nonexistent.json"))
+        self.assertFalse(sb.attach_registry({}, None))

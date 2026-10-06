@@ -405,6 +405,39 @@ def attach_audit(articles: dict, path: str | None) -> None:
         a["audit"] = r["verdict"]
 
 
+LEVEL_NAMES = {"none": "ничего не подтверждено", "code": "код есть", "tests": "тесты прошли в записанном прогоне", "ci": "зелёный CI на SHA",
+               "owner_pc": "проверено на ПК владельца"}
+
+
+def attach_registry(articles: dict, path: str | None) -> bool:
+    """Раздел «Уровни доказательства» из реестра дерева (tools/tree_registry_sync.py): четыре уровня отдельно, без общего зелёного статуса."""
+    if not path:
+        return False
+    try:
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        print("REGISTRY=UNREADABLE (раздел не добавлен)")
+        return False
+    rows = {r["id"]: r for r in doc.get("leaves", [])}
+    for nid, a in articles.items():
+        r = rows.get(nid)
+        if not r:
+            continue
+        lv = r["levels"]
+        t = lv["tests"]
+        tests_txt = {"PASSED_RECORDED_RUN": f"прошли: {t['passed']}, упало {t['failed']}, пропущено {t['skipped']}", "FAILED": f"ПАДАЮТ: упало {t['failed']}",
+                     "NO_TEST": "ни один тест не импортирует этот исходник", "NOT_RUN": "не запускались"}.get(t["state"], t["state"])
+        ci_txt = f"зелёный на {str(lv['ci']['sha'])[:8]}" if lv["ci"]["state"] == "GREEN_ON_SHA" else "не подтверждено (нет записи CI на SHA)"
+        pc_txt = "подтверждено владельцем" if lv["owner_pc"]["state"] == "VERIFIED" else "не проверено на ПК владельца"
+        items = [{"t": "1. Код", "d": "файл есть" if lv["code"]["state"] == "PRESENT" else "файла нет или путь не записан"},
+                 {"t": "2. Тесты", "d": tests_txt}, {"t": "3. CI", "d": ci_txt}, {"t": "4. ПК владельца", "d": pc_txt}]
+        a["sections"].append({"h": "Уровни доказательства", "p": [f"Дошёл до: {LEVEL_NAMES.get(r['proven_through'], r['proven_through'])}. "
+                                                              "Уровни считаются по порядку и отдельно; зелёный цвет не ставится за код или за тест.",
+                                                              f"Статус интеграции на карте: {r.get('integration_status')}."], "list": items})
+        a["proven_through"] = r["proven_through"]
+    return True
+
+
 def build_articles(nodes: list[dict], repo: Path, deep: bool) -> dict[str, dict]:
     byid = {n["id"]: n for n in nodes}
     kids: dict[str, list[dict]] = defaultdict(list)
@@ -747,7 +780,8 @@ def build(repo: Path, args) -> tuple[dict[str, str], dict]:
                 n.update(label="Скрытый элемент", detail="Подробности скрыты владельцем витрины.", next_action="", external_url="", sources=[])
                 hidden += 1
     articles = build_articles(nodes, repo, deep=not args.no_code_details)
-    attach_audit(articles, getattr(args, "audit", None))
+    if not attach_registry(articles, getattr(args, "registry", None)):
+        attach_audit(articles, getattr(args, "audit", None))
     enrichment = {"state": "off"}
     if args.enrich:
         enrichment = enrich(articles, args.enrich_model, HERE / "data" / "enrich-cache.json", args.enrich_budget)
@@ -842,6 +876,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--enrich", nargs="?", const="openrouter-free", default=None, help="пересказ бесплатной моделью (нужен ключ)")
     ap.add_argument("--enrich-model", default=FREE_MODELS[0])
     ap.add_argument("--enrich-budget", type=int, default=120, help="максимум запросов за запуск")
+    ap.add_argument("--registry", default=None, help="docs/architecture/tree-registry.json (уровни доказательства по листьям; заменяет --audit)")
     ap.add_argument("--audit", default=None, help="JSON из tools/blue_leaf_audit.py (раздел «Проверка тестами»)")
     ap.add_argument("--push", action="store_true", help="git add/commit/push в репозиторий витрины")
     args = ap.parse_args(argv)
