@@ -284,5 +284,38 @@ class CommittedDataTests(unittest.TestCase):
         self.assertFalse([n for n in tree if "«" in n["label"] or "/" in n["label"] and n["label"].endswith((".py", ".js", ".md"))])
 
 
+class AuditSectionTest(unittest.TestCase):
+    def _arts(self):
+        return {"a": {"sections": [], "id": "a"}, "b": {"sections": [], "id": "b"}}
+
+    def test_section_comes_only_from_the_audit_file_and_never_claims_benefit(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "audit.json"
+            f.write_text(json.dumps({"rows": [{"id": "a", "verdict": "covered", "passed": 5, "failed": 0, "skipped": 1,
+                                               "tests": ["x/tests/test_a.py"]}]}), encoding="utf-8")
+            arts = self._arts()
+            sb.attach_audit(arts, str(f))
+        sec = arts["a"]["sections"][0]
+        self.assertEqual(sec["h"], "Проверка тестами")
+        self.assertIn("прошло 5, упало 0, пропущено 1", sec["p"][0])
+        self.assertIn("НЕ доказывает", sec["p"][1])
+        self.assertEqual(arts["b"]["sections"], [])           # a leaf absent from the audit gets no invented section
+
+    def test_failing_tests_are_shown_as_failing(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "audit.json"
+            f.write_text(json.dumps({"rows": [{"id": "a", "verdict": "fix", "passed": 1, "failed": 2, "skipped": 0, "tests": []}]}), encoding="utf-8")
+            arts = self._arts()
+            sb.attach_audit(arts, str(f))
+        self.assertIn("ПАДАЮТ", arts["a"]["sections"][0]["p"][0])
+
+    def test_missing_or_broken_audit_adds_nothing(self):
+        for path in (None, "/nonexistent/audit.json"):
+            arts = self._arts()
+            with redirect_stdout(io.StringIO()):
+                sb.attach_audit(arts, path)
+            self.assertEqual(arts["a"]["sections"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

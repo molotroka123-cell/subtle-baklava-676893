@@ -380,6 +380,31 @@ def plural(n: int, one: str, few: str, many: str) -> str:
     return one if n10 == 1 and n100 != 11 else few if 2 <= n10 <= 4 and not 12 <= n100 <= 14 else many
 
 
+AUDIT_WORDS = {"covered": "тесты, импортирующие модуль, прошли", "covered-skipped": "тесты есть, но не выполнялись (пропущены или не запускались)",
+               "untested": "ни один тест не импортирует этот модуль", "fix": "тесты, импортирующие модуль, ПАДАЮТ",
+               "non-python": "не Python-источник, автотест не сопоставлен", "unclear": "в карте нет пути к источнику"}
+
+
+def attach_audit(articles: dict, path: str | None) -> None:
+    """Раздел «Проверка тестами» из tools/blue_leaf_audit.py. Только факты файла аудита; статус листа не меняется."""
+    if not path:
+        return
+    try:
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        print("AUDIT=UNREADABLE (раздел не добавлен)")
+        return
+    rows = {r["id"]: r for r in doc.get("rows", [])}
+    for nid, a in articles.items():
+        r = rows.get(nid)
+        if not r:
+            continue
+        p = [f"{AUDIT_WORDS.get(r['verdict'], r['verdict'])}: прошло {r['passed']}, упало {r['failed']}, пропущено {r['skipped']}.",
+             "Это регрессионное покрытие на одном коммите в облаке. Пользу, повторяемое сравнение с базовой версией и живую работу оно НЕ доказывает."]
+        a["sections"].append({"h": "Проверка тестами", "p": p, "list": [{"t": Path(t).name, "d": ""} for t in r["tests"][:8]]})
+        a["audit"] = r["verdict"]
+
+
 def build_articles(nodes: list[dict], repo: Path, deep: bool) -> dict[str, dict]:
     byid = {n["id"]: n for n in nodes}
     kids: dict[str, list[dict]] = defaultdict(list)
@@ -683,6 +708,7 @@ def build(repo: Path, args) -> tuple[dict[str, str], dict]:
                 n.update(label="Скрытый элемент", detail="Подробности скрыты владельцем витрины.", next_action="", external_url="", sources=[])
                 hidden += 1
     articles = build_articles(nodes, repo, deep=not args.no_code_details)
+    attach_audit(articles, getattr(args, "audit", None))
     enrichment = {"state": "off"}
     if args.enrich:
         enrichment = enrich(articles, args.enrich_model, HERE / "data" / "enrich-cache.json", args.enrich_budget)
@@ -777,6 +803,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--enrich", nargs="?", const="openrouter-free", default=None, help="пересказ бесплатной моделью (нужен ключ)")
     ap.add_argument("--enrich-model", default=FREE_MODELS[0])
     ap.add_argument("--enrich-budget", type=int, default=120, help="максимум запросов за запуск")
+    ap.add_argument("--audit", default=None, help="JSON из tools/blue_leaf_audit.py (раздел «Проверка тестами»)")
     ap.add_argument("--push", action="store_true", help="git add/commit/push в репозиторий витрины")
     args = ap.parse_args(argv)
     args.live_url = None if args.live in (None, "auto") else args.live
