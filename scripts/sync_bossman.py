@@ -770,7 +770,8 @@ def build(repo: Path, args) -> tuple[dict[str, str], dict]:
     seed = json.loads(seed_path.read_text(encoding="utf-8"))
     nodes = [{"id": n["id"], "label": display_label(n["label"]), "parent": n.get("parent") or "", "status": n.get("status") or "code",
               "detail": n.get("detail") or "", "next_action": n.get("next_action") or "",
-              "external_url": n.get("external_url") or "", "sources": n.get("sources") or []} for n in seed["nodes"]]
+              "external_url": n.get("external_url") or "", "sources": n.get("sources") or []}
+             for n in seed["nodes"] if n.get("status") != "retired"]   # выбывшие листья: аудит доказал, что они не нужны
     set_hide(load_hide(getattr(args, "hide", None)))
     hidden = 0
     if _HIDE is not None:
