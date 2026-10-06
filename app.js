@@ -1,4 +1,5 @@
 import { createScene } from './tree-scene.js';
+import { describeFreshness } from './fresh.js';
 
 /* Витрина развития Bossman. Данные — data/*.json, их собирает scripts/sync_bossman.py (без ИИ, пути и секреты вырезаны).
    Весь текст из данных попадает на страницу только через textContent: разметки из данных нет. */
@@ -90,6 +91,7 @@ const scene = createScene({
   onPick: (n) => openArticle(n.id),
 });
 $('#scene').replaceWith(scene.el);
+{ const f = describeFreshness(meta.generated_at), el = $('#fresh'); el.textContent = f.text; el.classList.toggle('stale', f.stale); }
 $('#zoomIn').addEventListener('click', () => scene.zoomBy(1.6));
 $('#zoomOut').addEventListener('click', () => scene.zoomBy(1 / 1.6));
 $('#zoomReset').addEventListener('click', () => scene.zoomReset());

@@ -289,3 +289,8 @@ a.card:hover{transform:translateY(-4px)}
 .zoom button:hover{background:rgba(40,60,130,.8)}
 .zoom button:focus-visible{outline:2px solid rgba(160,200,255,.9);outline-offset:2px}
 @media(max-width:640px){.tree-hint::after{content:" · двойной тап по пустому месту или + — приблизить; листайте вбок"}}
+
+.fresh{margin:0 0 14px;font-size:13px;color:var(--dim)}
+.fresh::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:#5ddc8b;box-shadow:0 0 8px #5ddc8b}
+.fresh.stale{color:#ffb4a8}
+.fresh.stale::before{background:#ff6b5e;box-shadow:0 0 8px #ff6b5e}

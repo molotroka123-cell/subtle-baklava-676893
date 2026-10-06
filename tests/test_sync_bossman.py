@@ -319,3 +319,24 @@ class AuditSectionTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PcLauncherContractTest(unittest.TestCase):
+    """Статический контракт скриптов для Windows (запустить их здесь нельзя): что они обязаны делать."""
+
+    def test_sync_launcher_updates_both_repos_logs_and_supports_unattended_run(self):
+        s = (ROOT / "scripts" / "sync_from_pc.cmd").read_text(encoding="utf-8")
+        self.assertIn('git -C "%BOSSMAN_REPO%" pull --ff-only', s)      # без этого парсер читает устаревший снимок Bossman
+        self.assertIn("sync_bossman.py", s)
+        self.assertIn("--push", s)
+        self.assertIn("sync.log", s)
+        self.assertIn('if /I not "%~1"=="auto" pause', s)               # по расписанию окно не должно висеть
+        self.assertNotIn("--force", s)                                  # никаких принудительных перезаписей
+
+    def test_installer_makes_an_hourly_task_that_runs_unattended(self):
+        s = (ROOT / "scripts" / "install_autosync.cmd").read_text(encoding="utf-8")
+        self.assertIn("schtasks /Create", s)
+        self.assertIn("/SC HOURLY", s)
+        self.assertIn("sync_from_pc.cmd", s)
+        self.assertIn(" auto", s)
+        self.assertIn("schtasks /Delete", s)                             # способ снять задачу объяснён

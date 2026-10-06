@@ -137,6 +137,14 @@ async def main(chromium: str | None) -> int:
         await page.wait_for_timeout(300)
         check(not await page.is_visible("#reader"), "контроль: клик по пустому небу ничего не открывает")
 
+
+        fr = await page.evaluate("""async () => { const m = await import('./fresh.js'); const t0 = Date.parse('2026-10-06T12:00:00Z');
+          return [m.describeFreshness('2026-10-06T10:00:00Z', t0), m.describeFreshness('2026-10-05T04:00:00Z', t0), m.describeFreshness('мусор', t0), m.describeFreshness('2026-10-06T11:40:00Z', t0)]; }""")
+        check(fr[0]["text"] == "данные обновлены 2 ч назад" and not fr[0]["stale"], "свежесть: 2 часа назад — нормально")
+        check(fr[1]["stale"] and "давно не присылал" in fr[1]["text"], "свежесть: 32 часа — красная строка")
+        check(fr[2]["stale"] and fr[3]["text"] == "данные обновлены 20 мин назад", "свежесть: мусорная дата — тревога; минуты считаются")
+        check(len((await page.inner_text("#fresh")).strip()) > 10, "на странице есть строка свежести данных")
+
         page2 = await ctx.new_page()
         await page2.route("**/fonts.googleapis.com/**", lambda r: r.abort())
         await page2.goto(base + "#/n/jeff")
