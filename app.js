@@ -4,8 +4,8 @@ import { describeFreshness } from './fresh.js';
 /* Витрина развития Bossman. Данные — data/*.json, их собирает scripts/sync_bossman.py (без ИИ, пути и секреты вырезаны).
    Весь текст из данных попадает на страницу только через textContent: разметки из данных нет. */
 
-const COLORS = { reported: '#5dff8f', code: '#4fa8ff', branch: '#ffb547', prepared: '#ffd166', idea: '#b98bff', blocked: '#ff5470', recorded: '#c9d4e5', mixed: '#ffe8a3' };
-const ORDER = ['reported', 'code', 'branch', 'prepared', 'idea', 'blocked', 'recorded', 'mixed'];
+const COLORS = { working: '#22d3ee', reported: '#5dff8f', code: '#4fa8ff', branch: '#ffb547', prepared: '#ffd166', idea: '#b98bff', blocked: '#ff5470', recorded: '#c9d4e5', mixed: '#ffe8a3' };
+const ORDER = ['working', 'reported', 'code', 'branch', 'prepared', 'idea', 'blocked', 'recorded', 'mixed'];
 const KIND = { feat: ['Новое', '#5dff8f'], fix: ['Исправление', '#ffb547'], docs: ['Документы', '#8bc5ff'], test: ['Тесты', '#b98bff'], chore: ['Служебное', '#c9d4e5'], refactor: ['Рефакторинг', '#7dd3fc'], perf: ['Скорость', '#f0abfc'], ci: ['CI', '#fde68a'], build: ['Сборка', '#fde68a'], other: ['Другое', '#a3b2cf'] };
 const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 const $ = (s, r = document) => r.querySelector(s);

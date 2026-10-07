@@ -284,7 +284,7 @@ export function createScene({ nodes, colors, labels = {}, onPick, onHover }) {
         ctx.beginPath(); ctx.moveTo(l.bx, l.by); ctx.lineTo(l.bx + (l.x - l.bx) * bloom, l.by + (l.y - l.by) * bloom); ctx.stroke();
         const tw = reduced ? 0.9 : 0.62 + 0.38 * Math.sin(elapsed * 0.0016 * (0.6 + (l.i % 5) * 0.12) + l.phase);
         const sprt = sprites[l.node.status] || sprites.code;
-        const size = (22 + (l.node.status === 'reported' ? 8 : 0)) * l.size * Math.max(0.01, bloom);
+        const size = (22 + (['reported', 'working'].includes(l.node.status) ? 8 : 0)) * l.size * Math.max(0.01, bloom);
         ctx.globalAlpha = clamp(tw * dim);
         ctx.drawImage(sprt, l.x - size / 2, l.y - size / 2, size, size);
         ctx.globalAlpha = clamp(0.95 * dim * bloom);

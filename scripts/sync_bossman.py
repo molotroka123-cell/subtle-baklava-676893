@@ -39,6 +39,9 @@ SCHEMA = 1
 
 # ---------------------------------------------------------------- человеческие статусы
 STATUS = {
+    "working": ("Работает в Bossman", "ok",
+                "Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. "
+                "Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня."),
     "reported": ("Есть сохранённый прогон", "ok",
                  "Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, "
                  "сегодняшнюю работоспособность он не доказывает."),
@@ -552,7 +555,8 @@ def build_articles(nodes: list[dict], repo: Path, deep: bool) -> dict[str, dict]
             groups: dict[str, list[str]] = defaultdict(list)
             for c in children:
                 groups[c["status"]].append(c["label"])
-            for status, head in (("reported", "Что подтверждено сохранённым прогоном"), ("blocked", "Что блокирует"),
+            for status, head in (("working", "Что работает в установленном Bossman"),
+                                 ("reported", "Что подтверждено сохранённым прогоном"), ("blocked", "Что блокирует"),
                                  ("idea", "Какие идеи в зоне"), ("branch", "Что ещё в отдельных ветках")):
                 if groups.get(status):
                     sections.append({"h": head, "list": [{"t": redact(x), "d": ""} for x in groups[status][:10]],

@@ -123,6 +123,33 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(meta["counts"]["articles"], 4)
         self.assertEqual(json.loads(files["data/timeline.json"])["items"][0]["kind"], "feat")
 
+    def test_working_status_is_known_labelled_and_counted(self):
+        repo = make_repo(self.tmp)
+        seed = repo / "command-center/bcc/capability_tree_seed.json"
+        data = json.loads(seed.read_text(encoding="utf-8"))
+        for n in data["nodes"]:
+            if n["id"] == "mod-1":
+                n["status"] = "working"
+        seed.write_text(json.dumps(data), encoding="utf-8")
+        files, meta = sb.build(repo, Args())
+        legend = meta["status_legend"]["working"]
+        self.assertEqual((legend["label"], legend["tone"]), ("Работает в Bossman", "ok"))
+        self.assertIn("не гарантия работы сегодня", legend["about"])
+        self.assertEqual(meta["counts"]["by_status"].get("working"), 1)
+        art = json.loads(files["data/articles/jeff.json"])["mod-1"]
+        self.assertEqual(art["status"], "working")
+        self.assertTrue(any("установленн" in " ".join(s.get("p", [])) for s in art["sections"]))
+        zone = json.loads(files["data/articles/jeff.json"])["jeff"]
+        self.assertIn("Что работает в установленном Bossman", [s["h"] for s in zone["sections"]])
+
+    def test_front_end_knows_working_status_with_its_own_color(self):
+        import re
+        js = (ROOT / "app.js").read_text(encoding="utf-8")
+        colors = dict(re.findall(r"(\w+): '(#[0-9a-fA-F]{6})'", re.search(r"const COLORS = \{(.*?)\};", js).group(1)))
+        self.assertIn("working", colors)
+        self.assertEqual(len(set(colors.values())), len(colors))
+        self.assertRegex(js, r"const ORDER = \['working', 'reported'")
+
     def test_zone_and_external_articles(self):
         repo = make_repo(self.tmp)
         files, _ = sb.build(repo, Args())
