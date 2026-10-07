@@ -1,6 +1,6 @@
 # Bossman — развитие: полный текст для ИИ
 
-Снимок: 2026-10-07T18:43:04Z · коммит bfd586743ace · режим git-snapshot.
+Снимок: 2026-10-07T19:09:28Z · коммит c8c3cfe06462 · режим git-snapshot.
 Правило: уровень доказательства ≠ PASS. Ниже — все статьи карты (зона → элементы).
 
 ## Bossman
@@ -10,7 +10,7 @@
 Корень карты: всё, что относится к Bossman. Единая готовность владельцу не доказана — карта показывает возможности и уровень доказательства, а не сертификат релиза.
 
 ### Что внутри
-В этой зоне 834 элемента: 508 — есть сохранённый прогон; 180 — запись / ссылка; 50 — работает в bossman; 31 — лежит в отдельной ветке; 30 — код написан; 14 — смешанная зона; 11 — блокер; 7 — идея; 3 — подготовлено.
+В этой зоне 834 элемента: 394 — есть сохранённый прогон; 180 — запись / ссылка; 164 — работает в bossman; 31 — лежит в отдельной ветке; 30 — код написан; 14 — смешанная зона; 11 — блокер; 7 — идея; 3 — подготовлено.
 Ниже — вложенные направления. Цвет листа на дереве показывает уровень доказательства, а не оценку качества.
 
 ### Элементы зоны
@@ -14632,7 +14632,7 @@ Bossman then operates the computer without step-by-step owner confirmation, reco
 Система и проверки: тесты, автоматические проверки CI, сборки, аудит безопасности и состояние выпуска.
 
 ### Что внутри
-В этой зоне 265 элементов: 195 — есть сохранённый прогон; 49 — работает в bossman; 18 — лежит в отдельной ветке; 2 — блокер; 1 — запись / ссылка.
+В этой зоне 265 элементов: 163 — работает в bossman; 81 — есть сохранённый прогон; 18 — лежит в отдельной ветке; 2 — блокер; 1 — запись / ссылка.
 Ниже — вложенные направления. Цвет листа на дереве показывает уровень доказательства, а не оценку качества.
 
 ### Элементы зоны
@@ -18044,13 +18044,13 @@ Endpoints (только чтение; запуск/стоп/approve — суще
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 519 строк; Имя файла: workflow.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-28 · d2bc5f70; Родитель: Система и проверки
 
 ## candidates.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-637788ef482e`
+*Уровень доказательства: Работает в Bossman* · id: `module-637788ef482e`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 11 — AI Lab candidates: raw trajectory → производный датасет-кандидат.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 11 — AI Lab candidates: raw trajectory → производный датасет-кандидат.
@@ -18072,7 +18072,7 @@ Stage 11 — AI Lab candidates: raw trajectory → производный дат
 - 2026-08-29 · cb97ad4c — feat(ai-lab): Stage 11 AI Lab — sanitized dataset candidates, bounded eval, gated SFT/DPO export
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18086,16 +18086,16 @@ Stage 11 — AI Lab candidates: raw trajectory → производный дат
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 294 строки; Имя файла: candidates.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 51a13cc9; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 294 строки; Имя файла: candidates.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 51a13cc9; Родитель: Система и проверки
 
 ## export.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-a1a2c4ccc239`
+*Уровень доказательства: Работает в Bossman* · id: `module-a1a2c4ccc239`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 11 — AI Lab: eval runner (bounded) + export (SFT/DPO) + training adapter.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 11 — AI Lab: eval runner (bounded) + export (SFT/DPO) + training adapter.
@@ -18115,7 +18115,7 @@ Stage 11 — AI Lab: eval runner (bounded) + export (SFT/DPO) + training adapter
 - 2026-08-29 · cb97ad4c — feat(ai-lab): Stage 11 AI Lab — sanitized dataset candidates, bounded eval, gated SFT/DPO export
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18129,16 +18129,16 @@ Stage 11 — AI Lab: eval runner (bounded) + export (SFT/DPO) + training adapter
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 210 строк; Имя файла: export.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 210 строк; Имя файла: export.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## routes.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-cdb370a24157`
+*Уровень доказательства: Работает в Bossman* · id: `module-cdb370a24157`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 11 — AI Lab: REST-роутер поверх CandidateStore/EvalRunner/Exporter.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 11 — AI Lab: REST-роутер поверх CandidateStore/EvalRunner/Exporter.
@@ -18169,7 +18169,7 @@ Containment: клиент НИКОГДА не передаёт путь файл
 - 2026-08-29 · cb97ad4c — feat(ai-lab): Stage 11 AI Lab — sanitized dataset candidates, bounded eval, gated SFT/DPO export
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18183,7 +18183,7 @@ Containment: клиент НИКОГДА не передаёт путь файл
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 134 строки; Имя файла: routes.py; Тестов-импортёров: 2; Изменений в истории: 4; Последнее изменение: 2026-08-29 · 51a13cc9; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 134 строки; Имя файла: routes.py; Тестов-импортёров: 2; Изменений в истории: 4; Последнее изменение: 2026-08-29 · 51a13cc9; Родитель: Система и проверки
 
 ## sanitizer.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-5386412e9f11`
@@ -18268,13 +18268,13 @@ Repo-root bootstrap (same pattern as «файл») + lazy accessors for «фай
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 49 строк; Имя файла: _bootstrap.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 1f095508; Родитель: Система и проверки
 
 ## claude_code_client.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-39e925886668`
+*Уровень доказательства: Работает в Bossman* · id: `module-39e925886668`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Real subprocess adapter for Claude Code, treated as an untrusted teacher.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Real subprocess adapter for Claude Code, treated as an untrusted teacher.
@@ -18291,7 +18291,7 @@ Real subprocess adapter for Claude Code, treated as an untrusted teacher.
 - 2026-09-02 · 8a13f1d3 — feat(apprentice): durable safety store, live teacher bridge/workspace and internal benchmark engine
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18305,7 +18305,7 @@ Real subprocess adapter for Claude Code, treated as an untrusted teacher.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 118 строк; Имя файла: claude_code_client.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 4212087b; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 118 строк; Имя файла: claude_code_client.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 4212087b; Родитель: Система и проверки
 
 ## composition.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-a7ad0d90993c`
@@ -18392,13 +18392,13 @@ Rules this module enforces, and why:
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 262 строки; Имя файла: durable.py; Тестов-импортёров: 9; Изменений в истории: 3; Последнее изменение: 2026-09-03 · ea2d03bd; Родитель: Система и проверки
 
 ## engine.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-a17a422c65d7`
+*Уровень доказательства: Работает в Bossman* · id: `module-a17a422c65d7`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 UniversalComputerApprentice — deterministic state machine.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3, 1)
 
 ### Как это устроено (из описания в коде)
 UniversalComputerApprentice — deterministic state machine.
@@ -18418,7 +18418,7 @@ RECEIVE_TASK -> PLAN -> OBSERVE -> ACT -> VERIFY -> CONTINUE | RECOVER | FALLBAC
 - 2026-09-02 · 857c0f3b — feat(apprentice): core state machine + typed action records + flags (OFF)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18432,16 +18432,16 @@ RECEIVE_TASK -> PLAN -> OBSERVE -> ACT -> VERIFY -> CONTINUE | RECOVER | FALLBAC
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 572 строки; Имя файла: engine.py; Тестов-импортёров: 5; Изменений в истории: 3; Последнее изменение: 2026-09-02 · d6bf16b7; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 572 строки; Имя файла: engine.py; Тестов-импортёров: 5; Изменений в истории: 3; Последнее изменение: 2026-09-02 · d6bf16b7; Родитель: Система и проверки
 
 ## errors.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-86282a9efa67`
+*Уровень доказательства: Работает в Bossman* · id: `module-86282a9efa67`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Typed errors. Every refusal in the apprentice is one of these (never a bare string).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Typed errors. Every refusal in the apprentice is one of these (never a bare string).
@@ -18463,7 +18463,7 @@ Typed errors. Every refusal in the apprentice is one of these (never a bare stri
 - 2026-09-02 · 857c0f3b — feat(apprentice): core state machine + typed action records + flags (OFF)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18477,16 +18477,16 @@ Typed errors. Every refusal in the apprentice is one of these (never a bare stri
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 124 строки; Имя файла: errors.py; Тестов-импортёров: 10; Изменений в истории: 3; Последнее изменение: 2026-09-04 · 23f28c8b; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 124 строки; Имя файла: errors.py; Тестов-импортёров: 10; Изменений в истории: 3; Последнее изменение: 2026-09-04 · 23f28c8b; Родитель: Система и проверки
 
 ## fable_direct.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-d41ad480551d`
+*Уровень доказательства: Работает в Bossman* · id: `module-d41ad480551d`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Direct Anthropic API transport for Fable — a TRUSTED provider boundary.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Direct Anthropic API transport for Fable — a TRUSTED provider boundary.
@@ -18509,7 +18509,7 @@ Response handling reuses the untrusted-output discipline: only typed visible fac
 - 2026-09-02 · 269d123d — fix(apprentice): durable atomic cloud-budget reservations (P0-FINISH-BUDGET-001)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18523,16 +18523,16 @@ Response handling reuses the untrusted-output discipline: only typed visible fac
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 191 строка; Имя файла: fable_direct.py; Тестов-импортёров: 4; Изменений в истории: 7; Последнее изменение: 2026-09-06 · d962ee72; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 191 строка; Имя файла: fable_direct.py; Тестов-импортёров: 4; Изменений в истории: 7; Последнее изменение: 2026-09-06 · d962ee72; Родитель: Система и проверки
 
 ## fable_transcript.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-d4455ade6345`
+*Уровень доказательства: Работает в Bossman* · id: `module-d4455ade6345`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 FableTranscriptRecorder: append-only agent that captures every paid-model exchange (bundle -> response -> usage -> provider request_id) as machine-parseable JSONL, so a local model can later be trained on or documentation generated from the corpus.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 FableTranscriptRecorder: append-only agent that captures every paid-model exchange (bundle -> response -> usage -> provider request_id) as machine-parseable JSONL, so a local model can later be trained on or documentation generated from the corpus.
@@ -18550,7 +18550,7 @@ Safety: bundle/response text is passed through the shared trace redactor when av
 - 2026-09-03 · 5fcbda65 — feat(transcript): FableTranscriptRecorder - durable paid-model corpus
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18564,16 +18564,16 @@ Safety: bundle/response text is passed through the shared trace redactor when av
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 140 строк; Имя файла: fable_transcript.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-03 · 5fcbda65; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 140 строк; Имя файла: fable_transcript.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-03 · 5fcbda65; Родитель: Система и проверки
 
 ## flags.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-177f174d3f63`
+*Уровень доказательства: Работает в Bossman* · id: `module-177f174d3f63`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Feature flags for the Universal Computer Apprentice. All default OFF.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2, 1)
 
 ### Как это устроено (из описания в коде)
 Feature flags for the Universal Computer Apprentice. All default OFF.
@@ -18592,7 +18592,7 @@ Convention matches learning_guard.autonomy_trainer.enabled(): env var set to 1/t
 - 2026-09-02 · 857c0f3b — feat(apprentice): core state machine + typed action records + flags (OFF)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18606,7 +18606,7 @@ Convention matches learning_guard.autonomy_trainer.enabled(): env var set to 1/t
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 39 строк; Имя файла: flags.py; Тестов-импортёров: 17; Изменений в истории: 2; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 39 строк; Имя файла: flags.py; Тестов-импортёров: 17; Изменений в истории: 2; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
 
 ## guards.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-4780a1d5fdf7`
@@ -18662,13 +18662,13 @@ Thin guards: observation freshness, semantic anchor resolution, side-effect idem
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 236 строк; Имя файла: guards.py; Тестов-импортёров: 12; Изменений в истории: 5; Последнее изменение: 2026-09-02 · 0d4d4fee; Родитель: Система и проверки
 
 ## isolated_worktree.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-c23f35941e16`
+*Уровень доказательства: Работает в Bossman* · id: `module-c23f35941e16`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Isolated Git Worktree Manager for OpenHands execution.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Isolated Git Worktree Manager for OpenHands execution.
@@ -18690,7 +18690,7 @@ Security properties: - OpenHands never edits owner's primary checkout - Pre-exis
 - 2026-09-08 · f006881d — fix(hygiene): strip the trailing whitespace root-ci actually gates on
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18704,16 +18704,16 @@ Security properties: - OpenHands never edits owner's primary checkout - Pre-exis
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 434 строки; Имя файла: isolated_worktree.py; Тестов-импортёров: 5; Изменений в истории: 8; Последнее изменение: 2026-09-28 · 87358e98; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 434 строки; Имя файла: isolated_worktree.py; Тестов-импортёров: 5; Изменений в истории: 8; Последнее изменение: 2026-09-28 · 87358e98; Родитель: Система и проверки
 
 ## live_workspace.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-815783821b83`
+*Уровень доказательства: Работает в Bossman* · id: `module-815783821b83`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Scoped real-filesystem workspace used by the untrusted teacher bridge.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Scoped real-filesystem workspace used by the untrusted teacher bridge.
@@ -18733,7 +18733,7 @@ Scoped real-filesystem workspace used by the untrusted teacher bridge.
 - 2026-09-02 · 8a13f1d3 — feat(apprentice): durable safety store, live teacher bridge/workspace and internal benchmark engine
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18747,16 +18747,16 @@ Scoped real-filesystem workspace used by the untrusted teacher bridge.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 242 строки; Имя файла: live_workspace.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-09-28 · 7bf54883; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 242 строки; Имя файла: live_workspace.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-09-28 · 7bf54883; Родитель: Система и проверки
 
 ## local_sidecar.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-bc25cd9f1e01`
+*Уровень доказательства: Работает в Bossman* · id: `module-bc25cd9f1e01`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Local coding sidecar for Bossman — speaks ``bossman.openhands.v1`` over stdio.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 3 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1, 1)
 
 ### Как это устроено (из описания в коде)
 Local coding sidecar for Bossman — speaks ``bossman.openhands.v1`` over stdio.
@@ -18791,7 +18791,7 @@ Process hygiene: the test process gets a minimal environment (no provider keys, 
 - 2026-09-23 · e60f4c78 — fix(security): tool-call signature SHA1 is not a security hash (bandit B324)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18805,16 +18805,16 @@ Process hygiene: the test process gets a minimal environment (no provider keys, 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 879 строк; Имя файла: local_sidecar.py; Тестов-импортёров: 10; Изменений в истории: 14; Последнее изменение: 2026-09-23 · 16a5b402; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 879 строк; Имя файла: local_sidecar.py; Тестов-импортёров: 10; Изменений в истории: 14; Последнее изменение: 2026-09-23 · 16a5b402; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-42a06e3c1b71`
+*Уровень доказательства: Работает в Bossman* · id: `module-42a06e3c1b71`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Typed models of the apprentice. Reuses computer_operator models for observations / expected states / action kinds; adds semantic targets (never coordinates), plan steps with risk classes and the schema-bound ActionRecord.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Typed models of the apprentice. Reuses computer_operator models for observations / expected states / action kinds; adds semantic targets (never coordinates), plan steps with risk classes and the schema-bound ActionRecord.
@@ -18838,7 +18838,7 @@ Typed models of the apprentice. Reuses computer_operator models for observations
 - 2026-09-02 · 857c0f3b — feat(apprentice): core state machine + typed action records + flags (OFF)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18852,16 +18852,16 @@ Typed models of the apprentice. Reuses computer_operator models for observations
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 284 строки; Имя файла: models.py; Тестов-импортёров: 11; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 4d975d67; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 284 строки; Имя файла: models.py; Тестов-импортёров: 11; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 4d975d67; Родитель: Система и проверки
 
 ## openhands_client.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-049b601d5eaa`
+*Уровень доказательства: Работает в Bossman* · id: `module-049b601d5eaa`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Guarded OpenHands sidecar client for Bossman's Apprentice/Teacher boundary.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Guarded OpenHands sidecar client for Bossman's Apprentice/Teacher boundary.
@@ -18888,7 +18888,7 @@ OpenHands runs outside the Bossman interpreter (Python 3.12+ sidecar). The sidec
 - 2026-09-23 · 7439917f — fix(coding): a blob committed with CRLF is not a change under core.autocrlf=true
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18902,16 +18902,16 @@ OpenHands runs outside the Bossman interpreter (Python 3.12+ sidecar). The sidec
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 796 строк; Имя файла: openhands_client.py; Тестов-импортёров: 10; Изменений в истории: 17; Последнее изменение: 2026-09-28 · 2a3cc995; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 796 строк; Имя файла: openhands_client.py; Тестов-импортёров: 10; Изменений в истории: 17; Последнее изменение: 2026-09-28 · 2a3cc995; Родитель: Система и проверки
 
 ## openhands_teacher_client.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-efdcd8d35b9c`
+*Уровень доказательства: Работает в Bossman* · id: `module-efdcd8d35b9c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Adapter that makes OpenHands look like an untrusted TeacherFallback client.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Adapter that makes OpenHands look like an untrusted TeacherFallback client.
@@ -18929,7 +18929,7 @@ The real repository is never given to OpenHands. A sanitized ProblemBundle is ma
 - 2026-09-08 · b3924b65 — fix(v6): replace OpenHands stubs with guarded real SDK path
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -18943,7 +18943,7 @@ The real repository is never given to OpenHands. A sanitized ProblemBundle is ma
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 161 строка; Имя файла: openhands_teacher_client.py; Тестов-импортёров: 4; Изменений в истории: 3; Последнее изменение: 2026-09-28 · 2a3cc995; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 161 строка; Имя файла: openhands_teacher_client.py; Тестов-импортёров: 4; Изменений в истории: 3; Последнее изменение: 2026-09-28 · 2a3cc995; Родитель: Система и проверки
 
 ## outreach.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-d8ca33ba94f4`
@@ -19082,13 +19082,13 @@ Start a child so that it can be killed WITH its descendants.
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 215 строк; Имя файла: proc_tree.py; Тестов-импортёров: 6; Изменений в истории: 3; Последнее изменение: 2026-09-23 · 949a202f; Родитель: Система и проверки
 
 ## recording.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-ac2f6e6dc2d9`
+*Уровень доказательства: Работает в Bossman* · id: `module-ac2f6e6dc2d9`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Skill recording: ActionRecords -> Task Episode (factual), semantic anchors, sanitization, and ApprenticeMemory — a thin wrapper over «файл» LearningStore (redaction, validation, versioning, tombstones, atomic writes, locking are NOT re-implemented here).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2, 1)
 
 ### Как это устроено (из описания в коде)
 Skill recording: ActionRecords -> Task Episode (factual), semantic anchors, sanitization, and ApprenticeMemory — a thin wrapper over «файл» LearningStore (redaction, validation, versioning, tombstones, atomic writes, locking are NOT re-implemented here).
@@ -19111,7 +19111,7 @@ Raw logs never become a skill automatically: this module only writes episodes (U
 - 2026-09-02 · 53d73fc0 — feat(apprentice): skill recording (episodes, semantic anchors, sanitization)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19125,16 +19125,16 @@ Raw logs never become a skill automatically: this module only writes episodes (U
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 220 строк; Имя файла: recording.py; Тестов-импортёров: 7; Изменений в истории: 3; Последнее изменение: 2026-09-02 · d6bf16b7; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 220 строк; Имя файла: recording.py; Тестов-импортёров: 7; Изменений в истории: 3; Последнее изменение: 2026-09-02 · d6bf16b7; Родитель: Система и проверки
 
 ## sanctions.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e2dd4b7bfb5d`
+*Уровень доказательства: Работает в Bossman* · id: `module-e2dd4b7bfb5d`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Technical sanctions for teacher output (automatic, not verbal), scoped reliability scores and a circuit breaker on repeated identical errors.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Technical sanctions for teacher output (automatic, not verbal), scoped reliability scores and a circuit breaker on repeated identical errors.
@@ -19157,7 +19157,7 @@ Statuses come from teacher.PatchVerifier (TeacherVerdict.status); this module tu
 - 2026-09-02 · 8a26d14b — feat(apprentice): technical sanctions, reliability score, circuit breaker
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19171,16 +19171,16 @@ Statuses come from teacher.PatchVerifier (TeacherVerdict.status); this module tu
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 214 строк; Имя файла: sanctions.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 8a13f1d3; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 214 строк; Имя файла: sanctions.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 8a13f1d3; Родитель: Система и проверки
 
 ## scripted_model.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-816c15a6b6a4`
+*Уровень доказательства: Работает в Bossman* · id: `module-816c15a6b6a4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 DETERMINISTIC TEST MODEL — an OpenAI-compatible server that replays a script.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 DETERMINISTIC TEST MODEL — an OpenAI-compatible server that replays a script.
@@ -19205,7 +19205,7 @@ Turn N answers the request that already holds N assistant messages, so the repla
 - 2026-09-22 · ca53461e — feat(coding): local bossman.openhands.v1 sidecar, real handshake readiness, host verification
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19219,7 +19219,7 @@ Turn N answers the request that already holds N assistant messages, so the repla
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 169 строк; Имя файла: scripted_model.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-09-23 · 1e6b2bb7; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 169 строк; Имя файла: scripted_model.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-09-23 · 1e6b2bb7; Родитель: Система и проверки
 
 ## selector_repair.py
 *Уровень доказательства: Лежит в отдельной ветке* · id: `module-ecf0929e5652`
@@ -19267,13 +19267,13 @@ Turn N answers the request that already holds N assistant messages, so the repla
 Факты: Уровень доказательства: Лежит в отдельной ветке; Тип: модуль на Python; Размер: 233 строки; Имя файла: selector_repair.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-09-08 · 24f0426a; Родитель: Система и проверки
 
 ## skills.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-0541863355da`
+*Уровень доказательства: Работает в Bossman* · id: `module-0541863355da`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Verified skills: generalization from episodes, anchor matching against the FRESH observation (READY | DEGRADED | INAPPLICABLE — never blind replay), independent verification (deep_fix.Principal / Evidence), shadow replay, promotion through learning_guard.autonomy_trainer and rollback.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Verified skills: generalization from episodes, anchor matching against the FRESH observation (READY | DEGRADED | INAPPLICABLE — never blind replay), independent verification (deep_fix.Principal / Evidence), shadow replay, promotion through learning_guard.autonomy_trainer and rollback.
@@ -19303,7 +19303,7 @@ Nothing here re-implements A/B, promotion stages, holdout or storage.
 - 2026-09-02 · ce153ede — feat(apprentice): verification, shadow replay, promotion and rollback over Learning Guard
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19317,16 +19317,16 @@ Nothing here re-implements A/B, promotion stages, holdout or storage.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 325 строк; Имя файла: skills.py; Тестов-импортёров: 8; Изменений в истории: 3; Последнее изменение: 2026-09-06 · fc0a1631; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 325 строк; Имя файла: skills.py; Тестов-импортёров: 8; Изменений в истории: 3; Последнее изменение: 2026-09-06 · fc0a1631; Родитель: Система и проверки
 
 ## teacher.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-522cf2e79840`
+*Уровень доказательства: Работает в Bossman* · id: `module-522cf2e79840`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Claude Code as an EXTERNAL, UNTRUSTED teacher (flag BOSSMAN_CLAUDE_CODE_FALLBACK).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Claude Code as an EXTERNAL, UNTRUSTED teacher (flag BOSSMAN_CLAUDE_CODE_FALLBACK).
@@ -19359,7 +19359,7 @@ Patches are path -> new content mappings (full-file replacement); applying real 
 - 2026-09-02 · 2cc38066 — feat(apprentice): Claude Code fallback as untrusted teacher (bundle, observation, verification)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19373,16 +19373,16 @@ Patches are path -> new content mappings (full-file replacement); applying real 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 485 строк; Имя файла: teacher.py; Тестов-импортёров: 7; Изменений в истории: 6; Последнее изменение: 2026-09-28 · 7bf54883; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 485 строк; Имя файла: teacher.py; Тестов-импортёров: 7; Изменений в истории: 6; Последнее изменение: 2026-09-28 · 7bf54883; Родитель: Система и проверки
 
 ## teacher_sandbox.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-edac8a22b815`
+*Уровень доказательства: Работает в Bossman* · id: `module-edac8a22b815`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Hermetic teacher workspace (PASS 2): Claude Code runs in a throw-away directory that contains ONLY the sanitized ProblemBundle files and a short contract.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Hermetic teacher workspace (PASS 2): Claude Code runs in a throw-away directory that contains ONLY the sanitized ProblemBundle files and a short contract.
@@ -19405,7 +19405,7 @@ Prompt text is not a security boundary, so the boundary is structural: * fresh t
 - 2026-09-02 · 4212087b — feat(apprentice): hermetic Claude Code teacher workspace, tool denial, env scrubbing, workspace-layer protection (PASS 2)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19419,16 +19419,16 @@ Prompt text is not a security boundary, so the boundary is structural: * fresh t
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 118 строк; Имя файла: teacher_sandbox.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 118 строк; Имя файла: teacher_sandbox.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
 
 ## teacher_wiring_patch.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-b8a71e28fc47`
+*Уровень доказательства: Работает в Bossman* · id: `module-b8a71e28fc47`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Production wiring for OpenHands as an optional untrusted coding teacher.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Production wiring for OpenHands as an optional untrusted coding teacher.
@@ -19447,7 +19447,7 @@ This module deliberately does not replace TeacherSandbox or PatchVerifier. OpenH
 - 2026-09-08 · 126f81f3 — feat(v6): complete TeacherFallback → OpenHandsClient wiring
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19461,7 +19461,7 @@ This module deliberately does not replace TeacherSandbox or PatchVerifier. OpenH
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 68 строк; Имя файла: teacher_wiring_patch.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 68 строк; Имя файла: teacher_wiring_patch.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-08 · b3924b65; Родитель: Система и проверки
 
 ## __main__.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-ff7440d8b674`
@@ -19495,12 +19495,12 @@ This module deliberately does not replace TeacherSandbox or PatchVerifier. OpenH
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 4 строки; Имя файла: __main__.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-09-02 · 8a13f1d3; Родитель: Система и проверки
 
 ## cli.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-1184b1105ced`
+*Уровень доказательства: Работает в Bossman* · id: `module-1184b1105ced`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Основные функции
 - main()
@@ -19514,7 +19514,7 @@ This module deliberately does not replace TeacherSandbox or PatchVerifier. OpenH
 - 2026-09-02 · 8a13f1d3 — feat(apprentice): durable safety store, live teacher bridge/workspace and internal benchmark engine
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19528,7 +19528,7 @@ This module deliberately does not replace TeacherSandbox or PatchVerifier. OpenH
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 74 строки; Имя файла: cli.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-09-02 · 9afed951; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 74 строки; Имя файла: cli.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-09-02 · 9afed951; Родитель: Система и проверки
 
 ## engine.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-dadaec7d827b`
@@ -19940,13 +19940,13 @@ Reasoning 7/10 → 10/10: достаточная глубина вместо "в
 Факты: Уровень доказательства: Лежит в отдельной ветке; Тип: модуль на Python; Размер: 212 строк; Имя файла: verify.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-09-03 · d4830a9d; Родитель: Система и проверки
 
 ## model.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-f1cacda08a67`
+*Уровень доказательства: Работает в Bossman* · id: `module-f1cacda08a67`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Типизированное ядро AI Company Mode.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 3 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2, 2, 1)
 
 ### Как это устроено (из описания в коде)
 Типизированное ядро AI Company Mode.
@@ -19971,7 +19971,7 @@ Frozen-датаклассы там, где это план/требование 
 - 2026-09-02 · 85a35273 — feat(company): AI Company Mode foundation behind AI_COMPANY_MODE_ENABLED=false + deterministic synthetic SEO E2E
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -19985,16 +19985,16 @@ Frozen-датаклассы там, где это план/требование 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 386 строк; Имя файла: model.py; Тестов-импортёров: 9; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 94598a71; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 386 строк; Имя файла: model.py; Тестов-импортёров: 9; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 94598a71; Родитель: Система и проверки
 
 ## planner.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-47931d1b717a`
+*Уровень доказательства: Работает в Bossman* · id: `module-47931d1b717a`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Детерминированный планировщик: цель → отделы/роли/потоки/DAG задач.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Детерминированный планировщик: цель → отделы/роли/потоки/DAG задач.
@@ -20015,7 +20015,7 @@ Frozen-датаклассы там, где это план/требование 
 - 2026-09-02 · 85a35273 — feat(company): AI Company Mode foundation behind AI_COMPANY_MODE_ENABLED=false + deterministic synthetic SEO E2E
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20029,7 +20029,7 @@ Frozen-датаклассы там, где это план/требование 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 157 строк; Имя файла: planner.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-02 · 85a35273; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 157 строк; Имя файла: planner.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-02 · 85a35273; Родитель: Система и проверки
 
 ## runtime.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-eea9bcf7e3ac`
@@ -20078,13 +20078,13 @@ Frozen-датаклассы там, где это план/требование 
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 485 строк; Имя файла: runtime.py; Тестов-импортёров: 3; Изменений в истории: 3; Последнее изменение: 2026-09-02 · c1da1223; Родитель: Система и проверки
 
 ## synthetic_seo.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e297560d568b`
+*Уровень доказательства: Работает в Bossman* · id: `module-e297560d568b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Синтетический детерминированный E2E: «Improve a synthetic website's SEO readiness» над сайтом в памяти. Никакой сети, никаких моделей, никакой публикации: задача publish гейтуется и по умолчанию отклоняется.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Синтетический детерминированный E2E: «Improve a synthetic website's SEO readiness» над сайтом в памяти. Никакой сети, никаких моделей, никакой публикации: задача publish гейтуется и по умолчанию отклоняется.
@@ -20109,7 +20109,7 @@ Frozen-датаклассы там, где это план/требование 
 - 2026-09-02 · 85a35273 — feat(company): AI Company Mode foundation behind AI_COMPANY_MODE_ENABLED=false + deterministic synthetic SEO E2E
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20123,7 +20123,7 @@ Frozen-датаклассы там, где это план/требование 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 216 строк; Имя файла: synthetic_seo.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-09-02 · 85a35273; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 216 строк; Имя файла: synthetic_seo.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-09-02 · 85a35273; Родитель: Система и проверки
 
 ## applist.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-575dcc5a99f5`
@@ -20167,13 +20167,13 @@ Deny-by-default. Планировщик (модель) присылает ЛОГ
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 89 строк; Имя файла: applist.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-30 · f10c43b8; Родитель: Система и проверки
 
 ## capabilities.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-fb39c9a64573`
+*Уровень доказательства: Работает в Bossman* · id: `module-fb39c9a64573`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Capability registry для Computer Operator — ЧЕСТНОЕ раскрытие возможностей.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Capability registry для Computer Operator — ЧЕСТНОЕ раскрытие возможностей.
@@ -20191,7 +20191,7 @@ Capability registry для Computer Operator — ЧЕСТНОЕ раскрыти
 - 2026-08-31 · afa106df — feat(computer): honest capability discovery — never claim unsupported abilities
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20205,16 +20205,16 @@ Capability registry для Computer Operator — ЧЕСТНОЕ раскрыти
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 118 строк; Имя файла: capabilities.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · afa106df; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 118 строк; Имя файла: capabilities.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · afa106df; Родитель: Система и проверки
 
 ## loop_guard.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-179cd95b7128`
+*Уровень доказательства: Работает в Bossman* · id: `module-179cd95b7128`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Loop / no-progress protection для Computer Operator.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Loop / no-progress protection для Computer Operator.
@@ -20236,7 +20236,7 @@ Loop / no-progress protection для Computer Operator.
 - 2026-08-31 · 4c3f587d — feat(computer): loop / no-progress guard — stop blind repetition of failing actions
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20250,7 +20250,7 @@ Loop / no-progress protection для Computer Operator.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 136 строк; Имя файла: loop_guard.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-31 · 85aa28bb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 136 строк; Имя файла: loop_guard.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-31 · 85aa28bb; Родитель: Система и проверки
 
 ## manager.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-79d58034a65f`
@@ -20297,13 +20297,13 @@ Loop / no-progress protection для Computer Operator.
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 923 строки; Имя файла: manager.py; Тестов-импортёров: 9; Изменений в истории: 21; Последнее изменение: 2026-09-07 · 3597fae4; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e376eaac5d8f`
+*Уровень доказательства: Работает в Bossman* · id: `module-e376eaac5d8f`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — expected_value(): Постусловие, если оно вообще что-то утверждает об экране, иначе None.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - new_id()
@@ -20324,7 +20324,7 @@ Loop / no-progress protection для Computer Operator.
 - 2026-08-29 · f325759e — feat(stage13): integrate Computer Operator / Dispatch pack — observe/plan/policy/approval/verify loop
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20338,7 +20338,7 @@ Loop / no-progress protection для Computer Operator.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 91 строка; Имя файла: models.py; Тестов-импортёров: 40; Изменений в истории: 3; Последнее изменение: 2026-09-06 · a7d2d0f8; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 91 строка; Имя файла: models.py; Тестов-импортёров: 40; Изменений в истории: 3; Последнее изменение: 2026-09-06 · a7d2d0f8; Родитель: Система и проверки
 
 ## obligations.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-4b4b01b5e71a`
@@ -20471,13 +20471,13 @@ Loop / no-progress protection для Computer Operator.
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 131 строка; Имя файла: planner.py; Тестов-импортёров: 3; Изменений в истории: 8; Последнее изменение: 2026-09-06 · 1f238ce5; Родитель: Система и проверки
 
 ## policy.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-3f26dfe54c72`
+*Уровень доказательства: Работает в Bossman* · id: `module-3f26dfe54c72`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — authorize_computer_control(): Спросить текущее разрешение. Бросает PermissionError, если его нет. Fail-CLOSED: любая НЕОЖИДАННАЯ ошибка источника авторизации — это отказ, а не разрешение. Иначе…
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3, 1)
 
 ### Основные функции
 - authorize_computer_control() — Спросить текущее разрешение. Бросает PermissionError, если его нет. Fail-CLOSED: любая НЕОЖИДАННАЯ ошибка источника авторизации — это отказ, а не разрешение. Иначе…
@@ -20496,7 +20496,7 @@ Loop / no-progress protection для Computer Operator.
 - 2026-09-06 · c5daa5e3 — fix(security): untrusted model output stops being the authority
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20510,16 +20510,16 @@ Loop / no-progress protection для Computer Operator.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 308 строк; Имя файла: policy.py; Тестов-импортёров: 10; Изменений в истории: 9; Последнее изменение: 2026-09-21 · 59daf7c3; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 308 строк; Имя файла: policy.py; Тестов-импортёров: 10; Изменений в истории: 9; Последнее изменение: 2026-09-21 · 59daf7c3; Родитель: Система и проверки
 
 ## routes.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-009f4807c914`
+*Уровень доказательства: Работает в Bossman* · id: `module-009f4807c914`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — access(): Профильный тумблер computer_control перед ВОЗВРАТОМ задачи к управлению. Гейт стоял только в create_task, поэтому выключенный тумблер (или выключенный профиль) не…
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - view()
@@ -20543,7 +20543,7 @@ Loop / no-progress protection для Computer Operator.
 - 2026-08-29 · f325759e — feat(stage13): integrate Computer Operator / Dispatch pack — observe/plan/policy/approval/verify loop
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20557,15 +20557,15 @@ Loop / no-progress protection для Computer Operator.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 65 строк; Имя файла: routes.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 65 строк; Имя файла: routes.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
 
 ## secret_executor.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2d3d2ae733c1`
+*Уровень доказательства: Работает в Bossman* · id: `module-2d3d2ae733c1`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### История изменений
 - 2026-10-07 · dff6706d — stage 1: mod-autonomy and mod-osiris green (160 and 158 tests); 'working' only for the currently installed build; installed_rerun resolves the live build (was hard-coded to an uninstalled one, would break the 03:30 night step)
@@ -20574,7 +20574,7 @@ Loop / no-progress protection для Computer Operator.
 - 2026-10-06 · efb2e146 — tree-proof: ops zone import+pytest evidence receipts (235 leaves)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20588,7 +20588,7 @@ Loop / no-progress protection для Computer Operator.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: файл; Размер: 3762 строки; Имя файла: ops.json; Изменений в истории: 4; Последнее изменение: 2026-10-07 · dff6706d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: файл; Размер: 3762 строки; Имя файла: ops.json; Изменений в истории: 4; Последнее изменение: 2026-10-07 · dff6706d; Родитель: Система и проверки
 
 ## store.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-e6b90349c6c6`
@@ -20682,13 +20682,13 @@ Production wiring Stage 13 — реальный путь исполнения, �
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 244 строки; Имя файла: subsystem.py; Тестов-импортёров: 6; Изменений в истории: 9; Последнее изменение: 2026-09-16 · 16020d0b; Родитель: Система и проверки
 
 ## uitars.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-c22cab3d4320`
+*Уровень доказательства: Работает в Bossman* · id: `module-c22cab3d4320`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Optional UI-TARS visual grounding inside the existing operator loop.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Optional UI-TARS visual grounding inside the existing operator loop.
@@ -20707,7 +20707,7 @@ The normal planner owns the next action and its expected postcondition. The visu
 - 2026-09-16 · 16020d0b — feat(oss): integrate eight upstream engines with owner workflows and Windows gates
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20721,16 +20721,16 @@ The normal planner owns the next action and its expected postcondition. The visu
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 158 строк; Имя файла: uitars.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-16 · 16020d0b; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 158 строк; Имя файла: uitars.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-16 · 16020d0b; Родитель: Система и проверки
 
 ## verifier.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-a270c9dbe40c`
+*Уровень доказательства: Работает в Bossman* · id: `module-a270c9dbe40c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — screen_text(): Текст экрана, по которому проверяются contains_text/absent_text. Не только `summary`: в проде Observer собирается БЕЗ summarizer (subsystem.build_manager), и summary…
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - screen_text() — Текст экрана, по которому проверяются contains_text/absent_text. Не только `summary`: в проде Observer собирается БЕЗ summarizer (subsystem.build_manager), и summary…
@@ -20746,7 +20746,7 @@ The normal planner owns the next action and its expected postcondition. The visu
 - 2026-08-29 · f325759e — feat(stage13): integrate Computer Operator / Dispatch pack — observe/plan/policy/approval/verify loop
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20760,16 +20760,16 @@ The normal planner owns the next action and its expected postcondition. The visu
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 60 строк; Имя файла: verifier.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-06 · a7d2d0f8; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 60 строк; Имя файла: verifier.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-06 · a7d2d0f8; Родитель: Система и проверки
 
 ## wiring.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-638ddbcb1a1b`
+*Уровень доказательства: Работает в Bossman* · id: `module-638ddbcb1a1b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Test wiring for the computer operator: scripted planner/observer fakes plus a real ActionRouter dispatching to a fake desktop adapter. Production defaults in subsystem.py stay untouched.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Test wiring for the computer operator: scripted planner/observer fakes plus a real ActionRouter dispatching to a fake desktop adapter. Production defaults in subsystem.py stay untouched.
@@ -20789,7 +20789,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · f325759e — feat(stage13): integrate Computer Operator / Dispatch pack — observe/plan/policy/approval/verify loop
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20803,16 +20803,16 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 94 строки; Имя файла: wiring.py; Тестов-импортёров: 13; Изменений в истории: 3; Последнее изменение: 2026-09-06 · dd2fb78d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 94 строки; Имя файла: wiring.py; Тестов-импортёров: 13; Изменений в истории: 3; Последнее изменение: 2026-09-06 · dd2fb78d; Родитель: Система и проверки
 
 ## enforcer.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-1c2e0a6599c0`
+*Уровень доказательства: Работает в Bossman* · id: `module-1c2e0a6599c0`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — BudgetEnforcer(): Async adapter for the existing BOSSMAN approvals boundary. `estimated_usd` MUST be a conservative upper bound before the network call.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - класс BudgetHardStop
@@ -20826,7 +20826,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20840,15 +20840,15 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 57 строк; Имя файла: enforcer.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 57 строк; Имя файла: enforcer.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## governor.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e99c091d1c06`
+*Уровень доказательства: Работает в Bossman* · id: `module-e99c091d1c06`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - класс CostGovernor
@@ -20860,7 +20860,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20874,15 +20874,15 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 41 строка; Имя файла: governor.py; Тестов-импортёров: 6; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 41 строка; Имя файла: governor.py; Тестов-импортёров: 6; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-dd118749492b`
+*Уровень доказательства: Работает в Bossman* · id: `module-dd118749492b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Основные функции
 - money()
@@ -20901,7 +20901,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20915,16 +20915,16 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 48 строк; Имя файла: models.py; Тестов-импортёров: 11; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 48 строк; Имя файла: models.py; Тестов-импортёров: 11; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## pricing.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-72f38f26214a`
+*Уровень доказательства: Работает в Bossman* · id: `module-72f38f26214a`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — cache_aware_actual_usd(): Fallback billing estimate when the provider did not return ``usage.cost``. Cached and cache-write tokens are subsets of prompt tokens and are charged at their own…
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - normalize_per_token_price()
@@ -20941,7 +20941,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -20955,7 +20955,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 54 строки; Имя файла: pricing.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-30 · 7f3caa85; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 54 строки; Имя файла: pricing.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-30 · 7f3caa85; Родитель: Система и проверки
 
 ## routes.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-6e615a668c7b`
@@ -20995,12 +20995,12 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 35 строк; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## runtime.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-4efbb2fd9c4a`
+*Уровень доказательства: Работает в Bossman* · id: `module-4efbb2fd9c4a`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3, 1)
 
 ### Основные функции
 - seed_env_policies()
@@ -21012,7 +21012,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21026,16 +21026,16 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 45 строк; Имя файла: runtime.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 45 строк; Имя файла: runtime.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## store.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-bc87c8d6bfa4`
+*Уровень доказательства: Работает в Bossman* · id: `module-bc87c8d6bfa4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — SQLiteBudgetStore(): Atomic subsystem-local money ledger. BEGIN IMMEDIATE prevents parallel overspend.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Основные функции
 - класс BudgetError
@@ -21051,7 +21051,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21065,7 +21065,7 @@ Test wiring for the computer operator: scripted planner/observer fakes plus a re
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 568 строк; Имя файла: store.py; Тестов-импортёров: 11; Изменений в истории: 2; Последнее изменение: 2026-09-28 · 46927e32; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 568 строк; Имя файла: store.py; Тестов-импортёров: 11; Изменений в истории: 2; Последнее изменение: 2026-09-28 · 46927e32; Родитель: Система и проверки
 
 ## subsystem.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-df0754d72d22`
@@ -21144,13 +21144,13 @@ Security Benchmark Lab — измеримая оценка защиты по э�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 45 строк; Имя файла: benchmark.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## blast_radius.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-068b8f4fbeb2`
+*Уровень доказательства: Работает в Bossman* · id: `module-068b8f4fbeb2`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Sandbox / Blast Radius Controller — ограничение радиуса поражения действия.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 5)
 
 ### Как это устроено (из описания в коде)
 Sandbox / Blast Radius Controller — ограничение радиуса поражения действия.
@@ -21170,7 +21170,7 @@ Sandbox / Blast Radius Controller — ограничение радиуса по
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21184,16 +21184,16 @@ Sandbox / Blast Radius Controller — ограничение радиуса по
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 67 строк; Имя файла: blast_radius.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 67 строк; Имя файла: blast_radius.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## defender.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-0b1e4d69a90c`
+*Уровень доказательства: Работает в Bossman* · id: `module-0b1e4d69a90c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 BLUE defender — детерминированная реакция на типизированное намерение атаки.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 5)
 
 ### Как это устроено (из описания в коде)
 BLUE defender — детерминированная реакция на типизированное намерение атаки.
@@ -21210,7 +21210,7 @@ observe → detect → classify → contain. Реакция не зависит 
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21224,16 +21224,16 @@ observe → detect → classify → contain. Реакция не зависит 
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 84 строки; Имя файла: defender.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 84 строки; Имя файла: defender.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## gates.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-7a65bf88fb04`
+*Уровень доказательства: Работает в Bossman* · id: `module-7a65bf88fb04`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Feature-гейты CyberSec V1 и тройной гейт тренировочной лаборатории.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Feature-гейты CyberSec V1 и тройной гейт тренировочной лаборатории.
@@ -21254,7 +21254,7 @@ Feature-гейты CyberSec V1 и тройной гейт тренировочн
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21268,16 +21268,16 @@ Feature-гейты CyberSec V1 и тройной гейт тренировочн
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 67 строк; Имя файла: gates.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 67 строк; Имя файла: gates.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## guards.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-8de7f3a7cd44`
+*Уровень доказательства: Работает в Bossman* · id: `module-8de7f3a7cd44`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Канонические ДВЕ точки CyberSec-периметра: ingest_guard / egress_guard.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Канонические ДВЕ точки CyberSec-периметра: ingest_guard / egress_guard.
@@ -21302,7 +21302,7 @@ Feature-гейты CyberSec V1 и тройной гейт тренировочн
 - 2026-08-31 · 70b548c3 — security(hardening-v1.1): canonical ingest_guard/egress_guard + IDS→RiskSignal→Policy
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21316,16 +21316,16 @@ Feature-гейты CyberSec V1 и тройной гейт тренировочн
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 148 строк; Имя файла: guards.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 70b548c3; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 148 строк; Имя файла: guards.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 70b548c3; Родитель: Система и проверки
 
 ## ids.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-d401165730fa`
+*Уровень доказательства: Работает в Bossman* · id: `module-d401165730fa`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Agent Behavior IDS — аномалии в ПОВЕДЕНИИ агента, а не в тексте.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Agent Behavior IDS — аномалии в ПОВЕДЕНИИ агента, а не в тексте.
@@ -21343,7 +21343,7 @@ Agent Behavior IDS — аномалии в ПОВЕДЕНИИ агента, а �
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21357,16 +21357,16 @@ Agent Behavior IDS — аномалии в ПОВЕДЕНИИ агента, а �
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 65 строк; Имя файла: ids.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 65 строк; Имя файла: ids.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## injection.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-f6a4b22d7b2b`
+*Уровень доказательства: Работает в Bossman* · id: `module-f6a4b22d7b2b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Prompt Injection Firewall — фильтр НЕДОВЕРЕННОГО текста на границе контекста.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Prompt Injection Firewall — фильтр НЕДОВЕРЕННОГО текста на границе контекста.
@@ -21388,7 +21388,7 @@ Firewall не заменяет Policy/Approval: он лишь не даёт те
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21402,16 +21402,16 @@ Firewall не заменяет Policy/Approval: он лишь не даёт те
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 121 строка; Имя файла: injection.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 121 строка; Имя файла: injection.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## recovery.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-63389f3e655f`
+*Уровень доказательства: Работает в Bossman* · id: `module-63389f3e655f`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Cyber Recovery Mode — реакция на подтверждённый инцидент.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Cyber Recovery Mode — реакция на подтверждённый инцидент.
@@ -21430,7 +21430,7 @@ Cyber Recovery Mode — реакция на подтверждённый инц�
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21444,16 +21444,16 @@ Cyber Recovery Mode — реакция на подтверждённый инц�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 54 строки; Имя файла: recovery.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 54 строки; Имя файла: recovery.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## redteam.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-cc401f252307`
+*Уровень доказательства: Работает в Bossman* · id: `module-cc401f252307`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 AI Red-Team Lab — типизированные АБСТРАКТНЫЕ намерения атаки (L0–L5).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 3 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1, 1)
 
 ### Как это устроено (из описания в коде)
 AI Red-Team Lab — типизированные АБСТРАКТНЫЕ намерения атаки (L0–L5).
@@ -21476,7 +21476,7 @@ AI Red-Team Lab — типизированные АБСТРАКТНЫЕ наме
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21490,16 +21490,16 @@ AI Red-Team Lab — типизированные АБСТРАКТНЫЕ наме
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 168 строк; Имя файла: redteam.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 168 строк; Имя файла: redteam.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## repo_scanner.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-a43ab3ee85df`
+*Уровень доказательства: Работает в Bossman* · id: `module-a43ab3ee85df`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Repo Security Scanner layer — статический допуск изменений в репозитории.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 5)
 
 ### Как это устроено (из описания в коде)
 Repo Security Scanner layer — статический допуск изменений в репозитории.
@@ -21518,7 +21518,7 @@ Repo Security Scanner layer — статический допуск измене
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21532,15 +21532,15 @@ Repo Security Scanner layer — статический допуск измене
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 71 строка; Имя файла: repo_scanner.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 71 строка; Имя файла: repo_scanner.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## secret_guardian.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-0aa387ab63a9`
+*Уровень доказательства: Работает в Bossman* · id: `module-0aa387ab63a9`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### История изменений
 - 2026-10-07 · dff6706d — stage 1: mod-autonomy and mod-osiris green (160 and 158 tests); 'working' only for the currently installed build; installed_rerun resolves the live build (was hard-coded to an uninstalled one, would break the 03:30 night step)
@@ -21549,7 +21549,7 @@ Repo Security Scanner layer — статический допуск измене
 - 2026-10-06 · efb2e146 — tree-proof: ops zone import+pytest evidence receipts (235 leaves)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21563,16 +21563,16 @@ Repo Security Scanner layer — статический допуск измене
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: файл; Размер: 3762 строки; Имя файла: ops.json; Изменений в истории: 4; Последнее изменение: 2026-10-07 · dff6706d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: файл; Размер: 3762 строки; Имя файла: ops.json; Изменений в истории: 4; Последнее изменение: 2026-10-07 · dff6706d; Родитель: Система и проверки
 
 ## supply_chain.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-4b4e00d7c711`
+*Уровень доказательства: Работает в Bossman* · id: `module-4b4e00d7c711`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Supply Chain Guardian — происхождение того, что попадает в систему.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 5)
 
 ### Как это устроено (из описания в коде)
 Supply Chain Guardian — происхождение того, что попадает в систему.
@@ -21589,7 +21589,7 @@ Supply Chain Guardian — происхождение того, что попад
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21603,16 +21603,16 @@ Supply Chain Guardian — происхождение того, что попад
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 55 строк; Имя файла: supply_chain.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 55 строк; Имя файла: supply_chain.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## training.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-103910b19c50`
+*Уровень доказательства: Работает в Bossman* · id: `module-103910b19c50`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 FROZEN red-vs-blue training engine (стресс-тест на будущее железо).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 FROZEN red-vs-blue training engine (стресс-тест на будущее железо).
@@ -21631,7 +21631,7 @@ FROZEN red-vs-blue training engine (стресс-тест на будущее ж
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21645,16 +21645,16 @@ FROZEN red-vs-blue training engine (стресс-тест на будущее ж
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 84 строки; Имя файла: training.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 84 строки; Имя файла: training.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## trust.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-dc98760346bb`
+*Уровень доказательства: Работает в Bossman* · id: `module-dc98760346bb`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Provenance / trust levels: откуда пришёл текст или предложение.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 5)
 
 ### Как это устроено (из описания в коде)
 Provenance / trust levels: откуда пришёл текст или предложение.
@@ -21671,7 +21671,7 @@ Provenance / trust levels: откуда пришёл текст или пред�
 - 2026-08-31 · ca6e2b9a — CyberSec AI V1: защитный слой поверх существующих авторитетов (лаборатория заморожена)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21685,16 +21685,16 @@ Provenance / trust levels: откуда пришёл текст или пред�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 42 строки; Имя файла: trust.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 42 строки; Имя файла: trust.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · ca6e2b9a; Родитель: Система и проверки
 
 ## editor.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-74b9d09c9a49`
+*Уровень доказательства: Работает в Bossman* · id: `module-74b9d09c9a49`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — минимальный безопасный адаптер правки кода через существующий Gateway.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — минимальный безопасный адаптер правки кода через существующий Gateway.
@@ -21712,7 +21712,7 @@ Stage 10 — минимальный безопасный адаптер прав
 - 2026-08-29 · 68a96266 — harden pre-dispatch perimeter: core auth, AI Lab, host exec, dev-factory
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21726,16 +21726,16 @@ Stage 10 — минимальный безопасный адаптер прав
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 127 строк; Имя файла: editor.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 127 строк; Имя файла: editor.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## executor.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-904a8396aa6c`
+*Уровень доказательства: Работает в Bossman* · id: `module-904a8396aa6c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — исполнитель: тесты идут ТОЛЬКО через песочницу Этапа 8.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — исполнитель: тесты идут ТОЛЬКО через песочницу Этапа 8.
@@ -21752,7 +21752,7 @@ Stage 10 — исполнитель: тесты идут ТОЛЬКО через
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21766,16 +21766,16 @@ Stage 10 — исполнитель: тесты идут ТОЛЬКО через
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 78 строк; Имя файла: executor.py; Тестов-импортёров: 0; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 4cac76f4; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 78 строк; Имя файла: executor.py; Тестов-импортёров: 0; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 4cac76f4; Родитель: Система и проверки
 
 ## factory.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-4aacff2330d4`
+*Уровень доказательства: Работает в Bossman* · id: `module-4aacff2330d4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — DevFactory: петля автономной разработки.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — DevFactory: петля автономной разработки.
@@ -21793,7 +21793,7 @@ Task → план → изолированная копия → код → те�
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21807,16 +21807,16 @@ Task → план → изолированная копия → код → те�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 242 строки; Имя файла: factory.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 242 строки; Имя файла: factory.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-7f1adf1138f0`
+*Уровень доказательства: Работает в Bossman* · id: `module-7f1adf1138f0`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — Dev Factory: модели задания и конечный автомат шагов.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — Dev Factory: модели задания и конечный автомат шагов.
@@ -21841,7 +21841,7 @@ Stage 10 — Dev Factory: модели задания и конечный авт
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21855,16 +21855,16 @@ Stage 10 — Dev Factory: модели задания и конечный авт
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 167 строк; Имя файла: models.py; Тестов-импортёров: 7; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 167 строк; Имя файла: models.py; Тестов-импортёров: 7; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
 
 ## planner.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e2b6bd15aba1`
+*Уровень доказательства: Работает в Bossman* · id: `module-e2b6bd15aba1`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — контракт планировщика.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — контракт планировщика.
@@ -21887,7 +21887,7 @@ Stage 10 — контракт планировщика.
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21901,16 +21901,16 @@ Stage 10 — контракт планировщика.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 222 строки; Имя файла: planner.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-08-29 · d3f15189; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 222 строки; Имя файла: planner.py; Тестов-импортёров: 4; Изменений в истории: 4; Последнее изменение: 2026-08-29 · d3f15189; Родитель: Система и проверки
 
 ## reviewer.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-3adca9c27bdb`
+*Уровень доказательства: Работает в Bossman* · id: `module-3adca9c27bdb`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — независимое состязательное ревью патча.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — независимое состязательное ревью патча.
@@ -21927,7 +21927,7 @@ Stage 10 — независимое состязательное ревью па
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -21941,7 +21941,7 @@ Stage 10 — независимое состязательное ревью па
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 59 строк; Имя файла: reviewer.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 59 строк; Имя файла: reviewer.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
 
 ## routes.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-7280885daae5`
@@ -21984,13 +21984,13 @@ Stage 10 — read-only статус фабрики. Никаких мутаци�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 34 строки; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## store.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-9a1970f7c3e5`
+*Уровень доказательства: Работает в Bossman* · id: `module-9a1970f7c3e5`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — атомарное хранение состояния задания.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — атомарное хранение состояния задания.
@@ -22008,7 +22008,7 @@ Stage 10 — атомарное хранение состояния задани
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22022,16 +22022,16 @@ Stage 10 — атомарное хранение состояния задани
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 101 строка; Имя файла: store.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 101 строка; Имя файла: store.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b325fc51; Родитель: Система и проверки
 
 ## subsystem.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-3f0a90670bba`
+*Уровень доказательства: Работает в Bossman* · id: `module-3f0a90670bba`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — подсистема жизненного цикла Dev Factory.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — подсистема жизненного цикла Dev Factory.
@@ -22047,7 +22047,7 @@ Stage 10 — подсистема жизненного цикла Dev Factory.
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22061,16 +22061,16 @@ Stage 10 — подсистема жизненного цикла Dev Factory.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 80 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 80 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## workspace.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-b428d8c055bc`
+*Уровень доказательства: Работает в Bossman* · id: `module-b428d8c055bc`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 10 — изолированная рабочая копия репозитория.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 10 — изолированная рабочая копия репозитория.
@@ -22087,7 +22087,7 @@ Stage 10 — изолированная рабочая копия репозит
 - 2026-08-29 · b325fc51 — feat(dev_factory): Этап 10 — автономная петля разработки с патчем вместо авто-мержа
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22101,16 +22101,16 @@ Stage 10 — изолированная рабочая копия репозит
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 125 строк; Имя файла: workspace.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · f10c43b8; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 125 строк; Имя файла: workspace.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · f10c43b8; Родитель: Система и проверки
 
 ## anthropic_protocol.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-30ddab524cfc`
+*Уровень доказательства: Работает в Bossman* · id: `module-30ddab524cfc`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Translate the Messages wire protocol without treating EOF as completion.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Translate the Messages wire protocol without treating EOF as completion.
@@ -22131,7 +22131,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 2026-09-09 · 83c1a02d — fix(release): converge installed owner workflows and verified safety repairs
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22145,16 +22145,16 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 425 строк; Имя файла: anthropic_protocol.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 425 строк; Имя файла: anthropic_protocol.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
 
 ## app.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-5fd57fccff12`
+*Уровень доказательства: Работает в Bossman* · id: `module-5fd57fccff12`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — BudgetPricingUnknown(): Нельзя безопасно оценить верхнюю границу расхода — cloud-попытка отклонена (fail closed), а не «наверное дёшево».
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Основные функции
 - create_gateway_app()
@@ -22172,7 +22172,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 2026-08-30 · 7f3caa85 — feat(gateway): add provider-aware prompt caching
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22186,7 +22186,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 858 строк; Имя файла: app.py; Тестов-импортёров: 0; Изменений в истории: 15; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 858 строк; Имя файла: app.py; Тестов-импортёров: 0; Изменений в истории: 15; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
 
 ## auth.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-745ed9f64ff7`
@@ -22227,13 +22227,13 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 91 строка; Имя файла: auth.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-09-05 · cbdabf26; Родитель: Система и проверки
 
 ## backends.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-95e88c430e38`
+*Уровень доказательства: Работает в Bossman* · id: `module-95e88c430e38`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — build_backend(): Бэкенд по его конфигурации. Неизвестный вид — обычный OpenAI-совместимый.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - build_backend() — Бэкенд по его конфигурации. Неизвестный вид — обычный OpenAI-совместимый.
@@ -22256,7 +22256,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 2026-08-29 · d398fb9c — feat(gateway): пакет AI Gateway, тесты, конфиг-пример и доки ЭТАПА 3
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22270,16 +22270,16 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 494 строки; Имя файла: backends.py; Тестов-импортёров: 17; Изменений в истории: 7; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 494 строки; Имя файла: backends.py; Тестов-импортёров: 17; Изменений в истории: 7; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
 
 ## client.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-7fb28ee13497`
+*Уровень доказательства: Работает в Bossman* · id: `module-7fb28ee13497`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — normalize_base_url(): Привести базовый адрес Gateway к тому, от которого строятся пути. Живой прогон владельца (20260906, GATEWAY-URL-V1): BOSSMAN_GATEWAY_URL был задан без `/v1`. Клиент…
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - normalize_base_url() — Привести базовый адрес Gateway к тому, от которого строятся пути. Живой прогон владельца (20260906, GATEWAY-URL-V1): BOSSMAN_GATEWAY_URL был задан без `/v1`. Клиент…
@@ -22297,7 +22297,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 2026-08-29 · d398fb9c — feat(gateway): пакет AI Gateway, тесты, конфиг-пример и доки ЭТАПА 3
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22311,7 +22311,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 212 строк; Имя файла: client.py; Тестов-импортёров: 7; Изменений в истории: 5; Последнее изменение: 2026-09-06 · 6cc9523e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 212 строк; Имя файла: client.py; Тестов-импортёров: 7; Изменений в истории: 5; Последнее изменение: 2026-09-06 · 6cc9523e; Родитель: Система и проверки
 
 ## config.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-4b5988e098bd`
@@ -22370,13 +22370,13 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 547 строк; Имя файла: config.py; Тестов-импортёров: 20; Изменений в истории: 12; Последнее изменение: 2026-09-29 · ddd9b055; Родитель: Система и проверки
 
 ## main.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-de7445e9d5f5`
+*Уровень доказательства: Работает в Bossman* · id: `module-de7445e9d5f5`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Точка входа процесса Gateway.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Точка входа процесса Gateway.
@@ -22399,7 +22399,7 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 2026-08-29 · d398fb9c — feat(gateway): пакет AI Gateway, тесты, конфиг-пример и доки ЭТАПА 3
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22413,16 +22413,16 @@ Protocol references (contract fixtures are not a live-model acceptance): https:/
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 112 строк; Имя файла: main.py; Тестов-импортёров: 2; Изменений в истории: 6; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 112 строк; Имя файла: main.py; Тестов-импортёров: 2; Изменений в истории: 6; Последнее изменение: 2026-09-09 · 83c1a02d; Родитель: Система и проверки
 
 ## prompt_cache.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-d5d8a9a7ab5c`
+*Уровень доказательства: Работает в Bossman* · id: `module-d5d8a9a7ab5c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Provider-aware prompt-cache request shaping and usage normalization.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Provider-aware prompt-cache request shaping and usage normalization.
@@ -22446,7 +22446,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 2026-08-30 · 7f3caa85 — feat(gateway): add provider-aware prompt caching
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22460,7 +22460,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 270 строк; Имя файла: prompt_cache.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 7f3caa85; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 270 строк; Имя файла: prompt_cache.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 7f3caa85; Родитель: Система и проверки
 
 ## router.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-a548c779a998`
@@ -22510,12 +22510,12 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 201 строка; Имя файла: router.py; Тестов-импортёров: 16; Изменений в истории: 6; Последнее изменение: 2026-09-29 · ddd9b055; Родитель: Система и проверки
 
 ## telemetry.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-8dba9550a502`
+*Уровень доказательства: Работает в Bossman* · id: `module-8dba9550a502`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - process_resources()
@@ -22531,7 +22531,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 2026-08-29 · d398fb9c — feat(gateway): пакет AI Gateway, тесты, конфиг-пример и доки ЭТАПА 3
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22545,7 +22545,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 260 строк; Имя файла: telemetry.py; Тестов-импортёров: 1; Изменений в истории: 4; Последнее изменение: 2026-09-03 · d0331285; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 260 строк; Имя файла: telemetry.py; Тестов-импортёров: 1; Изменений в истории: 4; Последнее изменение: 2026-09-03 · d0331285; Родитель: Система и проверки
 
 ## bridge.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-725a466f4b8f`
@@ -22583,12 +22583,12 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 34 строки; Имя файла: bridge.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## dispatcher.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-24bbe5117ab0`
+*Уровень доказательства: Работает в Bossman* · id: `module-24bbe5117ab0`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - класс NotificationDispatcher
@@ -22600,7 +22600,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22614,7 +22614,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 38 строк; Имя файла: dispatcher.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 38 строк; Имя файла: dispatcher.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## models.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-9a0163231b1b`
@@ -22655,13 +22655,13 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 42 строки; Имя файла: models.py; Тестов-импортёров: 7; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## policy.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-0ce0daf3140c`
+*Уровень доказательства: Работает в Bossman* · id: `module-0ce0daf3140c`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — NotificationPolicy(): Maps existing EventBus events to phone-worthy notifications only.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3, 1)
 
 ### Основные функции
 - sanitize()
@@ -22675,7 +22675,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22689,7 +22689,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 66 строк; Имя файла: policy.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 3b15d466; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 66 строк; Имя файла: policy.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-09-02 · 3b15d466; Родитель: Система и проверки
 
 ## routes.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-45ef5a5cbb02`
@@ -22764,12 +22764,12 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 48 строк; Имя файла: runtime.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 8e3784da; Родитель: Система и проверки
 
 ## store.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-ddbf2f4b50d2`
+*Уровень доказательства: Работает в Bossman* · id: `module-ddbf2f4b50d2`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Основные функции
 - класс CallbackRejected
@@ -22783,7 +22783,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 2026-08-29 · 8e3784da — integrate cost governor and telegram notifications
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22797,7 +22797,7 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 139 строк; Имя файла: store.py; Тестов-импортёров: 9; Изменений в истории: 2; Последнее изменение: 2026-09-22 · a74aee66; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 139 строк; Имя файла: store.py; Тестов-импортёров: 9; Изменений в истории: 2; Последнее изменение: 2026-09-22 · a74aee66; Родитель: Система и проверки
 
 ## subsystem.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-aaff14c2d261`
@@ -22874,13 +22874,13 @@ Only OpenRouter payloads are changed. The module never stores prompt text: calle
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 128 строк; Имя файла: telegram_transport.py; Тестов-импортёров: 8; Изменений в истории: 5; Последнее изменение: 2026-09-19 · a4dd74e3; Родитель: Система и проверки
 
 ## gate.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2e5863355b9a`
+*Уровень доказательства: Работает в Bossman* · id: `module-2e5863355b9a`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Capability gate — единственный источник истины «можно ли профилю capability».
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 2)
 
 ### Как это устроено (из описания в коде)
 Capability gate — единственный источник истины «можно ли профилю capability».
@@ -22899,7 +22899,7 @@ Capability gate — единственный источник истины «м�
 - 2026-08-30 · 9a0db650 — feat(profiles): multi-user chat accounts with access toggles + per-profile knowledge
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22913,16 +22913,16 @@ Capability gate — единственный источник истины «м�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 44 строки; Имя файла: gate.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 9a0db650; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 44 строки; Имя файла: gate.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 9a0db650; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-60f309b322d6`
+*Уровень доказательства: Работает в Bossman* · id: `module-60f309b322d6`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Профили доступа к чату (мульти-пользователь поверх Stage 6 device-identity).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Профили доступа к чату (мульти-пользователь поверх Stage 6 device-identity).
@@ -22943,7 +22943,7 @@ Capability gate — единственный источник истины «м�
 - 2026-08-30 · 9a0db650 — feat(profiles): multi-user chat accounts with access toggles + per-profile knowledge
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -22957,7 +22957,7 @@ Capability gate — единственный источник истины «м�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 111 строк; Имя файла: models.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 111 строк; Имя файла: models.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
 
 ## router.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-5c5bd2e61f67`
@@ -23011,13 +23011,13 @@ POST /profiles — создать аккаунт (admin) GET /profiles — сп�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 114 строк; Имя файла: router.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 9a0db650; Родитель: Система и проверки
 
 ## service.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-99fc865d8c4b`
+*Уровень доказательства: Работает в Bossman* · id: `module-99fc865d8c4b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 ProfileService — процессный синглтон + мост enforcement.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 ProfileService — процессный синглтон + мост enforcement.
@@ -23038,7 +23038,7 @@ ProfileService — процессный синглтон + мост enforcement.
 - 2026-08-30 · 9a0db650 — feat(profiles): multi-user chat accounts with access toggles + per-profile knowledge
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23052,16 +23052,16 @@ ProfileService — процессный синглтон + мост enforcement.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 81 строка; Имя файла: service.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-08-31 · c843ad72; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 81 строка; Имя файла: service.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-08-31 · c843ad72; Родитель: Система и проверки
 
 ## store.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-ff3e6bc1044b`
+*Уровень доказательства: Работает в Bossman* · id: `module-ff3e6bc1044b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Durable-хранилище профилей (JSON, атомарная запись). Переживает рестарт.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Durable-хранилище профилей (JSON, атомарная запись). Переживает рестарт.
@@ -23079,7 +23079,7 @@ Durable-хранилище профилей (JSON, атомарная запис
 - 2026-08-30 · 9a0db650 — feat(profiles): multi-user chat accounts with access toggles + per-profile knowledge
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23093,7 +23093,7 @@ Durable-хранилище профилей (JSON, атомарная запис
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 128 строк; Имя файла: store.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 9a0db650; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 128 строк; Имя файла: store.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-30 · 9a0db650; Родитель: Система и проверки
 
 ## subsystem.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-531fc123cd17`
@@ -23184,13 +23184,13 @@ state.json — источник истины (9.5): перезагрузка, п
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 135 строк; Имя файла: plan.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 0c396b40; Родитель: Система и проверки
 
 ## planner.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-8bd73fd35c48`
+*Уровень доказательства: Работает в Bossman* · id: `module-8bd73fd35c48`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Планировщик (роль 1): brief.md → plan.yaml.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Планировщик (роль 1): brief.md → plan.yaml.
@@ -23208,7 +23208,7 @@ state.json — источник истины (9.5): перезагрузка, п
 - 2026-08-29 · 5d9a9582 — fix(core): амнезия при уплотнении (P0), двойной запуск проекта (P1) + возврат в git пакета bossman/projects
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23222,7 +23222,7 @@ state.json — источник истины (9.5): перезагрузка, п
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 77 строк; Имя файла: planner.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 77 строк; Имя файла: planner.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
 
 ## router.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-28048916831a`
@@ -23487,13 +23487,13 @@ V7 World State Graph with explicit provenance and freshness.
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 165 строк; Имя файла: auth.py; Тестов-импортёров: 17; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## events.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2bd9c1e2cdfd`
+*Уровень доказательства: Работает в Bossman* · id: `module-2bd9c1e2cdfd`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Мост событий Stage 6: подписка на ядровую шину `bossman.events` с фильтром по скоупам устройства. Второй брокер НЕ поднимается — мы бриджим существующую шину, добавляя правило «устройство получает событие, только если у него есть скоуп, требуемый категорией этого события».
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Мост событий Stage 6: подписка на ядровую шину `bossman.events` с фильтром по скоупам устройства. Второй брокер НЕ поднимается — мы бриджим существующую шину, добавляя правило «устройство получает событие, только если у него есть скоуп, требуемый категорией этого события».
@@ -23514,7 +23514,7 @@ V7 World State Graph with explicit provenance and freshness.
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23528,16 +23528,16 @@ V7 World State Graph with explicit provenance and freshness.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 105 строк; Имя файла: events.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 105 строк; Имя файла: events.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
 
 ## mobile_api.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-37dec999ab57`
+*Уровень доказательства: Работает в Bossman* · id: `module-37dec999ab57`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 12 — scoped API surface for the private mobile client.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 12 — scoped API surface for the private mobile client.
@@ -23563,7 +23563,7 @@ Security invariants: - every data/action endpoint is scope-gated by Stage 6 auth
 - 2026-08-29 · 2cf99f5e — feat(remote): integrate Stage 12 mobile API — device-scoped tasks, redacted approvals, PWA mount
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23577,7 +23577,7 @@ Security invariants: - every data/action endpoint is scope-gated by Stage 6 auth
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 191 строка; Имя файла: mobile_api.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 2cf99f5e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 191 строка; Имя файла: mobile_api.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 2cf99f5e; Родитель: Система и проверки
 
 ## router.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-f1437d4e2221`
@@ -23629,13 +23629,13 @@ HTTP-поверхность Stage 6: APIRouter под префиксом /remote
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 146 строк; Имя файла: router.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## security.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-897d03f9aab0`
+*Уровень доказательства: Работает в Bossman* · id: `module-897d03f9aab0`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт скоупов.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт скоупов.
@@ -23654,7 +23654,7 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23668,16 +23668,16 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 54 строки; Имя файла: security.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 54 строки; Имя файла: security.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## service.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-6bfb88803a15`
+*Уровень доказательства: Работает в Bossman* · id: `module-6bfb88803a15`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Оркестрация Stage 6: enroll / open_session / authenticate / lock / revoke.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Оркестрация Stage 6: enroll / open_session / authenticate / lock / revoke.
@@ -23698,7 +23698,7 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23712,16 +23712,16 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 184 строки; Имя файла: service.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 184 строки; Имя файла: service.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-09-07 · 633e0604; Родитель: Система и проверки
 
 ## store.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-de0238268e77`
+*Уровень доказательства: Работает в Bossman* · id: `module-de0238268e77`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Порт хранилища устройств Stage 6 + две реализации.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Порт хранилища устройств Stage 6 + две реализации.
@@ -23741,7 +23741,7 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23755,7 +23755,7 @@ FastAPI-зависимости Stage 6 — здесь ЖИВЁТ гейт ско
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 273 строки; Имя файла: store.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 273 строки; Имя файла: store.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## subsystem.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-5bfdc6603e86`
@@ -23799,13 +23799,13 @@ validate(): при сконфигурированном живом Postgres со
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 59 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## engine.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-8f7bb546924a`
+*Уровень доказательства: Работает в Bossman* · id: `module-8f7bb546924a`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 V2.6 модуль I — детерминированное ядро Deep Research Engine.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3)
 
 ### Как это устроено (из описания в коде)
 V2.6 модуль I — детерминированное ядро Deep Research Engine.
@@ -23823,7 +23823,7 @@ VOI-граница: раунд, не добавивший НОВОЙ evidence (�
 - 2026-08-31 · 96939f22 — feat(v2.6): research engine, artifacts, file tools, analysis, voice, scheduler + defect fixes
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23837,7 +23837,7 @@ VOI-граница: раунд, не добавивший НОВОЙ evidence (�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 211 строк; Имя файла: engine.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 96939f22; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 211 строк; Имя файла: engine.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 96939f22; Родитель: Система и проверки
 
 ## models.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-cb1aad058144`
@@ -23883,13 +23883,13 @@ V2.6 модуль I — типизированные модели research-па�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 73 строки; Имя файла: models.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 96939f22; Родитель: Система и проверки
 
 ## tools.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-c5d464a7aa9e`
+*Уровень доказательства: Работает в Bossman* · id: `module-c5d464a7aa9e`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 V2.6 модуль I — тонкая обвязка research-движка под toolkit.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 V2.6 модуль I — тонкая обвязка research-движка под toolkit.
@@ -23907,7 +23907,7 @@ V2.6 модуль I — тонкая обвязка research-движка под
 - 2026-08-31 · 96939f22 — feat(v2.6): research engine, artifacts, file tools, analysis, voice, scheduler + defect fixes
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -23921,7 +23921,7 @@ V2.6 модуль I — тонкая обвязка research-движка под
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 97 строк; Имя файла: tools.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 96939f22; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 97 строк; Имя файла: tools.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-31 · 96939f22; Родитель: Система и проверки
 
 ## brain.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-0ef2333ef23c`
@@ -23963,13 +23963,13 @@ Resource Brain: измеряет единый пул, принимает/отк�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 191 строка; Имя файла: brain.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## ledger.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2f9db2f18c1b`
+*Уровень доказательства: Работает в Bossman* · id: `module-2f9db2f18c1b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Реестр аренд (lease ledger) — устранение P0-гонки OOM.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Реестр аренд (lease ledger) — устранение P0-гонки OOM.
@@ -23987,7 +23987,7 @@ Resource Brain: измеряет единый пул, принимает/отк�
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24001,7 +24001,7 @@ Resource Brain: измеряет единый пул, принимает/отк�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 151 строка; Имя файла: ledger.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 151 строка; Имя файла: ledger.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## models.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-22827787ecc5`
@@ -24050,13 +24050,13 @@ Resource Brain: измеряет единый пул, принимает/отк�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 233 строки; Имя файла: models.py; Тестов-импортёров: 3; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## probe.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-dacafbe9e4ee`
+*Уровень доказательства: Работает в Bossman* · id: `module-dacafbe9e4ee`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Пробы ресурсов: измеряют единый пул хоста. Absent-safe и подключаемые.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Пробы ресурсов: измеряют единый пул хоста. Absent-safe и подключаемые.
@@ -24077,7 +24077,7 @@ Resource Brain: измеряет единый пул, принимает/отк�
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24091,7 +24091,7 @@ Resource Brain: измеряет единый пул, принимает/отк�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 158 строк; Имя файла: probe.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 158 строк; Имя файла: probe.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## routes.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-fe0ffb0d2f88`
@@ -24175,13 +24175,13 @@ Read-only HTTP-эндпоинты Resource Brain.
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 97 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## artifacts.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-9d055871ddff`
+*Уровень доказательства: Работает в Bossman* · id: `module-9d055871ddff`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — Artifact Gate.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — Artifact Gate.
@@ -24198,7 +24198,7 @@ Stage 8 — Artifact Gate.
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24212,7 +24212,7 @@ Stage 8 — Artifact Gate.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 146 строк; Имя файла: artifacts.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · e33bc4a8; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 146 строк; Имя файла: artifacts.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · e33bc4a8; Родитель: Система и проверки
 
 ## dataset.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-abd99037a01e`
@@ -24258,13 +24258,13 @@ raw trajectory → sanitize → validate/evaluate → dataset candidate → qual
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 140 строк; Имя файла: dataset.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · d5f80c82; Родитель: Система и проверки
 
 ## egress.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-9d8ee6730907`
+*Уровень доказательства: Работает в Bossman* · id: `module-9d8ee6730907`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — плоскость egress: реальный барьер для режима ALLOWLIST.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — плоскость egress: реальный барьер для режима ALLOWLIST.
@@ -24283,7 +24283,7 @@ OFFLINE обеспечивается рантаймом (сетевой namespac
 - 2026-08-29 · 3b01d199 — security(sandbox): реальный egress-барьер для ALLOWLIST (NEXT шаг 2)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24297,16 +24297,16 @@ OFFLINE обеспечивается рантаймом (сетевой namespac
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 157 строк; Имя файла: egress.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 3b01d199; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 157 строк; Имя файла: egress.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · 3b01d199; Родитель: Система и проверки
 
 ## manager.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-43a773f7d5a6`
+*Уровень доказательства: Работает в Bossman* · id: `module-43a773f7d5a6`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — SandboxManager: оркестратор жизненного цикла песочницы.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — SandboxManager: оркестратор жизненного цикла песочницы.
@@ -24324,7 +24324,7 @@ Stage 8 — SandboxManager: оркестратор жизненного цикл
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24338,16 +24338,16 @@ Stage 8 — SandboxManager: оркестратор жизненного цикл
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 249 строк; Имя файла: manager.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 2883a39f; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 249 строк; Имя файла: manager.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 2883a39f; Родитель: Система и проверки
 
 ## models.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-eb0be06d9db9`
+*Уровень доказательства: Работает в Bossman* · id: `module-eb0be06d9db9`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — AI Lab Sandbox: доменные модели и конечный автомат жизненного цикла.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — AI Lab Sandbox: доменные модели и конечный автомат жизненного цикла.
@@ -24373,7 +24373,7 @@ Stage 8 — AI Lab Sandbox: доменные модели и конечный а
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24387,7 +24387,7 @@ Stage 8 — AI Lab Sandbox: доменные модели и конечный а
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 238 строк; Имя файла: models.py; Тестов-импортёров: 12; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 7d424dcb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 238 строк; Имя файла: models.py; Тестов-импортёров: 12; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 7d424dcb; Родитель: Система и проверки
 
 ## netguard.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-9c2c49d71c15`
@@ -24434,13 +24434,13 @@ Stage 8 — принудительный блок прямых сокетов м
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 128 строк; Имя файла: netguard.py; Тестов-импортёров: 5; Изменений в истории: 2; Последнее изменение: 2026-09-23 · 25f82654; Родитель: Система и проверки
 
 ## network.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-5c36f1523214`
+*Уровень доказательства: Работает в Bossman* · id: `module-5c36f1523214`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — детерминированный сетевой барьер (control-plane решение).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — детерминированный сетевой барьер (control-plane решение).
@@ -24457,7 +24457,7 @@ Stage 8 — детерминированный сетевой барьер (cont
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24471,16 +24471,16 @@ Stage 8 — детерминированный сетевой барьер (cont
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 102 строки; Имя файла: network.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · dc5b4f98; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 102 строки; Имя файла: network.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · dc5b4f98; Родитель: Система и проверки
 
 ## policy.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2eec9a135e0f`
+*Уровень доказательства: Работает в Bossman* · id: `module-2eec9a135e0f`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — движок политики и риска.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — движок политики и риска.
@@ -24499,7 +24499,7 @@ Stage 8 — движок политики и риска.
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24513,7 +24513,7 @@ Stage 8 — движок политики и риска.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 120 строк; Имя файла: policy.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 1840d0b5; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 120 строк; Имя файла: policy.py; Тестов-импортёров: 0; Изменений в истории: 3; Последнее изменение: 2026-08-29 · 1840d0b5; Родитель: Система и проверки
 
 ## resources.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-a11338c485f5`
@@ -24595,13 +24595,13 @@ Stage 8 — read-only HTTP-статус песочницы. Никаких му�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 36 строк; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## runtime.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-5d128fcf8dab`
+*Уровень доказательства: Работает в Bossman* · id: `module-5d128fcf8dab`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — абстракция рантайма песочницы + детерминированный FakeRuntime.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3, 1)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — абстракция рантайма песочницы + детерминированный FakeRuntime.
@@ -24622,7 +24622,7 @@ CORE важнее конкретного гипервизора: менедже�
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24636,7 +24636,7 @@ CORE важнее конкретного гипервизора: менедже�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 134 строки; Имя файла: runtime.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 7d424dcb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 134 строки; Имя файла: runtime.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 7d424dcb; Родитель: Система и проверки
 
 ## secrets.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-fdd1e1e7e9a0`
@@ -24670,13 +24670,13 @@ CORE важнее конкретного гипервизора: менедже�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: файл; Размер: 3762 строки; Имя файла: ops.json; Изменений в истории: 4; Последнее изменение: 2026-10-07 · dff6706d; Родитель: Система и проверки
 
 ## subsystem.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-e999698f8e9e`
+*Уровень доказательства: Работает в Bossman* · id: `module-e999698f8e9e`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — подсистема жизненного цикла песочницы (lifecycle.Subsystem).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — подсистема жизненного цикла песочницы (lifecycle.Subsystem).
@@ -24693,7 +24693,7 @@ OFF значит OFF: выключенная фича на start() НЕ подн
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24707,7 +24707,7 @@ OFF значит OFF: выключенная фича на start() НЕ подн
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 60 строк; Имя файла: subsystem.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · b2ad6997; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 60 строк; Имя файла: subsystem.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-29 · b2ad6997; Родитель: Система и проверки
 
 ## toolbox.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-0dc288edd324`
@@ -24793,13 +24793,13 @@ Stage 8 — инструменты песочницы для агента (ре�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 173 строки; Имя файла: tools.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · b2ad6997; Родитель: Система и проверки
 
 ## trajectory.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-0445b69844cc`
+*Уровень доказательства: Работает в Bossman* · id: `module-0445b69844cc`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Stage 8 — Trajectory Recorder (ядро).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Stage 8 — Trajectory Recorder (ядро).
@@ -24816,7 +24816,7 @@ Stage 8 — Trajectory Recorder (ядро).
 - 2026-08-29 · dc5b4f98 — feat(sandbox): Этап 8 — ядро AI Lab Sandbox (lifecycle, policy/risk, runtime, ресурсы, сеть, секреты, artifact gate, траектория)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24830,7 +24830,7 @@ Stage 8 — Trajectory Recorder (ядро).
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 73 строки; Имя файла: trajectory.py; Тестов-импортёров: 4; Изменений в истории: 2; Последнее изменение: 2026-08-29 · dd44df06; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 73 строки; Имя файла: trajectory.py; Тестов-импортёров: 4; Изменений в истории: 2; Последнее изменение: 2026-08-29 · dd44df06; Родитель: Система и проверки
 
 ## connectors.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-e11418351fd7`
@@ -24876,13 +24876,13 @@ Stage 8 — Trajectory Recorder (ядро).
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 208 строк; Имя файла: connectors.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## engine.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-6fcdcfb4b872`
+*Уровень доказательства: Работает в Bossman* · id: `module-6fcdcfb4b872`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Публичный API поиска — ТОНКИЙ адаптер поверх bossman.context_engine.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 3)
 
 ### Как это устроено (из описания в коде)
 Публичный API поиска — ТОНКИЙ адаптер поверх bossman.context_engine.
@@ -24904,7 +24904,7 @@ connectors → Ingestor (chunking) → ContextStore (единый SQLite/WAL и�
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -24918,7 +24918,7 @@ connectors → Ingestor (chunking) → ContextStore (единый SQLite/WAL и�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 213 строк; Имя файла: engine.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 213 строк; Имя файла: engine.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## router.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-3e2b4af78a2e`
@@ -25005,13 +25005,13 @@ SearchService — подсистема этапа 5 (Subsystem, name='search_eve
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 153 строки; Имя файла: service.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## tools.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-76ae682ed2e4`
+*Уровень доказательства: Работает в Bossman* · id: `module-76ae682ed2e4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Регистрация search.*-инструментов в общий REGISTRY toolkit'а.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Регистрация search.*-инструментов в общий REGISTRY toolkit'а.
@@ -25028,7 +25028,7 @@ SearchService — подсистема этапа 5 (Subsystem, name='search_eve
 - 2026-08-29 · cbbc32cf — feat(core): этапы 4/5/6 — Resource Brain, Search Everything, Remote Client
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25042,7 +25042,7 @@ SearchService — подсистема этапа 5 (Subsystem, name='search_eve
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 110 строк; Имя файла: tools.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 110 строк; Имя файла: tools.py; Тестов-импортёров: 0; Изменений в истории: 1; Последнее изменение: 2026-08-29 · cbbc32cf; Родитель: Система и проверки
 
 ## _proc.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-59f6fbe27bd5`
@@ -25090,13 +25090,13 @@ SearchService — подсистема этапа 5 (Subsystem, name='search_eve
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 97 строк; Имя файла: _proc.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-23 · 25f82654; Родитель: Система и проверки
 
 ## analysis.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-5f3e261c2cf4`
+*Уровень доказательства: Работает в Bossman* · id: `module-5f3e261c2cf4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 analysis.run — Python/Data Analysis Runtime (V2.6, раздел 19).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 analysis.run — Python/Data Analysis Runtime (V2.6, раздел 19).
@@ -25116,7 +25116,7 @@ Dataframes, статистика, расчёты — БЕЗ произвольн
 - 2026-08-31 · 96939f22 — feat(v2.6): research engine, artifacts, file tools, analysis, voice, scheduler + defect fixes
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25130,16 +25130,16 @@ Dataframes, статистика, расчёты — БЕЗ произвольн
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 111 строк; Имя файла: analysis.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 111 строк; Имя файла: analysis.py; Тестов-импортёров: 2; Изменений в истории: 3; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
 
 ## browser.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-eb0bce4aaf5b`
+*Уровень доказательства: Работает в Bossman* · id: `module-eb0bce4aaf5b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Generic, policy-aware ComputerUse tools for Bossman agents.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Generic, policy-aware ComputerUse tools for Bossman agents.
@@ -25169,7 +25169,7 @@ Properties: - one persistent Chromium profile per agent, protected by a cross-pr
 - 2026-08-29 · e98132a7 — feat(browser): интеграция общего ComputerUse-слоя в bossman-core (ЭТАП 1)
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25183,16 +25183,16 @@ Properties: - one persistent Chromium profile per agent, protected by a cross-pr
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 836 строк; Имя файла: browser.py; Тестов-импортёров: 8; Изменений в истории: 6; Последнее изменение: 2026-09-09 · 2da38b2b; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 836 строк; Имя файла: browser.py; Тестов-импортёров: 8; Изменений в истории: 6; Последнее изменение: 2026-09-09 · 2da38b2b; Родитель: Система и проверки
 
 ## fileintel.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-918d9d178fe3`
+*Уровень доказательства: Работает в Bossman* · id: `module-918d9d178fe3`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 file.parse / artifact.create — инструменты модулей J и M (V2.6).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 file.parse / artifact.create — инструменты модулей J и M (V2.6).
@@ -25212,7 +25212,7 @@ Containment путей — РОВНО тот же, что у fs.* (files.py), и
 - 2026-08-31 · 96939f22 — feat(v2.6): research engine, artifacts, file tools, analysis, voice, scheduler + defect fixes
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25226,16 +25226,16 @@ Containment путей — РОВНО тот же, что у fs.* (files.py), и
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 119 строк; Имя файла: fileintel.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-06 · c5daa5e3; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 119 строк; Имя файла: fileintel.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-09-06 · c5daa5e3; Родитель: Система и проверки
 
 ## files.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-2190e88ab8cb`
+*Уровень доказательства: Работает в Bossman* · id: `module-2190e88ab8cb`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 fs.* — файлы внутри workdir агента. Лимиты из 10.4.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 fs.* — файлы внутри workdir агента. Лимиты из 10.4.
@@ -25257,7 +25257,7 @@ fs.* — файлы внутри workdir агента. Лимиты из 10.4.
 - 2026-08-27 · 1e6c8c56 — Bossman Control v0.3: инфраструктура + ядро агентов
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25271,16 +25271,16 @@ fs.* — файлы внутри workdir агента. Лимиты из 10.4.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 151 строка; Имя файла: files.py; Тестов-импортёров: 5; Изменений в истории: 4; Последнее изменение: 2026-09-22 · 9a8997c1; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 151 строка; Имя файла: files.py; Тестов-импортёров: 5; Изменений в истории: 4; Последнее изменение: 2026-09-22 · 9a8997c1; Родитель: Система и проверки
 
 ## gitops.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-cf0d1b5d4d86`
+*Уровень доказательства: Работает в Bossman* · id: `module-cf0d1b5d4d86`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 git — status, diff, branch, commit внутри workdir. Diff ≤ 4K токенов, по файлам.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 git — status, diff, branch, commit внутри workdir. Diff ≤ 4K токенов, по файлам.
@@ -25300,7 +25300,7 @@ git — status, diff, branch, commit внутри workdir. Diff ≤ 4K токе�
 - 2026-08-27 · 1e6c8c56 — Bossman Control v0.3: инфраструктура + ядро агентов
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25314,16 +25314,16 @@ git — status, diff, branch, commit внутри workdir. Diff ≤ 4K токе�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 166 строк; Имя файла: gitops.py; Тестов-импортёров: 4; Изменений в истории: 5; Последнее изменение: 2026-09-22 · b2130032; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 166 строк; Имя файла: gitops.py; Тестов-импортёров: 4; Изменений в истории: 5; Последнее изменение: 2026-09-22 · b2130032; Родитель: Система и проверки
 
 ## journal.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-6b8f5c457e7f`
+*Уровень доказательства: Работает в Bossman* · id: `module-6b8f5c457e7f`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 log и search_journal — журнал агента/проекта.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 log и search_journal — журнал агента/проекта.
@@ -25341,7 +25341,7 @@ log и search_journal — журнал агента/проекта.
 - 2026-08-27 · 1e6c8c56 — Bossman Control v0.3: инфраструктура + ядро агентов
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25355,16 +25355,16 @@ log и search_journal — журнал агента/проекта.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 58 строк; Имя файла: journal.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · f2ce086f; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 58 строк; Имя файла: journal.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · f2ce086f; Родитель: Система и проверки
 
 ## media.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-c2cd9f798b9b`
+*Уровень доказательства: Работает в Bossman* · id: `module-c2cd9f798b9b`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Медиа: картинка/клип возвращаются как путь + метаданные + подпись (≤300 токенов), никогда содержимым. ffmpeg — склейка и звук из пайплайна проектов.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 3 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1, 1)
 
 ### Как это устроено (из описания в коде)
 Медиа: картинка/клип возвращаются как путь + метаданные + подпись (≤300 токенов), никогда содержимым. ffmpeg — склейка и звук из пайплайна проектов.
@@ -25386,7 +25386,7 @@ log и search_journal — журнал агента/проекта.
 - 2026-08-29 · d3f15189 — fix(host-exec): exact allowlist identity, media path traversal battery, argv-injection pin
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25400,16 +25400,16 @@ log и search_journal — журнал агента/проекта.
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 225 строк; Имя файла: media.py; Тестов-импортёров: 7; Изменений в истории: 8; Последнее изменение: 2026-09-22 · b2130032; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 225 строк; Имя файла: media.py; Тестов-импортёров: 7; Изменений в истории: 8; Последнее изменение: 2026-09-22 · b2130032; Родитель: Система и проверки
 
 ## net.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-7be51ff76449`
+*Уровень доказательства: Работает в Bossman* · id: `module-7be51ff76449`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 http — вызовы API: статус + ключевые поля по схеме, не сырой JSON (≤2K токенов); сырой ответ — в файл. Работает только у агентов, которым выдан.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 http — вызовы API: статус + ключевые поля по схеме, не сырой JSON (≤2K токенов); сырой ответ — в файл. Работает только у агентов, которым выдан.
@@ -25430,7 +25430,7 @@ F-004 (SSRF): URL контролирует модель, поэтому у ин�
 - 2026-08-27 · 1e6c8c56 — Bossman Control v0.3: инфраструктура + ядро агентов
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25444,7 +25444,7 @@ F-004 (SSRF): URL контролирует модель, поэтому у ин�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 260 строк; Имя файла: net.py; Тестов-импортёров: 0; Изменений в истории: 4; Последнее изменение: 2026-09-06 · d962ee72; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 260 строк; Имя файла: net.py; Тестов-импортёров: 0; Изменений в истории: 4; Последнее изменение: 2026-09-06 · d962ee72; Родитель: Система и проверки
 
 ## office.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-ae9598734759`
@@ -25483,13 +25483,13 @@ gmail.*, crm.*, docs.read — декларации для v0.4 (Fresh Vibes).
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 39 строк; Имя файла: office.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-27 · 1e6c8c56; Родитель: Система и проверки
 
 ## shell.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-a91069ddd708`
+*Уровень доказательства: Работает в Bossman* · id: `module-a91069ddd708`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 run и tests — команды в sandbox: docker-контейнер без сети, смонтирован только workdir. Результат: код выхода + первые 30 и последние 30 строк (≤3K токенов); полный вывод — в assets/logs/<id>.txt, дочитывается через fs.read.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 run и tests — команды в sandbox: docker-контейнер без сети, смонтирован только workdir. Результат: код выхода + первые 30 и последние 30 строк (≤3K токенов); полный вывод — в assets/logs/<id>.txt, дочитывается через fs.read.
@@ -25510,7 +25510,7 @@ run и tests — команды в sandbox: docker-контейнер без с�
 - 2026-08-27 · 1e6c8c56 — Bossman Control v0.3: инфраструктура + ядро агентов
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25524,7 +25524,7 @@ run и tests — команды в sandbox: docker-контейнер без с�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 160 строк; Имя файла: shell.py; Тестов-импортёров: 5; Изменений в истории: 5; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 160 строк; Имя файла: shell.py; Тестов-импортёров: 5; Изменений в истории: 5; Последнее изменение: 2026-09-06 · 974c6eeb; Родитель: Система и проверки
 
 ## nightly_run.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-cdbbc088b662`
@@ -25625,13 +25625,13 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 204 строки; Имя файла: ffmpeg.py; Тестов-импортёров: 3; Изменений в истории: 2; Последнее изменение: 2026-09-23 · 25f82654; Родитель: Система и проверки
 
 ## model.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-464a2a956fa0`
+*Уровень доказательства: Работает в Bossman* · id: `module-464a2a956fa0`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Модель данных Video Factory (Этап 7).
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 3 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2, 2, 1)
 
 ### Как это устроено (из описания в коде)
 Модель данных Video Factory (Этап 7).
@@ -25650,7 +25650,7 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 2026-08-29 · f847548e — feat(core): этап 7 — Video Factory (возобновляемый, под допуском ресурсов, ffmpeg-safe) + приёмочный тест этапов 4–7
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25664,16 +25664,16 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 122 строки; Имя файла: model.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 122 строки; Имя файла: model.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
 
 ## pipeline.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-6285f40851f1`
+*Уровень доказательства: Работает в Bossman* · id: `module-6285f40851f1`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Конвейер Video Factory: создание, атомарный чекпоинт, возобновление, генерация.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Конвейер Video Factory: создание, атомарный чекпоинт, возобновление, генерация.
@@ -25690,7 +25690,7 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 2026-08-29 · f847548e — feat(core): этап 7 — Video Factory (возобновляемый, под допуском ресурсов, ffmpeg-safe) + приёмочный тест этапов 4–7
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25704,16 +25704,16 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 316 строк; Имя файла: pipeline.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 316 строк; Имя файла: pipeline.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
 
 ## providers.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-4c9ee5995fb6`
+*Уровень доказательства: Работает в Bossman* · id: `module-4c9ee5995fb6`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Провайдеры генерации видео + связка с политикой ComputerUse.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Провайдеры генерации видео + связка с политикой ComputerUse.
@@ -25736,7 +25736,7 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 2026-08-29 · f847548e — feat(core): этап 7 — Video Factory (возобновляемый, под допуском ресурсов, ffmpeg-safe) + приёмочный тест этапов 4–7
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25750,16 +25750,16 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 328 строк; Имя файла: providers.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-31 · 13e56d05; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 328 строк; Имя файла: providers.py; Тестов-импортёров: 2; Изменений в истории: 2; Последнее изменение: 2026-08-31 · 13e56d05; Родитель: Система и проверки
 
 ## queue.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-3d62540e3028`
+*Уровень доказательства: Работает в Bossman* · id: `module-3d62540e3028`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Ограниченная очередь джоб/сцен: фикс-размер asyncio.Queue + воркеры.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 2 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1, 1)
 
 ### Как это устроено (из описания в коде)
 Ограниченная очередь джоб/сцен: фикс-размер asyncio.Queue + воркеры.
@@ -25775,7 +25775,7 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 2026-08-29 · f847548e — feat(core): этап 7 — Video Factory (возобновляемый, под допуском ресурсов, ffmpeg-safe) + приёмочный тест этапов 4–7
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25789,7 +25789,7 @@ FFmpeg-слой Video Factory: локатор бинаря, сборка argv и
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 43 строки; Имя файла: queue.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 43 строки; Имя файла: queue.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
 
 ## routes.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-a71668fad443`
@@ -25835,13 +25835,13 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 53 строки; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-29 · 68a96266; Родитель: Система и проверки
 
 ## service.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-27cb1911d462`
+*Уровень доказательства: Работает в Bossman* · id: `module-27cb1911d462`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Сервис Video Factory: связывает VideoFactory, ограниченную очередь и воркеры.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 1)
 
 ### Как это устроено (из описания в коде)
 Сервис Video Factory: связывает VideoFactory, ограниченную очередь и воркеры.
@@ -25858,7 +25858,7 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 2026-08-29 · f847548e — feat(core): этап 7 — Video Factory (возобновляемый, под допуском ресурсов, ffmpeg-safe) + приёмочный тест этапов 4–7
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25872,7 +25872,7 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 164 строки; Имя файла: service.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 164 строки; Имя файла: service.py; Тестов-импортёров: 2; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
 
 ## subsystem.py
 *Уровень доказательства: Есть сохранённый прогон* · id: `module-f21597ba1fd6`
@@ -25914,12 +25914,12 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 46 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 1; Последнее изменение: 2026-08-29 · f847548e; Родитель: Система и проверки
 
 ## routes.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-266a95659ed4`
+*Уровень доказательства: Работает в Bossman* · id: `module-266a95659ed4`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Основные функции
 - world_health()
@@ -25940,7 +25940,7 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 2026-08-30 · 4fb8b6fe — feat: add Pythia World Intelligence drop-in integration
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25954,16 +25954,16 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 131 строка; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · b0a5a0c6; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 131 строка; Имя файла: routes.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · b0a5a0c6; Родитель: Система и проверки
 
 ## subsystem.py
-*Уровень доказательства: Есть сохранённый прогон* · id: `module-7af8dc300eab`
+*Уровень доказательства: Работает в Bossman* · id: `module-7af8dc300eab`
 
 Путь: Bossman → Система и проверки
 
 ### Что это
 Главная функция — build_subsystem(): Factory function called by _register_subsystems() in api.py.
-Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest
+Найден исходный модуль. Наличие тестов и живой результат проверяются отдельно. Прогон 2026-10-06 @ a6296e2f: import+pytest Работает в установленном Bossman @ eba6dc59: installed import+pytest (replay of the same import + 1 pytest step(s); each (cwd, files, -k) step is run once per installed-code environment and attributed to every leaf whose receipt used exactly those files; leaves sharing each step: 2)
 
 ### Основные функции
 - build_subsystem() — Factory function called by _register_subsystems() in api.py.
@@ -25983,7 +25983,7 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 2026-08-30 · 4fb8b6fe — feat: add Pythia World Intelligence drop-in integration
 
 ### Как читать уровень доказательства
-Был живой прогон, и результат записан. Это отчёт о прошлом запуске: дата и условия важны, сегодняшнюю работоспособность он не доказывает.
+Код этого листа загружен из установленной сборки Bossman, и его тесты прошли против неё. Это отчёт о прогоне на указанном коммите, не гарантия работы сегодня.
 Правило карты: PASS не выводится из кода, названий файлов или ветки — только из сохранённой проверки на точном коммите.
 
 ### Что дальше
@@ -25997,7 +25997,7 @@ HTTP-эндпоинты Video Factory. Ошибки поднимаются ка�
 - 3. CI — не подтверждено (нет записи CI на SHA)
 - 4. ПК владельца — не проверено на ПК владельца
 
-Факты: Уровень доказательства: Есть сохранённый прогон; Тип: модуль на Python; Размер: 178 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · b0a5a0c6; Родитель: Система и проверки
+Факты: Уровень доказательства: Работает в Bossman; Тип: модуль на Python; Размер: 178 строк; Имя файла: subsystem.py; Тестов-импортёров: 1; Изменений в истории: 2; Последнее изменение: 2026-08-30 · b0a5a0c6; Родитель: Система и проверки
 
 ## ASTRA acceptance · success
 *Уровень доказательства: Есть сохранённый прогон* · id: `ci-37304275631`
@@ -26303,7 +26303,7 @@ No network, no models, no secrets.
 - open-webui — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
 - amd-strix-halo-toolboxes — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
 - searxng — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
-- awesome-agent-skills. — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
+- awesome-agent-skills — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
 - llama.cpp — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
 - docling — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
 - qdrant — запись / ссылка — Ссылка в выбранном checkout; не утверждение об установке/интеграции.
@@ -27000,7 +27000,7 @@ https://github.com/searxng/searxng
 
 Факты: Уровень доказательства: Запись / ссылка; Тип: документ; Размер: 65 строк; Имя файла: README.md; Изменений в истории: 1; Последнее изменение: 2026-09-16 · 16020d0b; Родитель: Open source · каталог
 
-## awesome-agent-skills.
+## awesome-agent-skills
 *Уровень доказательства: Запись / ссылка* · id: `oss-15`
 
 Путь: Bossman → Open source · каталог
@@ -27027,7 +27027,7 @@ https://github.com/searxng/searxng
 
 ### Внешний проект
 Это сторонний проект, на который ссылается карта. Он не часть Bossman и не утверждается как установленный.
-https://github.com/VoltAgent/awesome-agent-skills.
+https://github.com/VoltAgent/awesome-agent-skills
 
 ### Как читать уровень доказательства
 Запись в справочнике: внешний проект или документ, на который Bossman ссылается. Это не утверждение, что он установлен или встроен.
