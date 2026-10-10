@@ -303,3 +303,12 @@ a.card:hover{transform:translateY(-4px)}
 .ref:hover{background:rgba(110,150,255,.28)}
 .ref:focus-visible{outline:2px solid rgba(160,200,255,.9);outline-offset:2px}
 .ref::before{content:"🍃 ";font-size:11px}
+
+/* итоги дня */
+.daily{display:grid;gap:14px}
+.dday summary{cursor:pointer;list-style:none;display:flex;gap:8px;flex-wrap:wrap;line-height:1.4}
+.dday summary::-webkit-details-marker{display:none}
+.dday .dpart{margin-top:14px}
+.dday h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;color:var(--muted,#a3b2cf)}
+.dday ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.dday .ok h4{color:#5dff8f}.dday .no h4{color:#ffb547}.dday .next h4{color:#8bc5ff}

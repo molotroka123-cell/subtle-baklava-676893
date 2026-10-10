@@ -387,3 +387,29 @@ addEventListener('keydown', (e) => {
 
 /* для автоматических проверок: тот же путь, что клик по листу */
 window.__bossman = { open: (id) => openArticle(id), where: (id) => scene.where(id), zoom: () => scene.zoom, eggs: () => scene.eggs, flying: () => scene.flying, zoomTo: (id, k) => scene.zoomTo(id, k), leaves: scene.leaves, nodes: nodes.length };
+
+/* ---------------------------------------------------------------- итоги дня (data/daily, пишет ИИ) */
+(async () => {
+  const box = $('#dailyList');
+  if (!box) return;
+  try {
+    const idx = await getJSON('./data/daily/index.json');
+    const days = (idx.items || []).slice(0, 14);
+    if (!days.length) { $('#daily').hidden = true; return; }
+    const part = (title, arr, cls) => (arr && arr.length)
+      ? h('div.dpart' + cls, h('h4', title), h('ul', ...arr.map((t) => h('li', t)))) : null;
+    const nodes = [];
+    for (const [i, d] of days.entries()) {
+      let rec = null;
+      try { rec = await getJSON(`./data/daily/${d.day}.json`); } catch (e) { continue; }
+      const det = h('details.card.dday', { open: i === 0 },
+        h('summary', h('b', fmtDay(rec.day)), h('span', ' — ' + rec.headline)),
+        part('Сделано', rec.done, '.done'), part('Работает', rec.works, '.ok'),
+        part('Пока не получилось', rec.not_yet, '.no'), part('Дальше', rec.tomorrow, '.next'),
+        h('p.muted', `Написал ${String(rec.model || 'ИИ').split('/').pop()} по ${rec.commits} коммитам и измеренным итогам.`));
+      nodes.push(det);
+    }
+    box.replaceChildren(...nodes);
+    observeReveal(box);
+  } catch (e) { $('#daily').hidden = true; }
+})();

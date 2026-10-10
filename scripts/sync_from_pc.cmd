@@ -10,6 +10,8 @@ rem 2) Свежие данные: подтянуть витрину и (без �
 git pull --ff-only >> sync.log 2>&1
 git -C "%BOSSMAN_REPO%" pull --ff-only >> sync.log 2>&1
 rem 3) Разбор. --live auto берёт счётчики самоулучшения у запущенного Bossman (не запущен — снимок только из git).
+rem 3a) Итоги дня: после 21:00, раз в день, пишет Haiku 5.5 через OpenRouter; нет ключа или утечка в тексте - ничего не пишется.
+python scripts\daily_summary.py --auto >> sync.log 2>&1
 python scripts\sync_bossman.py --source "%BOSSMAN_REPO%" --live auto --push >> sync.log 2>&1
 type sync.log | findstr /R "SYNC= PUSH=" 
 if /I not "%~1"=="auto" pause
